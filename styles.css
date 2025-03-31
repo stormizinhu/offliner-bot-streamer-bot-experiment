@@ -8,6 +8,10 @@ body {
   h1, h3 {
     color: #66b3ff;
   }
+
+  h3 {
+    margin: 0;
+  }
   
   .config-container, .list-container {
     background-color: #1e1f26;
@@ -61,10 +65,12 @@ body {
   .list-container ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
   }
   
   .item {
     width: 50%;
+    height: 15px ;
     flex: 1 1 auto;
     display: flex;
     justify-content: space-between;
@@ -72,8 +78,9 @@ body {
     background-color: #2b2d36;
     padding: 5px;
     border-radius: 6px;
-    margin-top: 5px;
+    margin: 5px 0 0 0;
     font-size: 14px;
+    border: solid 2px gray
   }
   
   .item span {
@@ -129,4 +136,35 @@ body {
 .youtube {
   background-color: #ff0000; /* Fundo vermelho */
   color: white; /* Letra branca */
+}
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  .item {
+      width: 93%; /* Garante que o item ocupe toda a largura do container pai */
+      height: auto; /* Altura ajustada automaticamente */
+      flex-direction: column; /* Força os elementos dentro de .item a ficarem em coluna */
+      align-items: flex-start; /* Alinha os itens ao início */
+      padding: 10px; /* Espaço adicional para legibilidade */
+      font-size: 16px; /* Aumenta o tamanho da fonte */
+      border: solid 1px gray; /* Mantém o design consistente */
+  }
+
+  .item span {
+      display: block; /* Garante que cada texto esteja em sua própria linha */
+      margin-bottom: 5px; /* Adiciona espaço entre as linhas */
+      flex-grow: 1; /* Garante que o texto ocupe o espaço restante */
+      margin-right: 10px;
+      text-align: left; /* Alinha o texto à esquerda */
+  }
+
+  .list-container {
+      display: flex; /* Garante que o container pai seja flexível */
+      flex-wrap: wrap; /* Permite que os itens se reorganizem dentro do container pai */
+      justify-content: center; /* Centraliza os itens no mobile */
+  }
+
+  .item .hamburger-btn, .item .remove-btn {
+      font-size: 14px; /* Ajusta os botões para telas menores */
+  }
 }

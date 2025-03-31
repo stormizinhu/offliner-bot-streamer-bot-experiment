@@ -1,4 +1,4 @@
-// Importando o objeto 'actions' do global.js
+// Importando diretamente o objeto 'actions' do global.js
 import { actions } from './objects/global.js';
 
 // Elementos DOM
@@ -10,176 +10,171 @@ const actionList = document.getElementById("actionList");
 
 // Função para popular os nomes dos objetos exportados no primeiro dropdown
 Object.keys(actions).forEach(platform => {
-    let option = document.createElement("option");
-    option.value = platform;
-    option.textContent = platform;
-    platformSelect.appendChild(option);
+	let option = document.createElement("option");
+	option.value = platform;
+	option.textContent = platform;
+	platformSelect.appendChild(option);
 });
 
 // Função para atualizar as categorias com base no objeto selecionado
-// Atualiza as categorias com base no objeto selecionado
 function updateCategories() {
-    categorySelect.innerHTML = '<option value="">Categoria...</option>';
-    subcategorySelect.innerHTML = '<option value="">Subcategoria...</option>';
-    parametersDiv.innerHTML = "";
-    subcategorySelect.style.display = "none"; // Esconde o dropdown de subcategoria por padrão
+	categorySelect.innerHTML = '<option value="">Categoria...</option>';
+	subcategorySelect.innerHTML = '<option value="">Subcategoria...</option>';
+	parametersDiv.innerHTML = "";
+	subcategorySelect.style.display = "none"; // Esconde o dropdown de subcategoria por padrão
 
-    const platform = platformSelect.value;
-    if (!platform) {
-        categorySelect.style.display = "none";
-        return;
-    }
+	const platform = platformSelect.value;
+	if (!platform) {
+		categorySelect.style.display = "none";
+		return;
+	}
 
-    Object.keys(actions[platform]).forEach(category => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category;
-        categorySelect.appendChild(option);
-    });
+	Object.keys(actions[platform]).forEach(category => {
+		const option = document.createElement("option");
+		option.value = category;
+		option.textContent = category;
+		categorySelect.appendChild(option);
+	});
 
-    categorySelect.style.display = "inline-block";
+	categorySelect.style.display = "inline-block";
 }
-
-
 
 // Atualiza as subcategorias ou exibe diretamente os parâmetros quando não há subcategorias
 function updateSubcategoriesOrParameters() {
-    subcategorySelect.innerHTML = '<option value="">Subcategoria...</option>';
-    parametersDiv.innerHTML = "";
+	subcategorySelect.innerHTML = '<option value="">Subcategoria...</option>';
+	parametersDiv.innerHTML = "";
 
-    const platform = platformSelect.value;
-    const category = categorySelect.value;
-    if (!platform || !category) {
-        subcategorySelect.style.display = "none";
-        return;
-    }
+	const platform = platformSelect.value;
+	const category = categorySelect.value;
+	if (!platform || !category) {
+		subcategorySelect.style.display = "none";
+		return;
+	}
 
-    const actionsInCategory = actions[platform][category];
-    const actionKeys = Object.keys(actionsInCategory);
+	const actionsInCategory = actions[platform][category];
+	const actionKeys = Object.keys(actionsInCategory);
 
-    // Se a categoria não tiver subcategorias
-    if (actionKeys.every(key => !actionsInCategory[key].parameters)) {
-        subcategorySelect.style.display = "none"; // Esconde o terceiro dropdown
-        actionsInCategory.parameters?.forEach(param => addParameterField(param));
-    } else {
-        // Caso tenha subcategorias, popula o dropdown normalmente
-        subcategorySelect.style.display = "inline-block";
+	// Se a categoria não tiver subcategorias
+	if (actionKeys.every(key => !actionsInCategory[key].parameters)) {
+		subcategorySelect.style.display = "none"; // Esconde o terceiro dropdown
+		actionsInCategory.parameters?.forEach(param => addParameterField(param));
+	} else {
+		// Caso tenha subcategorias, popula o dropdown normalmente
+		subcategorySelect.style.display = "inline-block";
 
-        actionKeys.forEach(subcategory => {
-            const subcategoryConfig = actionsInCategory[subcategory];
-            const option = document.createElement("option");
-            option.value = subcategory;
-            option.textContent = subcategoryConfig.name;
-            subcategorySelect.appendChild(option);
-        });
-    }
+		actionKeys.forEach(subcategory => {
+			const subcategoryConfig = actionsInCategory[subcategory];
+			const option = document.createElement("option");
+			option.value = subcategory;
+			option.textContent = subcategoryConfig.name;
+			subcategorySelect.appendChild(option);
+		});
+	}
 }
-
-
 
 // Atualiza os parâmetros quando uma subcategoria é selecionada ou se não houver subcategorias
 function updateParameters() {
-    parametersDiv.innerHTML = "";
+	parametersDiv.innerHTML = "";
 
-    const platform = platformSelect.value;
-    const category = categorySelect.value;
-    const subcategory = subcategorySelect.value;
+	const platform = platformSelect.value;
+	const category = categorySelect.value;
+	const subcategory = subcategorySelect.value;
 
-    const actionConfig = subcategory
-        ? actions[platform][category][subcategory] // Acessa a subcategoria
-        : actions[platform][category]; // Acessa diretamente a categoria
+	const actionConfig = subcategory
+		? actions[platform][category][subcategory] // Acessa a subcategoria
+		: actions[platform][category]; // Acessa diretamente a categoria
 
-    if (actionConfig && actionConfig.parameters) {
-        actionConfig.parameters.forEach(param => addParameterField(param));
-    }
+	if (actionConfig && actionConfig.parameters) {
+		actionConfig.parameters.forEach(param => addParameterField(param));
+	}
 }
-
 
 // Adiciona campos de parâmetros à interface
 function addParameterField(param) {
-    const label = document.createElement("label");
-    label.textContent = `${param.name}:`;
+	const label = document.createElement("label");
+	label.textContent = `${param.name}:`;
 
-    let inputElement;
+	let inputElement;
 
-    // Cria um dropdown para o parâmetro se houver opções
-    if (param.type === "dropdown" && param.options) {
-        inputElement = document.createElement("select");
-        param.options.forEach(optionText => {
-            const option = document.createElement("option");
-            option.value = optionText.toLowerCase();
-            option.textContent = optionText;
-            inputElement.appendChild(option);
-        });
-    } else {
-        // Caso contrário, cria um campo de texto padrão
-        inputElement = document.createElement("input");
-        inputElement.type = param.type;
-        inputElement.placeholder = param.placeholder;
-    }
+	// Cria um dropdown para o parâmetro se houver opções
+	if (param.type === "dropdown" && param.options) {
+		inputElement = document.createElement("select");
+		param.options.forEach(optionText => {
+			const option = document.createElement("option");
+			option.value = optionText.toLowerCase();
+			option.textContent = optionText;
+			inputElement.appendChild(option);
+		});
+	} else {
+		// Caso contrário, cria um campo de texto padrão
+		inputElement = document.createElement("input");
+		inputElement.type = param.type;
+		inputElement.placeholder = param.placeholder;
+	}
 
-    parametersDiv.appendChild(label);
-    parametersDiv.appendChild(inputElement);
+	parametersDiv.appendChild(label);
+	parametersDiv.appendChild(inputElement);
 }
+
 
 
 // Adiciona uma ação à lista
 function addAction() {
-    const platform = platformSelect.value;
-    const category = categorySelect.value;
-    const subcategory = subcategorySelect.value;
+	const platform = platformSelect.value;
+	const category = categorySelect.value;
+	const subcategory = subcategorySelect.value;
 
-    if (!platform || !category) return; // Certifica-se de que plataforma e categoria foram selecionadas
+	if (!platform || !category) return; // Certifica-se de que plataforma e categoria foram selecionadas
 
-    let text = `${platform} - ${category}`;
-    const actionConfig = subcategory
-        ? actions[platform][category][subcategory] // Usa subcategoria se existir
-        : actions[platform][category]; // Usa categoria diretamente se não existir subcategoria
+	let text = `${platform} - ${category}`;
+	const actionConfig = subcategory
+		? actions[platform][category][subcategory] // Usa subcategoria se existir
+		: actions[platform][category]; // Usa categoria diretamente se não existir subcategoria
 
-    if (subcategory) {
-        text += ` - ${subcategory}`;
-    }
+	if (subcategory) {
+		text += ` - ${subcategory}`;
+	}
 
-    const parameters = getParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
-    if (parameters.length > 0) {
-        text += ` (${parameters.join(", ")})`;
-    }
+	const parameters = getParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
+	if (parameters.length > 0) {
+		text += ` (${parameters.join(", ")})`;
+	}
 
-    const li = document.createElement("li");
-    li.className = "item";
-    li.draggable = true;
+	const li = document.createElement("li");
+	li.className = "item";
+	li.draggable = true;
 
-    // Adiciona a classe específica para estilos com base na plataforma
-    switch (platform) {
-        case 'StreamerBot':
-            li.classList.add('streamerBot');
-            break;
-        case 'BASE':
-            li.classList.add('base');
-            break;
-        case 'Twitch':
-            li.classList.add('twitch');
-            break;
-        case 'OBS':
-            li.classList.add('obs');
-            break;
-        case 'YouTube':
-            li.classList.add('youtube');
-            break;
-        default:
-            li.classList.add('default');
-            break;
-    }
+	// Adiciona a classe específica para estilos com base na plataforma
+	switch (platform) {
+		case 'StreamerBot':
+			li.classList.add('streamerBot');
+			break;
+		case 'BASE':
+			li.classList.add('base');
+			break;
+		case 'Twitch':
+			li.classList.add('twitch');
+			break;
+		case 'OBS':
+			li.classList.add('obs');
+			break;
+		case 'YouTube':
+			li.classList.add('youtube');
+			break;
+		default:
+			li.classList.add('default');
+			break;
+	}
 
-    li.innerHTML = `
+	li.innerHTML = `
         <span>${text}</span>
         <button class="hamburger-btn" title="Mover">☰</button>
         <button class="remove-btn" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
-    
-    actionList.appendChild(li);
 
-    // Adiciona eventos de drag-and-drop
-    addDragAndDropEvents(li);
+	actionList.appendChild(li);
+
+	// Adiciona eventos de drag-and-drop
+	addDragAndDropEvents(li);
 }
 
 
@@ -188,22 +183,22 @@ function addAction() {
 
 // Função para obter os valores dos parâmetros
 function getParameterValues(platform, category, subcategory) {
-    const actionConfig = subcategory
-        ? actions[platform][category][subcategory] // Acessa a subcategoria
-        : actions[platform][category]; // Acessa diretamente a categoria
+	const actionConfig = subcategory
+		? actions[platform][category][subcategory] // Acessa a subcategoria
+		: actions[platform][category]; // Acessa diretamente a categoria
 
-    const parameterValues = [];
+	const parameterValues = [];
 
-    if (actionConfig && actionConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
-        actionConfig.parameters.forEach((param, index) => {
-            const input = parametersDiv.querySelectorAll("input, select")[index];
-            if (input) {
-                parameterValues.push(input.value);
-            }
-        });
-    }
+	if (actionConfig && actionConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
+		actionConfig.parameters.forEach((param, index) => {
+			const input = parametersDiv.querySelectorAll("input, select")[index];
+			if (input) {
+				parameterValues.push(input.value);
+			}
+		});
+	}
 
-    return parameterValues;
+	return parameterValues;
 }
 
 
@@ -213,61 +208,61 @@ function getParameterValues(platform, category, subcategory) {
 
 // Adiciona eventos para drag-and-drop
 function addDragAndDropEvents(li) {
-    li.addEventListener("dragstart", (e) => {
-        li.classList.add("dragging");
-    });
+	li.addEventListener("dragstart", (e) => {
+		li.classList.add("dragging");
+	});
 
-    li.addEventListener("dragend", (e) => {
-        li.classList.remove("dragging");
-    });
+	li.addEventListener("dragend", (e) => {
+		li.classList.remove("dragging");
+	});
 
-    li.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(actionList, e.clientY);
-        const draggingElement = document.querySelector(".dragging");
-        if (afterElement == null) {
-            actionList.appendChild(draggingElement);
-        } else {
-            actionList.insertBefore(draggingElement, afterElement);
-        }
-    });
+	li.addEventListener("dragover", (e) => {
+		e.preventDefault();
+		const afterElement = getDragAfterElement(actionList, e.clientY);
+		const draggingElement = document.querySelector(".dragging");
+		if (afterElement == null) {
+			actionList.appendChild(draggingElement);
+		} else {
+			actionList.insertBefore(draggingElement, afterElement);
+		}
+	});
 }
 
 
 // Determina onde inserir o elemento sendo arrastado
 function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
+	const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
 
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
+	return draggableElements.reduce((closest, child) => {
+		const box = child.getBoundingClientRect();
+		const offset = y - box.top - box.height / 2;
+		if (offset < 0 && offset > closest.offset) {
+			return { offset: offset, element: child };
+		} else {
+			return closest;
+		}
+	}, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 
 // Função para limpar todas as ações da lista
 function clearList() {
-    actionList.innerHTML = "";
+	actionList.innerHTML = "";
 }
 
 // Função para exportar a lista como imagem
 function exportListAsScreenshot() {
-    const listDiv = document.querySelector(".list-container");
-    if (listDiv) {
-        html2canvas(listDiv).then(function (canvas) {
-            const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'lista_de_acoes.png';
-            link.click();
-        }).catch(function (error) {
-            console.error('Erro ao capturar a screenshot:', error);
-        });
-    }
+	const listDiv = document.querySelector(".list-container");
+	if (listDiv) {
+		html2canvas(listDiv).then(function (canvas) {
+			const link = document.createElement('a');
+			link.href = canvas.toDataURL('image/png');
+			link.download = 'lista_de_acoes.png';
+			link.click();
+		}).catch(function (error) {
+			console.error('Erro ao capturar a screenshot:', error);
+		});
+	}
 }
 
 // Adicionando eventos aos elementos
