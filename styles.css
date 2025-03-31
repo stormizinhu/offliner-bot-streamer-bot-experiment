@@ -6,6 +6,7 @@ body {
   }
   
   h1, h3 {
+    text-align: center;
     color: #66b3ff;
   }
 
@@ -140,13 +141,25 @@ body {
 
 /* Media query para dispositivos móveis */
 @media (max-width: 768px) {
+  * {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  body {
+    font-size: 12px ;
+    padding: 12px;
+  }
+  h1, h3 {
+    text-align: center;
+  }
   .item {
-      width: 93%; /* Garante que o item ocupe toda a largura do container pai */
+      width: 92%; /* Garante que o item ocupe toda a largura do container pai */
       height: auto; /* Altura ajustada automaticamente */
       flex-direction: column; /* Força os elementos dentro de .item a ficarem em coluna */
       align-items: flex-start; /* Alinha os itens ao início */
       padding: 10px; /* Espaço adicional para legibilidade */
-      font-size: 16px; /* Aumenta o tamanho da fonte */
+      /* font-size: 16px; Aumenta o tamanho da fonte */
       border: solid 1px gray; /* Mantém o design consistente */
   }
 
@@ -166,5 +179,13 @@ body {
 
   .item .hamburger-btn, .item .remove-btn {
       font-size: 14px; /* Ajusta os botões para telas menores */
+  }
+  
+  .config-container, .list-container {
+    background-color: #1e1f26;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 75%;
   }
 }
