@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <title>Configuração de Ações</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles2.css">
+
+    <!-- Importando o global.js -->
+    <script type="module" src="./global.js"></script>
+
+    <!-- Importando o script principal -->
+    <script type="module" src="actions.js"></script>
+    <script type="module" src="triggers.js"></script>
+</head>
+<body>
+    <h1>Ações</h1>
+
+    <div class="parent-container">
+        <!-- Seção de Dropdowns -->
+        <div class="flex-container">
+            <!-- Dropdown de Ações -->
+            <div class="dropdown-container">
+                <h3>Ações</h3>
+                <div class="form-container">
+                    <select id="platform">
+                        <option value="">Plataforma...</option>
+                    </select>
+                    <select id="action" style="display: none;"></select>
+                    <select id="subaction" style="display: none;"></select>
+                </div>
+                <div class="button-container">
+                    <button id="addButton">Adicionar Ação</button>
+                    <button id="clearButton">Limpar Lista de Ações</button>
+                </div>
+            </div>
+    
+            <!-- Dropdown de Triggers -->
+            <div class="dropdown-container">
+                <h3>Triggers</h3>
+                <div class="form-container">
+                    <select id="triggerPlatform">
+                        <option value="">Plataforma...</option>
+                    </select>
+                    <select id="triggerCategory" style="display: none;"></select>
+                    <select id="triggerSubcategory" style="display: none;"></select>
+                </div>
+                <div class="button-container">
+                    <button id="addTriggerButton">Adicionar Trigger</button>
+                    <button id="clearTriggerButton">Limpar Lista de Triggers</button>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Seção de Listas -->
+        <div class="flex-container">
+            <!-- Lista de Ações -->
+            <div class="list-container">
+                <h3>Lista de Ações</h3>
+                <ul id="actionList"></ul>
+            </div>
+    
+            <!-- Lista de Triggers -->
+            <div class="list-container">
+                <h3>Lista de Triggers</h3>
+                <ul id="triggerList"></ul>
+            </div>
+        </div>
+        <button id="exportButton">Exportar Lista como Imagem</button>
+    </div>
+</body>
+</html>
+
+

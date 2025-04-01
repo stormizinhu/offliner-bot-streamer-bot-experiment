@@ -1,0 +1,284 @@
+body {
+    font-family: "DM Sans", sans-serif;
+    background-color: #2a2d36;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap; /* Permite que os containers se ajustem em telas menores */
+    justify-content: center;
+    gap: 20px; /* Espaçamento entre os containers */
+
+  }
+
+  h1, h3 {
+    text-align: center;
+    color: #66b3ff;
+  }
+
+  h3 {
+    margin: 0;
+  }
+  .config-container {
+    flex: 1 1 45%; /* Ocupa cerca de metade da largura e é responsivo */
+    min-width: 300px; /* Tamanho mínimo */
+    max-width: 500px; /* Tamanho máximo */
+  }
+  .config-container, .list-container {
+    background-color: #1e1f26;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .form-container {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  
+  .form-container select, .form-container button {
+    background-color: #2b2d36;
+    color: #fff;
+    border: 1px solid #4f5b66;
+    border-radius: 6px;
+    padding: 8px;
+    min-width: 150px;
+  }
+  
+  .form-container select:hover {
+    border-color: #66b3ff;
+  }
+  
+  .form-container button {
+    background-color: #3a8bff;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 10px 14px; /* Aumenta a área de clique dos botões */
+    margin-top: 15px; /* Dá mais espaço entre os botões e os elementos acima */
+  }
+  
+  .form-container button:hover {
+    background-color: #66b3ff;
+  }
+  
+  #parameters {
+    margin-top: 15px; /* Aumenta o espaçamento entre os menus e os parâmetros */
+  }
+  
+  #parameters label, #parameters input {
+    display: block;
+    margin-top: 5px;
+  }
+  
+  .list-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    flex: 1 1 45%; /* Ocupa cerca de metade da largura e é responsivo */
+    min-width: 300px; /* Tamanho mínimo */
+    max-width: 500px; /* Tamanho máximo */
+  }
+
+  .item {
+    width: 50%;
+    height: 15px ;
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2b2d36;
+    padding: 5px;
+    border-radius: 6px;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    border: solid 2px gray
+  }
+  
+  .item span {
+    flex-grow: 1;
+    margin-right: 10px;
+  }
+  
+  #clearButton {
+    background: red;
+  }
+  
+  #exportButton {
+    background: green;
+  }
+  .remove-btn {
+    background: none;
+    border: none;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .remove-btn:hover {
+    color: #ff6666;
+  }
+  .hamburger-btn {
+    cursor: grab;
+  }
+
+  /* .row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+} */
+
+  
+.twitch {
+  background-color: #6A0DAD; /* Roxo */
+  color: white; /* Letra branca */
+}
+
+.streamerBot {
+  background-color: #006f7f; /* Azul petróleo */
+  color: white; /* Letra branca */
+}
+
+.obs {
+  background-color: #3a3a3a; /* Fundo chumbo */
+  color: white; /* Letra branca */
+}
+
+.youtube {
+  background-color: #ff0000; /* Fundo vermelho */
+  color: white; /* Letra branca */
+}
+
+/* Container Pai */
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Containers de Dropdowns e Listas */
+.flex-container {
+  display: flex;
+  justify-content: space-between; /* Lado a lado */
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Estilo dos Dropdowns */
+.dropdown-container {
+  flex: 1 1 45%; /* Ocupa 45% da largura */
+  padding: 10px;
+  background-color: #1e1f26;
+  border-radius: 8px;
+  border: 1px solid #4f5b66;
+}
+
+/* Estilo das Listas */
+.list-container {
+  flex: 1 1 45%; /* Ocupa 45% da largura */
+  padding: 15px;
+  background-color: #2a2d36;
+  border-radius: 8px;
+  border: 1px solid #4f5b66;
+}
+
+/* Botões */
+button {
+  background-color: #3a8bff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #66b3ff;
+}
+
+/* Itens nas listas */
+.item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2b2d36;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  border: solid 2px gray;
+}
+
+.item span {
+  flex-grow: 1;
+}
+
+.hamburger-btn, .remove-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.hamburger-btn:hover {
+  color: #66b3ff;
+}
+
+.remove-btn:hover {
+  color: red;
+}
+
+
+/* Media query para dispositivos móveis */
+@media (max-width: 768px) {
+  * {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  body {
+    font-size: 12px ;
+    padding: 12px;
+  }
+  h1, h3 {
+    text-align: center;
+  }
+  .item {
+      width: 92%; /* Garante que o item ocupe toda a largura do container pai */
+      height: auto; /* Altura ajustada automaticamente */
+      flex-direction: column; /* Força os elementos dentro de .item a ficarem em coluna */
+      align-items: flex-start; /* Alinha os itens ao início */
+      padding: 10px; /* Espaço adicional para legibilidade */
+      /* font-size: 16px; Aumenta o tamanho da fonte */
+      border: solid 1px gray; /* Mantém o design consistente */
+  }
+
+  .item span {
+      display: block; /* Garante que cada texto esteja em sua própria linha */
+      margin-bottom: 5px; /* Adiciona espaço entre as linhas */
+      flex-grow: 1; /* Garante que o texto ocupe o espaço restante */
+      margin-right: 10px;
+      text-align: left; /* Alinha o texto à esquerda */
+  }
+
+  .list-container {
+      display: flex; /* Garante que o container pai seja flexível */
+      flex-wrap: wrap; /* Permite que os itens se reorganizem dentro do container pai */
+      justify-content: center; /* Centraliza os itens no mobile */
+  }
+
+  .item .hamburger-btn, .item .remove-btn {
+      font-size: 14px; /* Ajusta os botões para telas menores */
+  }
+  
+  .config-container, .list-container {
+    background-color: #1e1f26;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    width: 75%;
+  }
+}

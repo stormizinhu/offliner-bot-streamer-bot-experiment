@@ -1,5 +1,5 @@
 // Importando diretamente o objeto 'actions' do global.js
-import { actions } from './objects/global.js';
+import { actions } from './global.js';
 
 // Elementos DOM
 const platformSelect = document.getElementById("platform");
@@ -15,6 +15,7 @@ Object.keys(actions).forEach(platform => {
 	option.textContent = platform;
 	platformSelect.appendChild(option);
 });
+
 
 // Função para atualizar as categorias com base no objeto selecionado
 function updateCategories() {
@@ -116,8 +117,6 @@ function addParameterField(param) {
 	parametersDiv.appendChild(inputElement);
 }
 
-
-
 // Adiciona uma ação à lista
 function addAction() {
 	const platform = platformSelect.value;
@@ -177,10 +176,6 @@ function addAction() {
 	addDragAndDropEvents(li);
 }
 
-
-
-
-
 // Função para obter os valores dos parâmetros
 function getParameterValues(platform, category, subcategory) {
 	const actionConfig = subcategory
@@ -200,11 +195,6 @@ function getParameterValues(platform, category, subcategory) {
 
 	return parameterValues;
 }
-
-
-
-
-
 
 // Adiciona eventos para drag-and-drop
 function addDragAndDropEvents(li) {
@@ -228,7 +218,6 @@ function addDragAndDropEvents(li) {
 	});
 }
 
-
 // Determina onde inserir o elemento sendo arrastado
 function getDragAfterElement(container, y) {
 	const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
@@ -243,7 +232,6 @@ function getDragAfterElement(container, y) {
 		}
 	}, { offset: Number.NEGATIVE_INFINITY }).element;
 }
-
 
 // Função para limpar todas as ações da lista
 function clearList() {

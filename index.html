@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <title>Configuração de Ações</title>
+    <title>OfflinerBot</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,41 +15,69 @@
     <link rel="stylesheet" href="styles.css">
 
     <!-- Importando o global.js -->
-    <script type="module" src="./objects/global.js"></script>
+    <script type="module" src="./global.js"></script>
 
     <!-- Importando o script principal -->
-    <script type="module" src="script.js"></script>
-    <!-- <script type="module" src="script copy.js"></script> -->
+    <script type="module" src="actions.js"></script>
+    <script type="module" src="triggers.js"></script>
 </head>
+
 <body>
-    <h1>Ações</h1>
+    <h1>Offliner Bot</h1>
 
-    <div class="config-container">
-        
-        <!-- Linha 1: Menus Dropdown -->
-        <div class="row form-container">
-            <select id="platform">
-                <option value="">Plataforma...</option>
-            </select>
-            <select id="action" style="display: none;"></select>
-            <select id="subaction" style="display: none;"></select>
+    <div class="parent-container">
+        <!-- Primeiro filho: Dropdowns -->
+        <div id="parent-container" class="child-container">
+            <div class="row">
+                <!-- Dropdown de Ações -->
+                <div class="dropdown-container">
+                    <h3>Actions</h3>
+                    <select id="platform" class="dropdown-item" >
+                        <option value="">Platform...</option>
+                    </select>
+                    <select id="action" class="dropdown-item" style="display: none;"></select>
+                    <select id="subaction" class="dropdown-item" style="display: none;"></select>
+                    <div id="parameters" class="row"></div>
+                    <div class="button-container">
+                        <button id="addButton" class="addButton">Add Action</button>
+                        <button id="clearButton" class="clearButton remove-btn">Clear Action List</button>
+                    </div>
+                </div>
+
+                <!-- Dropdown de Triggers -->
+                <div class="dropdown-container">
+                    <h3>Triggers</h3>
+                    <select id="triggerPlatform" class="dropdown-item" >
+                        <option value="">Platform...</option>
+                    </select>
+                    <select id="triggerCategory" class="dropdown-item" style="display: none;"></select>
+                    <select id="triggerSubcategory" class="dropdown-item" style="display: none;"></select>
+                    <div class="button-container">
+                        <button id="addTriggerButton" class="addButton">Add Trigger</button>
+                        <button id="clearTriggerButton" class="clearButton remove-btn">Clear Trigger List</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Linha 2: Parâmetros -->
-        <div id="parameters" class="row"></div>
+        <!-- Segundo filho: Listas -->
+        <div id="child-container" class="child-container">
+            <div class="row">
+                <!-- Lista de Ações -->
+                <div class="list-container">
+                    <h3>Action List</h3>
+                    <ul id="actionList"></ul>
+                </div>
 
-        <!-- Linha 3: Botões -->
-        <div class="row form-container">
-            <button id="addButton">Adicionar</button>
-            <button id="clearButton">Limpar Lista</button>
-            <button id="exportButton">Exportar Lista como Imagem</button>
+                <!-- Lista de Triggers -->
+                <div class="list-container">
+                    <h3>Trigger List</h3>
+                    <ul id="triggerList"></ul>
+                </div>
+            </div>
         </div>
-
-    </div>
-
-    <div class="list-container">
-        <!-- <h3>Lista de Ações Adicionadas:</h3> -->
-        <ul id="actionList"></ul>
+        <button id="exportButton">Export as PNG</button>
     </div>
 </body>
+
 </html>
