@@ -1,5 +1,3 @@
-import { addDragAndDropEvents, getDragAfterElement, clearList } from './dragndrop.js';
-
 // Importando os módulos de ações de cada plataforma
 import { obsActions } from './objects/obs.js';
 import { streamerBotActions } from './objects/streamerbot.js';
@@ -19,5 +17,3 @@ export const actions = {
 export const triggers = {
   StreamerBot: streamerBotTriggers,
 }
-
-export { addDragAndDropEvents, getDragAfterElement, clearList };

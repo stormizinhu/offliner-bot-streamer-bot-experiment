@@ -1,5 +1,5 @@
 import { addDragAndDropEvents, clearList } from './dragndrop.js';
-
+import { exportListAsScreenshot } from './screenshot.js';
 
 // Importando diretamente o objeto 'actions' do global.js
 import { actions } from './global.js';
@@ -121,7 +121,6 @@ function addParameterField(param) {
     parametersDiv.appendChild(inputElement);
 }
 
-// Adiciona uma ação à lista
 function addAction() {
     const platform = platformSelect.value;
     const category = categorySelect.value;
@@ -176,11 +175,10 @@ function addAction() {
 
     actionList.appendChild(li);
 
-    // Adiciona eventos de drag-and-drop
-    addDragAndDropEvents(li);
+    // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
+    addDragAndDropEvents(li, actionList);
 }
 
-// Função para obter os valores dos parâmetros
 function getParameterValues(platform, category, subcategory) {
     const actionConfig = subcategory
         ? actions[platform][category][subcategory] // Acessa a subcategoria
@@ -200,61 +198,8 @@ function getParameterValues(platform, category, subcategory) {
     return parameterValues;
 }
 
-// Adiciona eventos para drag-and-drop
-function addDragAndDropEvents(li) {
-    li.addEventListener("dragstart", () => {
-        li.classList.add("dragging");
-    });
-
-    li.addEventListener("dragend", () => {
-        li.classList.remove("dragging");
-    });
-
-    li.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(actionList, e.clientY);
-        const draggingElement = document.querySelector(".dragging");
-        if (afterElement == null) {
-            actionList.appendChild(draggingElement);
-        } else {
-            actionList.insertBefore(draggingElement, afterElement);
-        }
-    });
-}
-
-// Determina onde inserir o elemento sendo arrastado
-function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
-
-    return draggableElements.reduce((closest, child) => {
-        const box = child.getBoundingClientRect();
-        const offset = y - box.top - box.height / 2;
-        if (offset < 0 && offset > closest.offset) {
-            return { offset: offset, element: child };
-        } else {
-            return closest;
-        }
-    }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-// Função para limpar todas as ações da lista
-function clearList() {
-    actionList.innerHTML = "";
-}
-
-// Função para exportar a lista como imagem
-function exportListAsScreenshot() {
-    const listDiv = document.querySelector("#child-container");
-    if (listDiv) {
-        html2canvas(listDiv).then(function (canvas) {
-            const link = document.createElement('a');
-            link.href = canvas.toDataURL('image/png');
-            link.download = 'lista_de_acoes.png';
-            link.click();
-        }).catch(function (error) {
-            console.error('Erro ao capturar a screenshot:', error);
-        });
-    }
+function clearActionList() {
+    clearList(actionList); // Usa a função do arquivo externo
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -264,4 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("addButton").addEventListener("click", addAction);
     document.getElementById("clearButton").addEventListener("click", clearList);
     document.getElementById("exportButton").addEventListener("click", exportListAsScreenshot);
+    document.getElementById("exportButton").addEventListener("click", () => {
+        exportListAsScreenshot('child-container', 'lista_exportada.png');
+    });
 });

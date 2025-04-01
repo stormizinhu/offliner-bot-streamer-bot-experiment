@@ -1,5 +1,5 @@
-// Importando do global.js
-import { addDragAndDropEvents, getDragAfterElement, clearList } from './global.js';
+import { addDragAndDropEvents, clearList } from './dragndrop.js';
+import { exportListAsScreenshot } from './screenshot.js';
 
 // Importando o objeto 'triggers' do global.js
 import { triggers } from './global.js';
@@ -86,60 +86,71 @@ function addTrigger() {
       text += ` - ${subcategory}`;
   }
 
+  const parameters = getTriggerParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
+  if (parameters.length > 0) {
+      text += ` (${parameters.join(", ")})`;
+  }
+
   const li = document.createElement("li");
-  li.className = "item"; // Mantém a classe padrão para consistência visual
+  li.className = "item";
   li.draggable = true;
+
+  // Adiciona a classe específica para estilos com base na plataforma
+  switch (platform) {
+      case 'StreamerBot':
+          li.classList.add('streamerBot');
+          break;
+      case 'BASE':
+          li.classList.add('base');
+          break;
+      case 'Twitch':
+          li.classList.add('twitch');
+          break;
+      case 'OBS':
+          li.classList.add('obs');
+          break;
+      case 'YouTube':
+          li.classList.add('youtube');
+          break;
+      default:
+          li.classList.add('default');
+          break;
+  }
 
   li.innerHTML = `
       <span>${text}</span>
       <button class="hamburger-btn mini-button" title="Mover">☰</button>
       <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
-  
-  triggerList.appendChild(li); // Adiciona o item à lista de triggers
 
-  // Adiciona eventos de drag-and-drop para o item de trigger
-  addDragAndDropEventsForTriggers(li);
+  triggerList.appendChild(li);
+
+  // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
+  addDragAndDropEvents(li, triggerList);
 }
 
-function addDragAndDropEventsForTriggers(li) {
-  li.addEventListener("dragstart", () => {
-      li.classList.add("dragging");
-  });
+function getTriggerParameterValues(platform, category, subcategory) {
+  const triggerConfig = subcategory
+      ? triggers[platform][category][subcategory]
+      : triggers[platform][category];
 
-  li.addEventListener("dragend", () => {
-      li.classList.remove("dragging");
-  });
+  const parameterValues = [];
 
-  li.addEventListener("dragover", (e) => {
-      e.preventDefault();
-      const afterElement = getDragAfterElement(triggerList, e.clientY);
-      const draggingElement = document.querySelector(".dragging");
-      if (afterElement == null) {
-          triggerList.appendChild(draggingElement);
-      } else {
-          triggerList.insertBefore(draggingElement, afterElement);
-      }
-  });
+  if (triggerConfig && triggerConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
+      triggerConfig.parameters.forEach((param, index) => {
+          const input = triggerParametersDiv.querySelectorAll("input, select")[index];
+          if (input) {
+              parameterValues.push(input.value);
+          }
+      });
+  }
+
+  return parameterValues;
 }
 
-function getDragAfterElement(container, y) {
-  const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
-
-  return draggableElements.reduce((closest, child) => {
-      const box = child.getBoundingClientRect();
-      const offset = y - box.top - box.height / 2;
-      if (offset < 0 && offset > closest.offset) {
-          return { offset: offset, element: child };
-      } else {
-          return closest;
-      }
-  }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-// Função para limpar todos os triggers da lista
 function clearTriggerList() {
-    triggerList.innerHTML = "";
+  clearList(triggerList); // Usa a função do arquivo externo
 }
+
 
 // Adicionando eventos aos elementos
 triggerPlatformSelect.addEventListener("change", updateTriggerCategories);
