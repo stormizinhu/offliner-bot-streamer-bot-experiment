@@ -1,6 +1,4 @@
 import { addDragAndDropEvents, clearList } from './dragndrop.js';
-import { exportListAsScreenshot } from './screenshot.js';
-
 // Importando o objeto 'triggers' do global.js
 import { triggers } from './global.js';
 
@@ -9,6 +7,7 @@ const triggerPlatformSelect = document.getElementById("triggerPlatform");
 const triggerCategorySelect = document.getElementById("triggerCategory");
 const triggerSubcategorySelect = document.getElementById("triggerSubcategory");
 const triggerList = document.getElementById("triggerList");
+
 
 // Função para popular as plataformas no primeiro dropdown de triggers
 Object.keys(triggers).forEach(platform => {

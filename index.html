@@ -2,80 +2,81 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-    <title>OfflinerBot</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+	<title>OfflinerBot</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="styles.css">
 
-    <script type="module" src="./scripts/global.js"></script>
-    <script type="module" src="./scripts/actions.js"></script>
-    <script type="module" src="./scripts/triggers.js"></script>
-    <script type="module" src="./scripts/screenshot.js"></script>
+	<script type="module" src="./scripts/global.js"></script>
+	<script type="module" src="./scripts/actions.js"></script>
+	<script type="module" src="./scripts/triggers.js"></script>
+	<script type="module" src="./scripts/screenshot.js"></script>
 </head>
 
 <body>
-    <h1>Offliner Bot</h1>
+	<h1 id="title">"OfflinerBot by Stormizinhu - 2025</h1>
 
-    <div class="parent-container">
-        <!-- Primeiro filho: Dropdowns -->
-        <div id="parent-container" class="child-container">
-            <div class="row">
-                <!-- Dropdown de Ações -->
-                <div class="dropdown-container">
-                    <h3>Actions</h3>
-                    <select id="platform" class="dropdown-item" >
-                        <option value="">Platform...</option>
-                    </select>
-                    <select id="action" class="dropdown-item" style="display: none;"></select>
-                    <select id="subaction" class="dropdown-item" style="display: none;"></select>
-                    <div id="parameters" class="row"></div>
-                    <div class="button-container">
-                        <button id="addButton" class="addButton">Add Action</button>
-                        <button id="clearButton" class="clearButton remove-btn">Clear Action List</button>
-                    </div>
-                </div>
+	<div class="parent-container">
+		<!-- Primeiro filho: Dropdowns -->
+		<div id="parent-container" class="child-container">
+			<div class="row">
+				<!-- Dropdown de Ações -->
+				<div class="dropdown-container">
+					<h3>Actions</h3>
+					<select id="platform" class="dropdown-item">
+						<option value="">Platform...</option>
+					</select>
+					<select id="action" class="dropdown-item" style="display: none;"></select>
+					<select id="subaction" class="dropdown-item" style="display: none;"></select>
+					<div id="parameters" class="row"></div>
+					<div class="button-container">
+						<button id="addButton" class="addButton">Add Action</button>
+						<button id="clearButton" class="clearButton">Clear Action List</button>
+					</div>
+				</div>
 
-                <!-- Dropdown de Triggers -->
-                <div class="dropdown-container">
-                    <h3>Triggers</h3>
-                    <select id="triggerPlatform" class="dropdown-item" >
-                        <option value="">Platform...</option>
-                    </select>
-                    <select id="triggerCategory" class="dropdown-item" style="display: none;"></select>
-                    <select id="triggerSubcategory" class="dropdown-item" style="display: none;"></select>
-                    <div class="button-container">
-                        <button id="addTriggerButton" class="addButton">Add Trigger</button>
-                        <button id="clearTriggerButton" class="clearButton remove-btn">Clear Trigger List</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+				<!-- Dropdown de Triggers -->
+				<div class="dropdown-container">
+					<h3>Triggers</h3>
+					<select id="triggerPlatform" class="dropdown-item">
+						<option value="">Platform...</option>
+					</select>
+					<select id="triggerCategory" class="dropdown-item" style="display: none;"></select>
+					<select id="triggerSubcategory" class="dropdown-item" style="display: none;"></select>
+					<div class="button-container">
+						<button id="addTriggerButton" class="addButton">Add Trigger</button>
+						<button id="clearTriggerButton" class="clearButton">Clear Trigger List</button>
+					</div>
+				</div>
+			</div>
+		</div>
 
-        <!-- Segundo filho: Listas -->
-        <div id="child-container" class="child-container">
-            <div class="row">
-                <!-- Lista de Ações -->
-                <div class="list-container">
-                    <h3>Action List</h3>
-                    <ul id="actionList"></ul>
-                </div>
+		<!-- Segundo filho: Listas -->
+		<div id="child-container" class="child-container">
+			<div class="row">
+				<!-- Lista de Ações -->
+				<div class="list-container">
+					<h3>Action List</h3>
+					<ul id="actionList"></ul>
+				</div>
 
-                <!-- Lista de Triggers -->
-                <div class="list-container">
-                    <h3>Trigger List</h3>
-                    <ul id="triggerList"></ul>
-                </div>
-            </div>
-        </div>
-        <button id="exportButton">Export as PNG</button>
-    </div>
+				<!-- Lista de Triggers -->
+				<div class="list-container">
+					<h3>Trigger List</h3>
+					<ul id="triggerList"></ul>
+				</div>
+			</div>
+		</div>
+		<button id="exportButton" class="button">Export as PNG</button>
+	</div>
+	
 </body>
 
 </html>

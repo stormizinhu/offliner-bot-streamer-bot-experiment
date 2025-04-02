@@ -1,6 +1,4 @@
 import { addDragAndDropEvents, clearList } from './dragndrop.js';
-import { exportListAsScreenshot } from './screenshot.js';
-
 // Importando diretamente o objeto 'actions' do global.js
 import { actions } from './global.js';
 
@@ -208,8 +206,4 @@ document.addEventListener("DOMContentLoaded", () => {
     subcategorySelect.addEventListener("change", updateParameters);
     document.getElementById("addButton").addEventListener("click", addAction);
     document.getElementById("clearButton").addEventListener("click", clearActionList);
-    document.getElementById("exportButton").addEventListener("click", exportListAsScreenshot);
-    document.getElementById("exportButton").addEventListener("click", () => {
-        exportListAsScreenshot('child-container', 'lista_exportada.png');
-    });
 });
