@@ -198,7 +198,7 @@ button {
   background-color: var(--platfrom-yt-bg);
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   body {
       padding: 12px;
   }
@@ -219,4 +219,37 @@ button {
       justify-content: center;
       flex-wrap: wrap;
   }
+} */
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre os containers */
+  }
+
+  .list-container, 
+  .dropdown-container {
+    width: 100%; /* Faz com que os containers ocupem a largura completa do container pai */
+    max-width: calc(100% - 40px); /* Garantindo que não ultrapasse o tamanho do div pai (20px padding em ambos os lados) */
+  }
+  .item {
+    display: flex;
+    flex-wrap: wrap; /* Permite que o conteúdo quebre a linha */
+    height: auto; /* Ajusta a altura conforme o conteúdo */
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--container-item-bg);
+    padding: 10px; /* Aumentando o espaço para melhor visualização */
+    border-radius: 6px;
+    margin-bottom: 5px;
+    border: 1px solid var(--color-white);
+    gap: 10px; /* Adiciona espaçamento entre os elementos internos */
+  }
+  
+  .item span {
+    flex-grow: 1;
+    word-break: break-word; /* Faz com que textos longos sejam quebrados */
+  }
+  
 }
