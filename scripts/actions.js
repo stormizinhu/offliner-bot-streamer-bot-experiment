@@ -162,6 +162,7 @@ function addAction() {
             li.classList.add('youtube');
             break;
         default:
+            console.warn("Plataforma desconhecida:", platform);
             li.classList.add('default');
             break;
     }
