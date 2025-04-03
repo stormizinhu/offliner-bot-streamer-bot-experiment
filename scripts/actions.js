@@ -1,6 +1,11 @@
 import { addDragAndDropEvents, clearList } from './dragndrop.js';
 // Importando diretamente o objeto 'actions' do global.js
 import { actions } from './global.js';
+import { populateDropdown } from '../utils/dropdownUtils.js';
+import { createListItem } from '../utils/listUtils.js';
+import { formatTextForMobile, formatTextForDesktop } from '../utils/text.Utils.js';
+import { getParameterValues } from '../utils/configUtils.js';
+import { applyResponsiveFormatting } from '../utils/responsiveUtils.js';
 
 // Elementos DOM específicos para Ações
 const platformSelect = document.getElementById("platform");
@@ -9,13 +14,7 @@ const subcategorySelect = document.getElementById("subaction");
 const parametersDiv = document.getElementById("parameters");
 const actionList = document.getElementById("actionList");
 
-// Função para popular os nomes das plataformas no primeiro dropdown
-Object.keys(actions).forEach(platform => {
-    let option = document.createElement("option");
-    option.value = platform;
-    option.textContent = platform;
-    platformSelect.appendChild(option);
-});
+populateDropdown(platformSelect, Object.keys(actions).map(key => ({ value: key, label: key })));
 
 function updateCategories() {
     categorySelect.innerHTML = '<option value="">Category...</option>';
@@ -29,12 +28,7 @@ function updateCategories() {
         return;
     }
 
-    Object.keys(actions[platform]).forEach(category => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category;
-        categorySelect.appendChild(option);
-    });
+    populateDropdown(categorySelect, Object.keys(actions[platform]).map(key => ({ value: key, label: key })));
 
     categorySelect.style.display = "inline-block";
 }
@@ -62,13 +56,7 @@ function updateSubcategoriesOrParameters() {
         // Caso tenha subcategorias, popula o dropdown normalmente
         subcategorySelect.style.display = "inline-block";
 
-        actionKeys.forEach(subcategory => {
-            const subcategoryConfig = actionsInCategory[subcategory];
-            const option = document.createElement("option");
-            option.value = subcategory;
-            option.textContent = subcategoryConfig.name;
-            subcategorySelect.appendChild(option);
-        });
+        populateDropdown(subcategorySelect, actionKeys.map(key => ({ value: key, label: actionsInCategory[key].name })));
     }
 }
 
@@ -119,7 +107,6 @@ function addParameterField(param) {
     parametersDiv.appendChild(inputElement);
 }
 
-// Adiciona ações à lista com formatação
 function addAction() {
     const platform = platformSelect.value;
     const category = categorySelect.value;
@@ -136,69 +123,17 @@ function addAction() {
         text += ` - ${subcategory}`;
     }
 
-    const parameters = getParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
+    const parameters = getParameterValues(actionConfig, parametersDiv.querySelectorAll("input, select")); // Utiliza a função geral
     if (parameters.length > 0) {
         text += ` (${parameters.join(", ")})`;
     }
 
-    // Formata o texto para quebra de linha em dispositivos móveis
     const formattedText = formatarTexto(text);
 
-    const li = document.createElement("li");
-    li.className = "item";
-    li.draggable = true;
-
-    // Adiciona a classe específica para estilos com base na plataforma
-    switch (platform) {
-        case 'StreamerBot':
-            li.classList.add('streamerBot');
-            break;
-        case 'BASE':
-            li.classList.add('base');
-            break;
-        case 'Twitch':
-            li.classList.add('twitch');
-            break;
-        case 'OBS':
-            li.classList.add('obs');
-            break;
-        case 'YouTube':
-            li.classList.add('youtube');
-            break;
-        default:
-            console.warn("Plataforma desconhecida:", platform);
-            li.classList.add('default');
-            break;
-    }
-
-    li.innerHTML = `
-        <span>${formattedText}</span>
-        <button class="hamburger-btn mini-button" title="Mover">☰</button>
-        <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
-
+    const li = createListItem(formattedText, platform, () => li.remove()); // Usa função modularizada
     actionList.appendChild(li);
 
-    // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
-    addDragAndDropEvents(li, actionList);
-}
-
-function getParameterValues(platform, category, subcategory) {
-    const actionConfig = subcategory
-        ? actions[platform][category][subcategory] // Acessa a subcategoria
-        : actions[platform][category]; // Acessa diretamente a categoria
-
-    const parameterValues = [];
-
-    if (actionConfig && actionConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
-        actionConfig.parameters.forEach((param, index) => {
-            const input = parametersDiv.querySelectorAll("input, select")[index];
-            if (input) {
-                parameterValues.push(input.value);
-            }
-        });
-    }
-
-    return parameterValues;
+    addDragAndDropEvents(li, actionList); // Adiciona eventos de drag-and-drop
 }
 
 function clearActionList() {
@@ -215,18 +150,5 @@ document.addEventListener("DOMContentLoaded", () => {
     subcategorySelect.addEventListener("change", updateParameters);
     document.getElementById("addButton").addEventListener("click", addAction);
     document.getElementById("clearButton").addEventListener("click", clearActionList);
-
-    // Adiciona suporte para media query
-    const mediaQuery = window.matchMedia("(orientation: portrait) and (hover: none)");
-    mediaQuery.addEventListener("change", e => {
-        if (e.matches) {
-            actionList.querySelectorAll(".item span").forEach(span => {
-                span.textContent = formatarTexto(span.textContent);
-            });
-        } else {
-            actionList.querySelectorAll(".item span").forEach(span => {
-                span.textContent = span.textContent.split("\n").join(" - ");
-            });
-        }
-    });
+    applyResponsiveFormatting(actionList, formatTextForMobile, formatTextForDesktop);
 });

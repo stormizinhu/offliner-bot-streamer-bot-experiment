@@ -1,6 +1,11 @@
 import { addDragAndDropEvents, clearList } from './dragndrop.js';
 // Importando o objeto 'triggers' do global.js
 import { triggers } from './global.js';
+import { populateDropdown } from '../utils/dropdownUtils.js';
+import { createListItem } from '../utils/listUtils.js';
+import { formatTextForMobile, formatTextForDesktop } from '../utils/text.Utils.js';
+import { getParameterValues } from '../utils/configUtils.js';
+import { applyResponsiveFormatting } from '../utils/responsiveUtils.js';
 
 // Elementos DOM para Triggers
 const triggerPlatformSelect = document.getElementById("triggerPlatform");
@@ -8,13 +13,7 @@ const triggerCategorySelect = document.getElementById("triggerCategory");
 const triggerSubcategorySelect = document.getElementById("triggerSubcategory");
 const triggerList = document.getElementById("triggerList");
 
-// Função para popular as plataformas no primeiro dropdown de triggers
-Object.keys(triggers).forEach(platform => {
-    const option = document.createElement("option");
-    option.value = platform;
-    option.textContent = platform;
-    triggerPlatformSelect.appendChild(option);
-});
+populateDropdown(triggerPlatformSelect, Object.keys(triggers).map(key => ({ value: key, label: key })));
 
 // Função para atualizar as categorias com base na plataforma selecionada
 function updateTriggerCategories() {
@@ -27,12 +26,7 @@ function updateTriggerCategories() {
         return;
     }
 
-    Object.keys(triggers[platform]).forEach(category => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category;
-        triggerCategorySelect.appendChild(option);
-    });
+    populateDropdown(triggerCategorySelect, Object.keys(triggers[platform]).map(key => ({ value: key, label: key })));
 
     triggerCategorySelect.style.display = "inline-block";
 }
@@ -58,13 +52,7 @@ function updateTriggerSubcategoriesOrParameters() {
         // Caso tenha subcategorias, popula o dropdown normalmente
         triggerSubcategorySelect.style.display = "inline-block";
 
-        triggerKeys.forEach(subcategory => {
-            const subcategoryConfig = triggersInCategory[subcategory];
-            const option = document.createElement("option");
-            option.value = subcategory;
-            option.textContent = subcategoryConfig.name;
-            triggerSubcategorySelect.appendChild(option);
-        });
+        populateDropdown(triggerSubcategorySelect, triggerKeys.map(key => ({ value: key, label: triggersInCategory[key].name })));
     }
 }
 
@@ -84,68 +72,17 @@ function addTrigger() {
         text += ` - ${subcategory}`;
     }
 
-    const parameters = getTriggerParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
+    const parameters = getParameterValues(triggerConfig, document.querySelectorAll("input, select")); // Utiliza a função geral
     if (parameters.length > 0) {
         text += ` (${parameters.join(", ")})`;
     }
 
-    // Formata o texto para quebra de linha em dispositivos móveis
     const formattedText = formatarTexto(text);
 
-    const li = document.createElement("li");
-    li.className = "item";
-    li.draggable = true;
-
-    // Adiciona a classe específica para estilos com base na plataforma
-    switch (platform) {
-        case 'StreamerBot':
-            li.classList.add('streamerBot');
-            break;
-        case 'BASE':
-            li.classList.add('base');
-            break;
-        case 'Twitch':
-            li.classList.add('twitch');
-            break;
-        case 'OBS':
-            li.classList.add('obs');
-            break;
-        case 'YouTube':
-            li.classList.add('youtube');
-            break;
-        default:
-            li.classList.add('default');
-            break;
-    }
-
-    li.innerHTML = `
-        <span>${formattedText}</span>
-        <button class="hamburger-btn mini-button" title="Mover">☰</button>
-        <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
-
+    const li = createListItem(formattedText, platform, () => li.remove()); // Usa função modularizada
     triggerList.appendChild(li);
 
-    // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
-    addDragAndDropEvents(li, triggerList);
-}
-
-function getTriggerParameterValues(platform, category, subcategory) {
-    const triggerConfig = subcategory
-        ? triggers[platform][category][subcategory]
-        : triggers[platform][category];
-
-    const parameterValues = [];
-
-    if (triggerConfig && triggerConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
-        triggerConfig.parameters.forEach((param, index) => {
-            const input = document.querySelectorAll("input, select")[index];
-            if (input) {
-                parameterValues.push(input.value);
-            }
-        });
-    }
-
-    return parameterValues;
+    addDragAndDropEvents(li, triggerList); // Adiciona eventos de drag-and-drop
 }
 
 function clearTriggerList() {
@@ -162,18 +99,5 @@ document.addEventListener("DOMContentLoaded", () => {
     triggerCategorySelect.addEventListener("change", updateTriggerSubcategoriesOrParameters);
     document.getElementById("addTriggerButton").addEventListener("click", addTrigger);
     document.getElementById("clearTriggerButton").addEventListener("click", clearTriggerList);
-
-    // Media query para orientação retrato
-    const mediaQuery = window.matchMedia("(orientation: portrait) and (hover: none)");
-    mediaQuery.addEventListener("change", e => {
-        if (e.matches) {
-            triggerList.querySelectorAll(".item span").forEach(span => {
-                span.textContent = formatarTexto(span.textContent);
-            });
-        } else {
-            triggerList.querySelectorAll(".item span").forEach(span => {
-                span.textContent = span.textContent.split("\n").join(" - ");
-            });
-        }
-    });
+    applyResponsiveFormatting(actionList, formatTextForMobile, formatTextForDesktop);    
 });
