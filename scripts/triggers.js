@@ -8,7 +8,6 @@ const triggerCategorySelect = document.getElementById("triggerCategory");
 const triggerSubcategorySelect = document.getElementById("triggerSubcategory");
 const triggerList = document.getElementById("triggerList");
 
-
 // Função para popular as plataformas no primeiro dropdown de triggers
 Object.keys(triggers).forEach(platform => {
     const option = document.createElement("option");
@@ -70,89 +69,111 @@ function updateTriggerSubcategoriesOrParameters() {
 }
 
 function addTrigger() {
-  const platform = triggerPlatformSelect.value;
-  const category = triggerCategorySelect.value;
-  const subcategory = triggerSubcategorySelect.value;
+    const platform = triggerPlatformSelect.value;
+    const category = triggerCategorySelect.value;
+    const subcategory = triggerSubcategorySelect.value;
 
-  if (!platform || !category) return; // Certifica-se de que plataforma e categoria foram selecionadas
+    if (!platform || !category) return; // Certifica-se de que plataforma e categoria foram selecionadas
 
-  let text = `${platform} - ${category}`;
-  const triggerConfig = subcategory
-      ? triggers[platform][category][subcategory] // Usa subcategoria se existir
-      : triggers[platform][category]; // Usa categoria diretamente se não existir subcategoria
+    let text = `${platform} - ${category}`;
+    const triggerConfig = subcategory
+        ? triggers[platform][category][subcategory] // Usa subcategoria se existir
+        : triggers[platform][category]; // Usa categoria diretamente se não existir subcategoria
 
-  if (subcategory) {
-      text += ` - ${subcategory}`;
-  }
+    if (subcategory) {
+        text += ` - ${subcategory}`;
+    }
 
-  const parameters = getTriggerParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
-  if (parameters.length > 0) {
-      text += ` (${parameters.join(", ")})`;
-  }
+    const parameters = getTriggerParameterValues(platform, category, subcategory || category); // Obtém os parâmetros corretamente
+    if (parameters.length > 0) {
+        text += ` (${parameters.join(", ")})`;
+    }
 
-  const li = document.createElement("li");
-  li.className = "item";
-  li.draggable = true;
+    // Formata o texto para quebra de linha em dispositivos móveis
+    const formattedText = formatarTexto(text);
 
-  // Adiciona a classe específica para estilos com base na plataforma
-  switch (platform) {
-      case 'StreamerBot':
-          li.classList.add('streamerBot');
-          break;
-      case 'BASE':
-          li.classList.add('base');
-          break;
-      case 'Twitch':
-          li.classList.add('twitch');
-          break;
-      case 'OBS':
-          li.classList.add('obs');
-          break;
-      case 'YouTube':
-          li.classList.add('youtube');
-          break;
-      default:
-          li.classList.add('default');
-          break;
-  }
+    const li = document.createElement("li");
+    li.className = "item";
+    li.draggable = true;
 
-  li.innerHTML = `
-      <span>${text}</span>
-      <button class="hamburger-btn mini-button" title="Mover">☰</button>
-      <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
+    // Adiciona a classe específica para estilos com base na plataforma
+    switch (platform) {
+        case 'StreamerBot':
+            li.classList.add('streamerBot');
+            break;
+        case 'BASE':
+            li.classList.add('base');
+            break;
+        case 'Twitch':
+            li.classList.add('twitch');
+            break;
+        case 'OBS':
+            li.classList.add('obs');
+            break;
+        case 'YouTube':
+            li.classList.add('youtube');
+            break;
+        default:
+            li.classList.add('default');
+            break;
+    }
 
-  triggerList.appendChild(li);
+    li.innerHTML = `
+        <span>${formattedText}</span>
+        <button class="hamburger-btn mini-button" title="Mover">☰</button>
+        <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
 
-  // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
-  addDragAndDropEvents(li, triggerList);
+    triggerList.appendChild(li);
+
+    // Usa a função do arquivo externo para adicionar eventos de drag-and-drop
+    addDragAndDropEvents(li, triggerList);
 }
 
 function getTriggerParameterValues(platform, category, subcategory) {
-  const triggerConfig = subcategory
-      ? triggers[platform][category][subcategory]
-      : triggers[platform][category];
+    const triggerConfig = subcategory
+        ? triggers[platform][category][subcategory]
+        : triggers[platform][category];
 
-  const parameterValues = [];
+    const parameterValues = [];
 
-  if (triggerConfig && triggerConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
-      triggerConfig.parameters.forEach((param, index) => {
-          const input = triggerParametersDiv.querySelectorAll("input, select")[index];
-          if (input) {
-              parameterValues.push(input.value);
-          }
-      });
-  }
+    if (triggerConfig && triggerConfig.parameters) { // Verifica se o objeto existe e contém parâmetros
+        triggerConfig.parameters.forEach((param, index) => {
+            const input = document.querySelectorAll("input, select")[index];
+            if (input) {
+                parameterValues.push(input.value);
+            }
+        });
+    }
 
-  return parameterValues;
+    return parameterValues;
 }
 
 function clearTriggerList() {
-  clearList(triggerList); // Usa a função do arquivo externo
+    clearList(triggerList); // Usa a função do arquivo externo
 }
 
+function formatarTexto(texto) {
+    return texto.split(" - ").join("\n");
+}
 
-// Adicionando eventos aos elementos
-triggerPlatformSelect.addEventListener("change", updateTriggerCategories);
-triggerCategorySelect.addEventListener("change", updateTriggerSubcategoriesOrParameters);
-document.getElementById("addTriggerButton").addEventListener("click", addTrigger);
-document.getElementById("clearTriggerButton").addEventListener("click", clearTriggerList);
+// Adicionando eventos aos elementos e suporte para media query
+document.addEventListener("DOMContentLoaded", () => {
+    triggerPlatformSelect.addEventListener("change", updateTriggerCategories);
+    triggerCategorySelect.addEventListener("change", updateTriggerSubcategoriesOrParameters);
+    document.getElementById("addTriggerButton").addEventListener("click", addTrigger);
+    document.getElementById("clearTriggerButton").addEventListener("click", clearTriggerList);
+
+    // Media query para orientação retrato
+    const mediaQuery = window.matchMedia("(orientation: portrait) and (hover: none)");
+    mediaQuery.addEventListener("change", e => {
+        if (e.matches) {
+            triggerList.querySelectorAll(".item span").forEach(span => {
+                span.textContent = formatarTexto(span.textContent);
+            });
+        } else {
+            triggerList.querySelectorAll(".item span").forEach(span => {
+                span.textContent = span.textContent.split("\n").join(" - ");
+            });
+        }
+    });
+});

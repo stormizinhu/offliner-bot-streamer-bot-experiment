@@ -122,10 +122,17 @@ h3 {
   border-radius: 6px;
   margin-bottom: 5px;
   border: 1px solid var(--color-white);
+  white-space: pre-line; /* Mantém as quebras de linha */
 }
 
 .item span {
   flex-grow: 1;
+}
+input {
+  color: var(--container-color-bg);
+}
+label {
+  margin: 5px 0 0 5px;
 }
 
 button {

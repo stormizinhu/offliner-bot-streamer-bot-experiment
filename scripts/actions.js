@@ -119,6 +119,7 @@ function addParameterField(param) {
     parametersDiv.appendChild(inputElement);
 }
 
+// Adiciona ações à lista com formatação
 function addAction() {
     const platform = platformSelect.value;
     const category = categorySelect.value;
@@ -139,6 +140,9 @@ function addAction() {
     if (parameters.length > 0) {
         text += ` (${parameters.join(", ")})`;
     }
+
+    // Formata o texto para quebra de linha em dispositivos móveis
+    const formattedText = formatarTexto(text);
 
     const li = document.createElement("li");
     li.className = "item";
@@ -168,7 +172,7 @@ function addAction() {
     }
 
     li.innerHTML = `
-        <span>${text}</span>
+        <span>${formattedText}</span>
         <button class="hamburger-btn mini-button" title="Mover">☰</button>
         <button class="remove-btn mini-button" title="Deletar" onclick="this.parentElement.remove()">❌</button>`;
 
@@ -201,10 +205,28 @@ function clearActionList() {
     clearList(actionList); // Usa a função do arquivo externo
 }
 
+function formatarTexto(texto) {
+    return texto.split(" - ").join("\n");
+}
+
 document.addEventListener("DOMContentLoaded", () => {
     platformSelect.addEventListener("change", updateCategories);
     categorySelect.addEventListener("change", updateSubcategoriesOrParameters);
     subcategorySelect.addEventListener("change", updateParameters);
     document.getElementById("addButton").addEventListener("click", addAction);
     document.getElementById("clearButton").addEventListener("click", clearActionList);
+
+    // Adiciona suporte para media query
+    const mediaQuery = window.matchMedia("(orientation: portrait) and (hover: none)");
+    mediaQuery.addEventListener("change", e => {
+        if (e.matches) {
+            actionList.querySelectorAll(".item span").forEach(span => {
+                span.textContent = formatarTexto(span.textContent);
+            });
+        } else {
+            actionList.querySelectorAll(".item span").forEach(span => {
+                span.textContent = span.textContent.split("\n").join(" - ");
+            });
+        }
+    });
 });
