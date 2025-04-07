@@ -1,4 +1,3 @@
-// Adiciona eventos de drag-and-drop para um item
 export function addDragAndDropEvents(li, listContainer) {
     li.addEventListener("dragstart", () => {
         li.classList.add("dragging");
@@ -20,7 +19,6 @@ export function addDragAndDropEvents(li, listContainer) {
     });
 }
 
-// Determina onde inserir o elemento sendo arrastado
 export function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
 
@@ -35,7 +33,6 @@ export function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-// Função para limpar uma lista
 export function clearList(listContainer) {
     listContainer.innerHTML = "";
 }

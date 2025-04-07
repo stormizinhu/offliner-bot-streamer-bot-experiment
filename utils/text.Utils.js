@@ -1,7 +1,7 @@
 export function formatTextForMobile(text) {
-  return text.split(" - ").join("\n"); // Substitui " - " por uma quebra de linha
+  return text.split(" - ").join("\n");
 }
 
 export function formatTextForDesktop(text) {
-  return text.split("\n").join(" - "); // Substitui quebras de linha por " - "
+  return text.split("\n").join(" - ");
 }

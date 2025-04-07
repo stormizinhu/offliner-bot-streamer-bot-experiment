@@ -1,6 +1,6 @@
 export function getParameterValues(config, inputElements) {
   const parameterValues = [];
-  if (config && config.parameters) { // Verifica se a configuração contém parâmetros
+  if (config && config.parameters) {
       config.parameters.forEach((param, index) => {
           const input = inputElements[index];
           if (input) {

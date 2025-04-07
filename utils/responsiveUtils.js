@@ -8,7 +8,6 @@ export function applyResponsiveFormatting(list, formatMobile, formatDesktop) {
       });
   });
 
-  // Executa a lógica inicial no carregamento
   list.querySelectorAll(".item span").forEach(span => {
       span.textContent = mediaQuery.matches 
           ? formatMobile(span.textContent) 

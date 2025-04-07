@@ -1,13 +1,11 @@
-import { addDragAndDropEvents, clearList } from './dragndrop.js';
-// Importando diretamente o objeto 'actions' do global.js
 import { actions } from './global.js';
+import { addDragAndDropEvents, clearList } from './dragndrop.js';
 import { populateDropdown } from '../utils/dropdownUtils.js';
 import { createListItem } from '../utils/listUtils.js';
 import { formatTextForMobile, formatTextForDesktop } from '../utils/text.Utils.js';
 import { getParameterValues } from '../utils/configUtils.js';
 import { applyResponsiveFormatting } from '../utils/responsiveUtils.js';
 
-// Elementos DOM específicos para Ações
 const platformSelect = document.getElementById("platform");
 const categorySelect = document.getElementById("action");
 const subcategorySelect = document.getElementById("subaction");
@@ -19,8 +17,8 @@ populateDropdown(platformSelect, Object.keys(actions).map(key => ({ value: key, 
 function updateCategories() {
     categorySelect.innerHTML = '<option value="">Category...</option>';
     subcategorySelect.innerHTML = '<option value="">Subcategory...</option>';
-    parametersDiv.innerHTML = ""; // Limpa os parâmetros
-    subcategorySelect.style.display = "none"; // Esconde o dropdown de subcategoria por padrão
+    parametersDiv.innerHTML = ""; 
+    subcategorySelect.style.display = "none";
 
     const platform = platformSelect.value;
     if (!platform) {
@@ -33,10 +31,9 @@ function updateCategories() {
     categorySelect.style.display = "inline-block";
 }
 
-// Atualiza as subcategorias ou exibe diretamente os parâmetros quando não há subcategorias
 function updateSubcategoriesOrParameters() {
     subcategorySelect.innerHTML = '<option value="">Subcategory...</option>';
-    parametersDiv.innerHTML = ""; // Limpa os parâmetros
+    parametersDiv.innerHTML = "";
 
     const platform = platformSelect.value;
     const category = categorySelect.value;
@@ -48,12 +45,10 @@ function updateSubcategoriesOrParameters() {
     const actionsInCategory = actions[platform][category];
     const actionKeys = Object.keys(actionsInCategory);
 
-    // Se a categoria não tiver subcategorias
     if (actionKeys.every(key => !actionsInCategory[key].parameters)) {
-        subcategorySelect.style.display = "none"; // Esconde o dropdown de subcategoria
+        subcategorySelect.style.display = "none";
         actionsInCategory.parameters?.forEach(param => addParameterField(param));
     } else {
-        // Caso tenha subcategorias, popula o dropdown normalmente
         subcategorySelect.style.display = "inline-block";
 
         populateDropdown(subcategorySelect, actionKeys.map(key => ({ value: key, label: actionsInCategory[key].name })));
@@ -65,7 +60,7 @@ function updateParameters() {
         console.error("Elemento 'parametersDiv' não encontrado no DOM!");
         return;
     }
-    parametersDiv.innerHTML = ""; // Limpa os parâmetros anteriores
+    parametersDiv.innerHTML = "";
 
     const platform = platformSelect.value;
     const category = categorySelect.value;
@@ -80,14 +75,12 @@ function updateParameters() {
     }
 }
 
-// Adiciona campos de parâmetros à interface
 function addParameterField(param) {
     const label = document.createElement("label");
     label.textContent = `${param.name}:`;
 
     let inputElement;
 
-    // Cria um dropdown para o parâmetro se houver opções
     if (param.type === "dropdown" && param.options) {
         inputElement = document.createElement("select");
         param.options.forEach(optionText => {
@@ -97,7 +90,6 @@ function addParameterField(param) {
             inputElement.appendChild(option);
         });
     } else {
-        // Caso contrário, cria um campo de texto padrão
         inputElement = document.createElement("input");
         inputElement.type = param.type;
         inputElement.placeholder = param.placeholder;
@@ -112,12 +104,12 @@ function addAction() {
     const category = categorySelect.value;
     const subcategory = subcategorySelect.value;
 
-    if (!platform || !category) return; // Certifica-se de que plataforma e categoria foram selecionadas
+    if (!platform || !category) return;
 
     let text = `${platform} - ${category}`;
     const actionConfig = subcategory
-        ? actions[platform][category][subcategory] // Usa subcategoria se existir
-        : actions[platform][category]; // Usa categoria diretamente se não existir subcategoria
+        ? actions[platform][category][subcategory]
+        : actions[platform][category];
 
     if (subcategory) {
         text += ` - ${subcategory}`;
@@ -130,14 +122,14 @@ function addAction() {
 
     const formattedText = formatarTexto(text);
 
-    const li = createListItem(formattedText, platform, () => li.remove()); // Usa função modularizada
+    const li = createListItem(formattedText, platform, () => li.remove());
     actionList.appendChild(li);
 
-    addDragAndDropEvents(li, actionList); // Adiciona eventos de drag-and-drop
+    addDragAndDropEvents(li, actionList);
 }
 
 function clearActionList() {
-    clearList(actionList); // Usa a função do arquivo externo
+    clearList(actionList);
 }
 
 function formatarTexto(texto) {

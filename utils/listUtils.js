@@ -3,7 +3,6 @@ export function createListItem(text, platform, onDeleteCallback) {
   li.className = "item";
   li.draggable = true;
 
-  // Adiciona a classe específica com base na plataforma
   switch (platform) {
       case 'StreamerBot':
           li.classList.add('streamerBot');
@@ -31,7 +30,6 @@ export function createListItem(text, platform, onDeleteCallback) {
       <button class="remove-btn mini-button" title="Deletar">❌</button>
   `;
 
-  // Adiciona evento ao botão de deletar
   li.querySelector(".remove-btn").addEventListener("click", onDeleteCallback);
 
   return li;
