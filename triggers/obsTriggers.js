@@ -2,47 +2,47 @@ export const obsTriggers = {
   Uncategorized: {
     Connected: {
       name: "Connected",
-      description: "Executa uma ação quando o OBS Studio se conecta.",
+      description: "Executes an action when OBS Studio connects.",
       parameters: []
     },
     Disconnected: {
       name: "Disconnected",
-      description: "Executa uma ação quando o OBS Studio se desconecta.",
+      description: "Executes an action when OBS Studio disconnects.",
       parameters: []
     },
     Event: {
       name: "Event",
-      description: "Dispara um evento genérico no OBS Studio.",
+      description: "Triggers a generic event in OBS Studio.",
       parameters: []
     },
     RecordingStarted: {
       name: "Recording Started",
-      description: "Executa uma ação quando a gravação é iniciada.",
+      description: "Executes an action when recording starts.",
       parameters: []
     },
     RecordingStopped: {
       name: "Recording Stopped",
-      description: "Executa uma ação quando a gravação é interrompida.",
+      description: "Executes an action when recording stops.",
       parameters: []
     },
     SceneChanged: {
       name: "Scene Changed",
-      description: "Executa uma ação quando a cena é alterada.",
+      description: "Executes an action when the scene is changed.",
       parameters: []
     },
     StreamingStarted: {
       name: "Streaming Started",
-      description: "Executa uma ação quando a transmissão é iniciada.",
+      description: "Executes an action when streaming starts.",
       parameters: []
     },
     StreamingStopped: {
       name: "Streaming Stopped",
-      description: "Executa uma ação quando a transmissão é encerrada.",
+      description: "Executes an action when streaming stops.",
       parameters: []
     },
     VendorEvent: {
       name: "Vendor Event",
-      description: "Dispara eventos específicos de fornecedor no OBS Studio.",
+      description: "Triggers vendor-specific events in OBS Studio.",
       parameters: []
     }
   }

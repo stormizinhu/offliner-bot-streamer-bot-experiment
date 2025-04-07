@@ -1,7 +1,7 @@
-import { obsActions } from '../objects/obs.js';
-import { streamerBotActions } from '../objects/streamerbot.js';
-import { twitchActions } from '../objects/twitch.js';
-import { youtubeActions } from '../objects/youtube.js';
+import { obsActions } from '../actions/obsActions.js';
+import { streamerBotActions } from '../actions/streamerbotActions.js';
+import { twitchActions } from '../actions/twitchActions.js';
+import { youtubeActions } from '../actions/youtubeActions.js';
 
 import { streamerBotTriggers } from "../triggers/streamerBotTriggers.js"
 import { obsTriggers } from "../triggers/obsTriggers.js"

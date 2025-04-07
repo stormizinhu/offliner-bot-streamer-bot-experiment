@@ -2,171 +2,171 @@ export const streamerBotTriggers = {
   Uncategorized: {
     StreamerBotStarted: {
       name: "Streamer.bot Started",
-      description: "Executa uma ação quando o Streamer.bot é iniciado.",
+      description: "Executes an action when Streamer.bot starts.",
       parameters: []
     },
     Test: {
       name: "Test",
-      description: "Dispara um teste.",
+      description: "Triggers a test.",
       parameters: []
     },
     TimedActions: {
       name: "Timed Actions",
-      description: "Executa ações temporizadas.",
+      description: "Executes timed actions.",
       parameters: []
     }
   },
   Commands: {
     CommandCooldown: {
       name: "Command Cooldown",
-      description: "Executa quando um comando entra em cooldown.",
+      description: "Executes when a command enters cooldown.",
       parameters: []
     },
     CommandTriggered: {
       name: "Command Triggered",
-      description: "Dispara quando um comando é executado.",
+      description: "Triggers when a command is executed.",
       parameters: []
     }
   },
   FileIO: {
     FileTailChanged: {
       name: "File Tail Changed",
-      description: "Dispara quando um arquivo é alterado.",
+      description: "Triggers when a file is modified.",
       parameters: []
     }
   },
   FileFolderWatcher: {
     Changed: {
       name: "Changed",
-      description: "Executa uma ação quando um arquivo/pasta é alterado.",
+      description: "Executes an action when a file/folder is changed.",
       parameters: []
     },
     Created: {
       name: "Created",
-      description: "Dispara quando um arquivo/pasta é criado.",
+      description: "Triggers when a file/folder is created.",
       parameters: []
     },
     Deleted: {
       name: "Deleted",
-      description: "Dispara quando um arquivo/pasta é deletado.",
+      description: "Triggers when a file/folder is deleted.",
       parameters: []
     },
     Renamed: {
       name: "Renamed",
-      description: "Executa uma ação quando um arquivo/pasta é renomeado.",
+      description: "Executes an action when a file/folder is renamed.",
       parameters: []
     }
   },
   GlobalVariables: {
     GlobalVariableUpdated: {
       name: "Global Variable Updated",
-      description: "Dispara quando uma variável global é atualizada.",
+      description: "Triggers when a global variable is updated.",
       parameters: []
     },
     UserGlobalVariableUpdated: {
       name: "User Global Variable Updated",
-      description: "Dispara quando uma variável global de usuário é atualizada.",
+      description: "Triggers when a user global variable is updated.",
       parameters: []
     }
   },
   Groups: {
     Added: {
       name: "Added",
-      description: "Executa quando algo é adicionado ao grupo.",
+      description: "Executes when something is added to the group.",
       parameters: []
     },
     Cleared: {
       name: "Cleared",
-      description: "Executa quando um grupo é limpo.",
+      description: "Executes when a group is cleared.",
       parameters: []
     },
     Removed: {
       name: "Removed",
-      description: "Executa quando algo é removido do grupo.",
+      description: "Executes when something is removed from the group.",
       parameters: []
     },
     UsersAdded: {
       name: "Users Added",
-      description: "Dispara quando usuários são adicionados ao grupo.",
+      description: "Triggers when users are added to the group.",
       parameters: []
     },
     UsersRemoved: {
       name: "Users Removed",
-      description: "Dispara quando usuários são removidos do grupo.",
+      description: "Triggers when users are removed from the group.",
       parameters: []
     }
   },
   Inputs: {
     KeyPress: {
       name: "Key Press",
-      description: "Dispara ao pressionar uma tecla. (Docs Needed)",
+      description: "Triggers when a key is pressed. (Docs Needed)",
       parameters: []
     },
     MouseClick: {
       name: "Mouse Click",
-      description: "Dispara ao clicar com o mouse. (Docs Needed)",
+      description: "Triggers when the mouse is clicked. (Docs Needed)",
       parameters: []
     }
   },
   MIDI: {
     MIDIMessage: {
       name: "MIDI Message",
-      description: "Executa quando uma mensagem MIDI é recebida.",
+      description: "Executes when a MIDI message is received.",
       parameters: []
     }
   },
   Processes: {
     ProcessStarted: {
       name: "Process Started",
-      description: "Dispara quando um processo é iniciado.",
+      description: "Triggers when a process starts.",
       parameters: []
     },
     ProcessStopped: {
       name: "Process Stopped",
-      description: "Dispara quando um processo é parado.",
+      description: "Triggers when a process stops.",
       parameters: []
     }
   },
   Quotes: {
     QuoteAdded: {
       name: "Quote Added",
-      description: "Dispara quando uma nova citação é adicionada.",
+      description: "Triggers when a new quote is added.",
       parameters: []
     },
     ShowQuote: {
       name: "Show Quote",
-      description: "Executa uma ação para exibir uma citação.",
+      description: "Executes an action to display a quote.",
       parameters: []
     }
   },
   System: {
     ToastActivation: {
       name: "Toast Activation",
-      description: "Executa uma ação ao ativar um toast.",
+      description: "Executes an action upon toast activation.",
       parameters: []
     }
   },
   VoiceControl: {
     Command: {
       name: "Command",
-      description: "Executa comandos por controle de voz.",
+      description: "Executes commands via voice control.",
       parameters: []
     },
     Dictation: {
       name: "Dictation",
-      description: "Executa ações a partir da ditado de voz.",
+      description: "Executes actions based on voice dictation.",
       parameters: []
     }
   },
   Websocket: {
     Client: {
       name: "Client",
-      description: "Executa uma ação para WebSocket Client.",
+      description: "Executes an action for the WebSocket client.",
       parameters: []
     },
     CustomServer: {
       name: "Custom Server",
-      description: "Executa uma ação para um servidor WebSocket customizado.",
+      description: "Executes an action for a custom WebSocket server.",
       parameters: []
     }
   }

@@ -2,130 +2,130 @@ export const youtubeTriggers = {
   Broadcast: {
     BroadcastAdded: {
       name: "Broadcast Added",
-      description: "Executa uma ação quando uma transmissão é adicionada.",
+      description: "Executes an action when a broadcast is added.",
       parameters: []
     },
     BroadcastEnded: {
       name: "Broadcast Ended",
-      description: "Executa uma ação quando uma transmissão termina.",
+      description: "Executes an action when a broadcast ends.",
       parameters: []
     },
     BroadcastMonitoringEnded: {
       name: "Broadcast Monitoring Ended",
-      description: "Executa uma ação quando o monitoramento de transmissão termina.",
+      description: "Executes an action when broadcast monitoring ends.",
       parameters: []
     },
     BroadcastMonitoringStarted: {
       name: "Broadcast Monitoring Started",
-      description: "Executa uma ação quando o monitoramento de transmissão começa.",
+      description: "Executes an action when broadcast monitoring starts.",
       parameters: []
     },
     BroadcastRemoved: {
       name: "Broadcast Removed",
-      description: "Executa uma ação quando uma transmissão é removida.",
+      description: "Executes an action when a broadcast is removed.",
       parameters: []
     },
     BroadcastStarted: {
       name: "Broadcast Started",
-      description: "Executa uma ação quando uma transmissão começa.",
+      description: "Executes an action when a broadcast starts.",
       parameters: []
     },
     BroadcastUpdated: {
       name: "Broadcast Updated",
-      description: "Executa uma ação quando uma transmissão é atualizada.",
+      description: "Executes an action when a broadcast is updated.",
       parameters: []
     },
     StatisticsUpdated: {
       name: "Statistics Updated",
-      description: "Executa uma ação quando as estatísticas de transmissão são atualizadas.",
+      description: "Executes an action when broadcast statistics are updated.",
       parameters: []
     }
   },
   Chat: {
     FirstWords: {
       name: "First Words",
-      description: "Executa uma ação quando as primeiras palavras são enviadas no chat.",
+      description: "Executes an action when the first words are sent in the chat.",
       parameters: []
     },
     Message: {
       name: "Message",
-      description: "Executa uma ação quando uma mensagem é enviada no chat.",
+      description: "Executes an action when a message is sent in the chat.",
       parameters: []
     },
     SuperChat: {
       name: "Super Chat",
-      description: "Executa uma ação quando um Super Chat é enviado.",
+      description: "Executes an action when a Super Chat is sent.",
       parameters: []
     },
     SuperSticker: {
       name: "Super Sticker",
-      description: "Executa uma ação quando um Super Sticker é enviado.",
+      description: "Executes an action when a Super Sticker is sent.",
       parameters: []
     }
   },
   General: {
     NewSponsor: {
       name: "New Sponsor",
-      description: "Executa uma ação quando há um novo patrocinador.",
+      description: "Executes an action when a new sponsor joins.",
       parameters: []
     },
     NewSubscriber: {
       name: "New Subscriber",
-      description: "Executa uma ação quando há um novo inscrito.",
+      description: "Executes an action when a new subscriber joins.",
       parameters: []
     },
     PresentViewers: {
       name: "Present Viewers",
-      description: "Executa uma ação quando os espectadores atuais são atualizados.",
+      description: "Executes an action when the current viewers are updated.",
       parameters: []
     },
     SponsorOnlyEnded: {
       name: "Sponsor Only Ended",
-      description: "Executa uma ação quando o modo só para patrocinadores termina.",
+      description: "Executes an action when sponsor-only mode ends.",
       parameters: []
     },
     SponsorOnlyStarted: {
       name: "Sponsor Only Started",
-      description: "Executa uma ação quando o modo só para patrocinadores começa.",
+      description: "Executes an action when sponsor-only mode starts.",
       parameters: []
     },
     UserBanned: {
       name: "User Banned",
-      description: "Executa uma ação quando um usuário é banido.",
+      description: "Executes an action when a user is banned.",
       parameters: []
     }
   },
   Membership: {
     GiftMembershipReceived: {
       name: "Gift Membership Received",
-      description: "Executa uma ação quando uma assinatura presente é recebida.",
+      description: "Executes an action when a gift membership is received.",
       parameters: []
     },
     MemberMilestone: {
       name: "Member Milestone",
-      description: "Executa uma ação quando um marco de assinatura é alcançado.",
+      description: "Executes an action when a membership milestone is reached.",
       parameters: []
     },
     MembershipGift: {
       name: "Membership Gift",
-      description: "Executa uma ação quando uma assinatura presente é enviada.",
+      description: "Executes an action when a gift membership is sent.",
       parameters: []
     }
   },
   Polls: {
     PollClosed: {
       name: "Poll Closed",
-      description: "Executa uma ação quando uma enquete é encerrada.",
+      description: "Executes an action when a poll is closed.",
       parameters: []
     },
     PollStarted: {
       name: "Poll Started",
-      description: "Executa uma ação quando uma enquete é iniciada.",
+      description: "Executes an action when a poll starts.",
       parameters: []
     },
     PollUpdated: {
       name: "Poll Updated",
-      description: "Executa uma ação quando uma enquete é atualizada.",
+      description: "Executes an action when a poll is updated.",
       parameters: []
     }
   }
