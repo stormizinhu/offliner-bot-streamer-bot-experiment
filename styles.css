@@ -1,159 +1,172 @@
 :root {
-  --font-small: 12px;
-  --font-medium: 16px;
-  --font-family: "DM Sans", sans-serif;
-  --font-color-title: #66b3ff;
+  --button-del-bg: rgb(220, 53, 69);
+  --button-del-bg-hover: rgb(200, 35, 51);
+  --button-mv-bg: rgb(255, 193, 7);
+  --button-mv-bg-hover: rgb(224, 168, 0);
+  --button-ok-bg: rgb(0, 123, 255);
+  --button-ok-bg-hover: rgb(0, 105, 217);
+  --button-save-bg: rgb(40, 167, 69);
+  --button-save-bg-hover: rgb(33, 136, 56);
 
   --color-white: white;
 
+  --container-border-bg: #4f5b66;
   --container-color-bg: #1e1f26;
   --container-item-bg: #2b2d36;
   --container-param-bg: rgb(80, 80, 80);
-  --container-border-bg: #4f5b66;
+
+  --font-color-title: #66b3ff;
+  --font-family: "DM Sans", sans-serif;
+  --font-medium: 16px;
+  --font-small: 12px;
 
   --platfrom-obs-bg: #3a3a3a;
   --platfrom-sb-bg: #00505c;
   --platfrom-tw-bg: #4e0c7e;
   --platfrom-yt-bg: #ca0000;
-
-  --button-ok-bg: rgb(0, 123, 255);
-  --button-ok-bg-hover: rgb(0, 105, 217);
-  --button-del-bg: rgb(220, 53, 69);
-  --button-del-bg-hover: rgb(200, 35, 51);
-  --button-save-bg: rgb(40, 167, 69);
-  --button-save-bg-hover: rgb(33, 136, 56);
-  --button-mv-bg: rgb(255, 193, 7);
-  --button-mv-bg-hover: rgb(224, 168, 0);
-
 }
 
+/* Global Reset */
 * {
+  color: var(--color-white);
   font-size: var(--font-small);
   margin: 0px;
   padding: 0px;
-  color: var(--color-white);
 }
 
 body {
-  font-family: var(--font-family);
   background-color: var(--container-color-bg);
+  font-family: var(--font-family);
+}
+
+button {
+  align-items: center;
+  background-color: var(--button-ok-bg);
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: center;
+  padding: 5px 5px;
+  width: fit-content;
+}
+
+input {
+  color: var(--container-color-bg);
+}
+
+label {
+  margin: 5px 0 0 5px;
+}
+
+/* Typography */
+h3 {
+  color: var(--font-color-title);
+  font-size: var(--font-medium);
+  margin: 0 0 10px 0;
+  text-align: center;
 }
 
 #title {
+  color: var(--font-color-title);
   font-size: var(--font-medium);
-  text-align: center;
   margin: 20px 0 0 0;
-  color: var(--font-color-title);
-}
-h3 {
-  font-size: var(--font-medium);
   text-align: center;
-  margin: 0 0 10px 0;
-  color: var(--font-color-title);
 }
 
-.parent-container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-  background-color: var(--container-color-bg);
-  border-radius: 8px;
-}
-
+/* Containers */
 .child-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
+.dropdown-container {
+  background-color: var(--container-color-bg);
+  border: 1px solid var(--container-border-bg);
+  border-radius: 8px;
+  flex: 1;
+  padding: 10px;
+}
+
+.list-container {
+  background-color: var(--container-color-bg);
+  border: 1px solid var(--container-border-bg);
+  border-radius: 8px;
+  flex: 1;
+  padding: 10px;
+}
+
+.parent-container {
+  background-color: var(--container-color-bg);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
 .row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   gap: 10px;
+  justify-content: space-between;
 }
 
+/* Parameters */
 #parameters {
+  background-color: var(--container-param-bg);
   margin: 10px 0;
   padding: 5px 5px;
-  background-color: var(--container-param-bg);
 }
 
-.dropdown-container {
-  flex: 1;
-  background-color: var(--container-color-bg);
-  border-radius: 8px;
-  padding: 10px;
-  border: 1px solid var(--container-border-bg);
-}
-
+/* Dropdowns */
 .dropdown-container select {
-  width: 100%;
-  padding: 5px;
+  background-color: var(--container-item-bg);
   border: 1px solid #4f5b66;
   border-radius: 6px;
-  background-color: var(--container-item-bg);
+  padding: 5px;
+  width: 100%;
 }
 
 .dropdown-container select:hover {
   border-color: var(--font-color-title);
 }
 
-.list-container {
-  flex: 1;
-  background-color: var(--container-color-bg);
-  border-radius: 8px;
-  padding: 10px;
-  border: 1px solid var(--container-border-bg);
+.dropdown-item {
+  margin-bottom: 5px;
 }
 
+/* List Items */
 .list-container ul {
   list-style: none;
 }
 
 .item {
+  align-items: center;
+  background-color: var(--container-item-bg);
+  border: 1px solid var(--color-white);
+  border-radius: 6px;
   display: flex;
   height: 25px;
   justify-content: space-between;
-  align-items: center;
-  background-color: var(--container-item-bg);
-  padding: 0 10px;
-  border-radius: 6px;
   margin-bottom: 5px;
-  border: 1px solid var(--color-white);
-  white-space: pre-line; /* Mantém as quebras de linha */
+  padding: 0 10px;
+  white-space: pre-line;
 }
 
 .item span {
   flex-grow: 1;
 }
-input {
-  color: var(--container-color-bg);
-}
-label {
-  margin: 5px 0 0 5px;
-}
 
-button {
-  background-color: var(--button-ok-bg);
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  border-radius: 6px;
-  padding: 5px 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.dropdown-item {
-  margin-bottom: 5px;
-} 
+/* Buttons */
 .addButton:hover {
   background-color: var(--button-ok-bg-hover);
 }
+
 .clearButton {
   background-color: var(--button-del-bg);
 }
+
 .clearButton:hover {
   background-color: var(--button-del-bg-hover);
 }
@@ -161,24 +174,27 @@ button {
 #exportButton {
   background: var(--button-save-bg);
 }
+
 #exportButton:hover {
   background: var(--button-save-bg-hover);
 }
 
-.hamburger-btn, .remove-btn {
+.hamburger-btn,
+.remove-btn {
+  align-items: center;
   background: none;
   border: none;
   cursor: pointer;
+  justify-content: center;
   scale: 0.7;
   width: 25px;
-  align-items: center;
-  justify-content: center;
 }
 
 .hamburger-btn {
-  cursor: grab;
   background-color: var(--button-mv-bg);
+  cursor: grab;
 }
+
 .hamburger-btn:hover {
   background-color: var(--button-mv-bg-hover);
 }
@@ -186,77 +202,56 @@ button {
 .remove-btn {
   background: var(--button-del-bg);
 }
+
 .remove-btn:hover {
   background: var(--button-del-bg-hover);
 }
 
-.twitch {
-  background-color: var(--platfrom-tw-bg); 
+/* Platform Tags */
+.obs {
+  background-color: var(--platfrom-obs-bg);
 }
 
 .streamerBot {
   background-color: var(--platfrom-sb-bg);
 }
 
-.obs {
-  background-color: var(--platfrom-obs-bg);
+.twitch {
+  background-color: var(--platfrom-tw-bg);
 }
 
 .youtube {
   background-color: var(--platfrom-yt-bg);
 }
 
-/* @media (max-width: 768px) {
-  body {
-      padding: 12px;
-  }
-
-  h1, h3 {
-      text-align: center;
-  }
-
-  .item {
-      width: 100%; 
-      height: auto;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px;
-  }
-
-  .list-container {
-      justify-content: center;
-      flex-wrap: wrap;
-  }
-} */
-
+/* Responsive Design */
 @media (max-width: 768px) {
   .row {
-    flex-direction: column;
     align-items: center;
-    gap: 10px; /* Espaçamento entre os containers */
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .list-container, 
-  .dropdown-container {
-    width: 100%; /* Faz com que os containers ocupem a largura completa do container pai */
-    max-width: calc(100% - 40px); /* Garantindo que não ultrapasse o tamanho do div pai (20px padding em ambos os lados) */
+  .dropdown-container,
+  .list-container {
+    max-width: calc(100% - 40px);
+    width: 100%;
   }
+
   .item {
-    display: flex;
-    flex-wrap: wrap; /* Permite que o conteúdo quebre a linha */
-    height: auto; /* Ajusta a altura conforme o conteúdo */
-    justify-content: space-between;
     align-items: center;
-    /* padding: 10px; Aumentando o espaço para melhor visualização */
-    border-radius: 6px;
-    margin-bottom: 5px;
     border: 1px solid var(--color-white);
-    gap: 10px; /* Adiciona espaçamento entre os elementos internos */
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    height: auto;
+    justify-content: space-between;
+    margin-bottom: 5px;
   }
-  
+
   .item span {
     flex-grow: 1;
-    word-break: break-word; /* Faz com que textos longos sejam quebrados */
+    word-break: break-word;
   }
-  
 }

@@ -84,8 +84,8 @@ function clearTriggerList() {
     clearList(triggerList);
 }
 
-function formatarTexto(texto) {
-    return texto.split(" - ").join("\n");
+function formatarTexto(text) {
+    return text.split(" - ").join("\n");
 }
 
 document.addEventListener("DOMContentLoaded", () => {

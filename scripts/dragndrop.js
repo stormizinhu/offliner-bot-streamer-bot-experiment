@@ -1,22 +1,50 @@
-export function addDragAndDropEvents(li, listContainer) {
-    li.addEventListener("dragstart", () => {
-        li.classList.add("dragging");
+export function addDragAndDropEvents(item, list) {
+    // Eventos de drag-and-drop para desktop
+    item.addEventListener("dragstart", e => {
+        e.dataTransfer.setData("text/plain", item.innerHTML);
+        item.classList.add("dragging");
     });
 
-    li.addEventListener("dragend", () => {
-        li.classList.remove("dragging");
+    item.addEventListener("dragend", () => {
+        item.classList.remove("dragging");
     });
 
-    li.addEventListener("dragover", (e) => {
-        e.preventDefault();
-        const afterElement = getDragAfterElement(listContainer, e.clientY);
-        const draggingElement = document.querySelector(".dragging");
+    list.addEventListener("dragover", e => {
+        e.preventDefault(); // Permite o drop
+        const afterElement = getDragAfterElement(list, e.clientY);
         if (afterElement == null) {
-            listContainer.appendChild(draggingElement);
+            list.appendChild(item);
         } else {
-            listContainer.insertBefore(draggingElement, afterElement);
+            list.insertBefore(item, afterElement);
         }
     });
+
+    // Eventos de toque para dispositivos móveis
+    item.addEventListener("touchstart", e => {
+        item.classList.add("dragging");
+        item.dataset.touchStartY = e.touches[0].clientY; // Armazena a posição inicial do toque
+    });
+
+    item.addEventListener("touchmove", e => {
+        e.preventDefault(); // Evita o comportamento padrão de rolagem
+        const touchY = e.touches[0].clientY; // Nova posição do toque
+        const afterElement = getDragAfterElement(list, touchY);
+        if (afterElement == null) {
+            list.appendChild(item);
+        } else {
+            list.insertBefore(item, afterElement);
+        }
+    });
+
+    item.addEventListener("touchend", () => {
+        item.classList.remove("dragging");
+    });
+}
+
+export function clearList(list) {
+    while (list.firstChild) {
+        list.removeChild(list.firstChild); // Remove todos os itens
+    }
 }
 
 export function getDragAfterElement(container, y) {
@@ -31,8 +59,4 @@ export function getDragAfterElement(container, y) {
             return closest;
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
-}
-
-export function clearList(listContainer) {
-    listContainer.innerHTML = "";
 }
