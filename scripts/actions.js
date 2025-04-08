@@ -3,33 +3,37 @@ import { populateDropdown } from '../utils/dropdownUtils.js';
 import { updateCategoriesOrActions, updateSubcategoriesOrParameters } from '../utils/dropdownManager.js';
 import { addItemToList } from '../utils/listManager.js';
 
-// Seletores
-const platformSelect = document.getElementById("platform");
-const categorySelect = document.getElementById("action");
-const subcategorySelect = document.getElementById("subaction");
-const parametersDiv = document.getElementById("actionParameters");
+const actionPlatformSelect = document.getElementById("actionPlatform");
+const actionCategorySelect = document.getElementById("actionCategory");
+const actionSubcategorySelect = document.getElementById("actionSubcategory");
+const actionParametersDiv = document.getElementById("actionParameters");
 const actionList = document.getElementById("actionList");
 
-// Popula dropdown de plataformas
-populateDropdown(platformSelect, Object.keys(actions).map(key => ({ value: key, label: key })));
+populateDropdown(actionPlatformSelect, Object.keys(actions).map(key => ({ value: key, label: key })));
 
-platformSelect.addEventListener("change", () => {
-    updateCategoriesOrActions(platformSelect.value, actions, categorySelect, subcategorySelect, parametersDiv);
+actionPlatformSelect.addEventListener("change", () => {
+    updateCategoriesOrActions(actionPlatformSelect.value, actions, actionCategorySelect, actionSubcategorySelect, actionParametersDiv);
 });
 
-categorySelect.addEventListener("change", () => {
-    updateSubcategoriesOrParameters(platformSelect.value, categorySelect.value, actions, subcategorySelect, parametersDiv);
+actionCategorySelect.addEventListener("change", () => {
+    updateSubcategoriesOrParameters(actionPlatformSelect.value, actionCategorySelect.value, actions, actionSubcategorySelect, actionParametersDiv);
 });
 
-// Evento para o terceiro dropdown
-subcategorySelect.addEventListener("change", () => {
-    updateSubcategoriesOrParameters(platformSelect.value, categorySelect.value, actions, subcategorySelect, parametersDiv);
+actionSubcategorySelect.addEventListener("change", () => {
+    updateSubcategoriesOrParameters(actionPlatformSelect.value, actionCategorySelect.value, actions, actionSubcategorySelect, actionParametersDiv);
 });
 
-document.getElementById("addButton").addEventListener("click", () => {
-    addItemToList(platformSelect.value, categorySelect.value, subcategorySelect.value, actions, parametersDiv, actionList);
+document.getElementById("actionAddButton").addEventListener("click", () => {
+    addItemToList(actionPlatformSelect.value, actionCategorySelect.value, actionSubcategorySelect.value, actions, actionParametersDiv, actionList);
 });
 
-document.getElementById("clearButton").addEventListener("click", () => {
-    actionList.innerHTML = ""; // Limpa a lista de ações
+document.getElementById("actionClearButton").addEventListener("click", () => {
+    actionList.innerHTML = ""; // Limpa os itens da lista
+});
+
+window.addEventListener("beforeunload", (event) => {
+    const confirmationMessage = "Are you sure you want to refresh the page? Any unsaved progress will be lost.";
+
+    event.preventDefault();
+    event.returnValue = confirmationMessage;
 });

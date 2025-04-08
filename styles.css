@@ -7,6 +7,8 @@
   --button-ok-bg-hover: rgb(0, 105, 217);
   --button-save-bg: rgb(40, 167, 69);
   --button-save-bg-hover: rgb(33, 136, 56);
+  --button-reset-bg: rgb(138, 138, 56);
+  --button-reset-bg-hover: rgb(190, 190, 82);
 
   --color-white: white;
 
@@ -48,6 +50,12 @@ button {
   justify-content: center;
   padding: 5px 5px;
   width: fit-content;
+}
+.resetButton {
+  background-color: var(--button-reset-bg);
+}
+.resetButton:hover {
+  background-color: var(--button-reset-bg-hover);
 }
 
 input {
@@ -120,15 +128,19 @@ h3 {
 }
 
 /* Dropdowns */
-.dropdown-container select {
+#actionPlatform, #triggerPlatform,
+#actionCategory, #triggerCategory,
+#actionSubcategory, #triggerSubcategory {
   background-color: var(--container-item-bg);
-  border: 1px solid #4f5b66;
+  border: 1px solid var(--container-border-bg);
   border-radius: 6px;
   padding: 5px;
   width: 100%;
 }
 
-.dropdown-container select:hover {
+#actionPlatform:hover, #triggerPlatform:hover,
+#actionCategory:hover, #triggerCategory:hover,
+#actionSubcategory:hover, #triggerSubcategory:hover {
   border-color: var(--font-color-title);
 }
 
@@ -139,6 +151,11 @@ h3 {
 /* List Items */
 .list-container ul {
   list-style: none;
+}
+
+#actionList, #triggerList {
+  padding: 0;
+  margin: 0;
 }
 
 .item {
@@ -251,17 +268,16 @@ h3 {
   }
 
   .item span {
-    white-space: pre-line; /* Permite a quebra conforme o texto */
-    display: block; /* Força elementos separados para cada linha */
+    white-space: pre-line;
+    display: block;
   }
 
-  /* Ajusta para o layout solicitado no mobile */
   .item span:nth-of-type(1) {
-    display: block; /* OBS e Categoria */
+    display: block;
   }
 
   .item span:nth-of-type(2) {
-    display: block; /* Subcategoria e parâmetros */
-    margin-top: 10px; /* Espaço para a nova linha */
+    display: block;
+    margin-top: 10px;
   }
 }
