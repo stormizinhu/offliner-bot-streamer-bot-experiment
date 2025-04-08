@@ -604,7 +604,10 @@ export const twitchTriggers = {
     Subscription: {
       name: "Subscription",
       description: "Executes an action when a user subscribes to the channel.",
-      parameters: [{ name: "amount", type: "text", placeholder: "Amount" }]
+      parameters: [
+        { name: "amount", type: "text", placeholder: "Amount" },
+        { name: "state", type: "dropdown", options: ["Visible", "Hidden"] }
+      ]
     }
   }
 };
