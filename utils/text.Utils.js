@@ -1,7 +1,9 @@
 export function formatTextForMobile(text) {
-  return text.split(" - ").join("\n");
+  const [platform, category, subcategoryWithParameters] = text.split(" - ");
+  return `${platform} - ${category}\n${subcategoryWithParameters}`;
 }
 
 export function formatTextForDesktop(text) {
-  return text.split("\n").join(" - ");
+  const [platformAndCategory, subcategoryWithParameters] = text.split("\n");
+  return `${platformAndCategory} - ${subcategoryWithParameters}`;
 }

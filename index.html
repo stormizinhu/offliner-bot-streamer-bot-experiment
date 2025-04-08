@@ -17,7 +17,7 @@
 	<script type="module" src="./scripts/global.js"></script>
 	<script type="module" src="./scripts/actions.js"></script>
 	<script type="module" src="./scripts/triggers.js"></script>
-	<script type="module" src="./scripts/screenshot.js"></script>
+	<script type="module" src="./utils/screenshot.js"></script>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
 					</select>
 					<select id="action" class="dropdown-item" style="display: none;"></select>
 					<select id="subaction" class="dropdown-item" style="display: none;"></select>
-					<div id="parameters" class="row"></div>
+					<div id="actionParameters" class="row"></div>
 					<div class="button-container">
 						<button id="addButton" class="addButton">Add Action</button>
 						<button id="clearButton" class="clearButton">Clear Action List</button>
@@ -47,6 +47,7 @@
 					</select>
 					<select id="triggerCategory" class="dropdown-item" style="display: none;"></select>
 					<select id="triggerSubcategory" class="dropdown-item" style="display: none;"></select>
+					<div id="triggerParameters" class="row"></div>
 					<div class="button-container">
 						<button id="addTriggerButton" class="addButton">Add Trigger</button>
 						<button id="clearTriggerButton" class="clearButton">Clear Trigger List</button>

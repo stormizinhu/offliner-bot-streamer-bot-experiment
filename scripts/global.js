@@ -3,10 +3,10 @@ import { streamerBotActions } from '../actions/streamerbotActions.js';
 import { twitchActions } from '../actions/twitchActions.js';
 import { youtubeActions } from '../actions/youtubeActions.js';
 
-import { streamerBotTriggers } from "../triggers/streamerBotTriggers.js"
-import { obsTriggers } from "../triggers/obsTriggers.js"
-import { youtubeTriggers } from "../triggers/youtubeTrigger.js"
-import { twitchTriggers } from '../triggers/twitchTrigger.js';
+import { streamerBotTriggers } from "../triggers/streamerBotTriggers.js";
+import { obsTriggers } from "../triggers/obsTriggers.js";
+import { youtubeTriggers } from "../triggers/youtubeTriggers.js";
+import { twitchTriggers } from '../triggers/twitchTriggers.js';
 
 export const actions = {
   OBS: obsActions,
@@ -15,9 +15,9 @@ export const actions = {
   YouTube: youtubeActions
 };
 
-export const triggers = { 
+export const triggers = {
   OBS: obsTriggers,
   StreamerBot: streamerBotTriggers,
   YouTube: youtubeTriggers,
-  Twitch: twitchTriggers,
-}
+  Twitch: twitchTriggers
+};

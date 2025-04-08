@@ -1,97 +1,35 @@
 import { triggers } from './global.js';
-import { addDragAndDropEvents, clearList } from './dragndrop.js';
 import { populateDropdown } from '../utils/dropdownUtils.js';
-import { createListItem } from '../utils/listUtils.js';
-import { formatTextForMobile, formatTextForDesktop } from '../utils/text.Utils.js';
-import { getParameterValues } from '../utils/configUtils.js';
-import { applyResponsiveFormatting } from '../utils/responsiveUtils.js';
+import { updateCategories, updateSubcategoriesOrParameters } from '../utils/dropdownManager.js';
+import { addItemToList } from '../utils/listManager.js';
 
+// Seletores
 const triggerPlatformSelect = document.getElementById("triggerPlatform");
 const triggerCategorySelect = document.getElementById("triggerCategory");
 const triggerSubcategorySelect = document.getElementById("triggerSubcategory");
+const triggerParametersDiv = document.getElementById("triggerParameters");
 const triggerList = document.getElementById("triggerList");
 
+// Popula dropdown de plataformas
 populateDropdown(triggerPlatformSelect, Object.keys(triggers).map(key => ({ value: key, label: key })));
 
-function updateTriggerCategories() {
-    triggerCategorySelect.innerHTML = '<option value="">Category...</option>';
-    triggerSubcategorySelect.innerHTML = '<option value="">Subcategory...</option>';
+triggerPlatformSelect.addEventListener("change", () => {
+    updateCategories(triggerPlatformSelect.value, triggers, triggerCategorySelect, triggerSubcategorySelect, triggerParametersDiv);
+});
 
-    const platform = triggerPlatformSelect.value;
-    if (!platform) {
-        triggerCategorySelect.style.display = "none";
-        return;
-    }
+triggerCategorySelect.addEventListener("change", () => {
+    updateSubcategoriesOrParameters(triggerPlatformSelect.value, triggerCategorySelect.value, triggers, triggerSubcategorySelect, triggerParametersDiv);
+});
 
-    populateDropdown(triggerCategorySelect, Object.keys(triggers[platform]).map(key => ({ value: key, label: key })));
+// Evento para o terceiro dropdown
+triggerSubcategorySelect.addEventListener("change", () => {
+    updateSubcategoriesOrParameters(triggerPlatformSelect.value, triggerCategorySelect.value, triggers, triggerSubcategorySelect, triggerParametersDiv);
+});
 
-    triggerCategorySelect.style.display = "inline-block";
-}
+document.getElementById("addTriggerButton").addEventListener("click", () => {
+    addItemToList(triggerPlatformSelect.value, triggerCategorySelect.value, triggerSubcategorySelect.value, triggers, triggerParametersDiv, triggerList);
+});
 
-function updateTriggerSubcategoriesOrParameters() {
-    triggerSubcategorySelect.innerHTML = '<option value="">Subcategory...</option>';
-
-    const platform = triggerPlatformSelect.value;
-    const category = triggerCategorySelect.value;
-    if (!platform || !category) {
-        triggerSubcategorySelect.style.display = "none";
-        return;
-    }
-
-    const triggersInCategory = triggers[platform][category];
-    const triggerKeys = Object.keys(triggersInCategory);
-
-    // Se a categoria não tiver subcategorias
-    if (triggerKeys.every(key => !triggersInCategory[key].parameters)) {
-        triggerSubcategorySelect.style.display = "none";
-    } else {
-        triggerSubcategorySelect.style.display = "inline-block";
-
-        populateDropdown(triggerSubcategorySelect, triggerKeys.map(key => ({ value: key, label: triggersInCategory[key].name })));
-    }
-}
-
-function addTrigger() {
-    const platform = triggerPlatformSelect.value;
-    const category = triggerCategorySelect.value;
-    const subcategory = triggerSubcategorySelect.value;
-
-    if (!platform || !category) return;
-
-    let text = `${platform} - ${category}`;
-    const triggerConfig = subcategory
-        ? triggers[platform][category][subcategory]
-        : triggers[platform][category];
-
-    if (subcategory) {
-        text += ` - ${subcategory}`;
-    }
-
-    const parameters = getParameterValues(triggerConfig, document.querySelectorAll("input, select")); // Utiliza a função geral
-    if (parameters.length > 0) {
-        text += ` (${parameters.join(", ")})`;
-    }
-
-    const formattedText = formatarTexto(text);
-
-    const li = createListItem(formattedText, platform, () => li.remove());
-    triggerList.appendChild(li);
-
-    addDragAndDropEvents(li, triggerList);
-}
-
-function clearTriggerList() {
-    clearList(triggerList);
-}
-
-function formatarTexto(text) {
-    return text.split(" - ").join("\n");
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    triggerPlatformSelect.addEventListener("change", updateTriggerCategories);
-    triggerCategorySelect.addEventListener("change", updateTriggerSubcategoriesOrParameters);
-    document.getElementById("addTriggerButton").addEventListener("click", addTrigger);
-    document.getElementById("clearTriggerButton").addEventListener("click", clearTriggerList);
-    applyResponsiveFormatting(actionList, formatTextForMobile, formatTextForDesktop);    
+document.getElementById("clearTriggerButton").addEventListener("click", () => {
+    triggerList.innerHTML = ""; // Limpa a lista de gatilhos
 });
