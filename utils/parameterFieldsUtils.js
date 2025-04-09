@@ -11,7 +11,7 @@ export function addParameterField(param, containerDiv) {
 
     if (param.type === "dropdown" && param.options) {
         inputElement = document.createElement("select");
-        inputElement.id = `selector-${param.name.toLowerCase().replace(/\s+/g, '-')}`; // Gera um ID único baseado no nome do parâmetro
+        inputElement.id = "selector"
 
         param.options.forEach(optionText => {
             const option = document.createElement("option");
@@ -24,7 +24,7 @@ export function addParameterField(param, containerDiv) {
         inputElement = document.createElement("input");
         inputElement.type = param.type;
         inputElement.placeholder = param.placeholder;
-        inputElement.id = `input-${param.name.toLowerCase().replace(/\s+/g, '-')}`; // Gera um ID único para campos de entrada
+        inputElement.id = "input"
     }
 
     containerDiv.appendChild(label);
