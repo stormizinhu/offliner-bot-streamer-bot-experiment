@@ -5,30 +5,25 @@
   --button-mv-bg-hover: rgb(224, 168, 0);
   --button-ok-bg: rgb(0, 123, 255);
   --button-ok-bg-hover: rgb(0, 105, 217);
-  --button-save-bg: rgb(40, 167, 69);
-  --button-save-bg-hover: rgb(33, 136, 56);
   --button-reset-bg: rgb(138, 138, 56);
   --button-reset-bg-hover: rgb(190, 190, 82);
-
+  --button-save-bg: rgb(40, 167, 69);
+  --button-save-bg-hover: rgb(33, 136, 56);
   --color-white: white;
-
   --container-border-bg: #4f5b66;
   --container-color-bg: #1e1f26;
   --container-item-bg: #2b2d36;
   --container-param-bg: rgb(80, 80, 80);
-
   --font-color-title: #66b3ff;
   --font-family: "DM Sans", sans-serif;
   --font-medium: 16px;
   --font-small: 12px;
-
   --platfrom-obs-bg: #3a3a3a;
   --platfrom-sb-bg: #00505c;
   --platfrom-tw-bg: #4e0c7e;
   --platfrom-yt-bg: #ca0000;
 }
 
-/* Global Reset */
 * {
   color: var(--color-white);
   font-size: var(--font-small);
@@ -36,9 +31,70 @@
   padding: 0px;
 }
 
+#actionCategory,
+#actionPlatform,
+#actionSubcategory,
+#triggerCategory,
+#triggerPlatform,
+#triggerSubcategory {
+  background-color: var(--container-item-bg);
+  border: 1px solid var(--container-border-bg);
+  border-radius: 6px;
+  padding: 5px;
+  width: 100%;
+}
+
+#actionCategory:hover,
+#actionPlatform:hover,
+#actionSubcategory:hover,
+#triggerCategory:hover,
+#triggerPlatform:hover,
+#triggerSubcategory:hover {
+  border-color: var(--font-color-title);
+}
+
+#actionList,
+#triggerList {
+  margin: 0;
+  padding: 0;
+}
+
+#actionParameters,
+#triggerParameters {
+  background-color: var(--container-param-bg);
+  margin: 10px 0;
+  padding: 5px 5px;
+}
+
+#exportPNGButton,
+#exportTXTButton {
+  background: var(--button-save-bg);
+}
+
+#exportPNGButton:hover,
+#exportTXTButton:hover {
+  background: var(--button-save-bg-hover);
+}
+
+#title {
+  color: var(--font-color-title);
+  font-size: var(--font-medium);
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+
+.addButton:hover {
+  background-color: var(--button-ok-bg-hover);
+}
+
 body {
   background-color: var(--container-color-bg);
   font-family: var(--font-family);
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-around;
 }
 
 button {
@@ -51,41 +107,19 @@ button {
   padding: 5px 5px;
   width: fit-content;
 }
-.resetButton {
-  background-color: var(--button-reset-bg);
-}
-.resetButton:hover {
-  background-color: var(--button-reset-bg-hover);
-}
 
-input {
-  color: var(--container-color-bg);
-}
-
-label {
-  margin: 5px 0 0 5px;
-}
-
-/* Typography */
-h3 {
-  color: var(--font-color-title);
-  font-size: var(--font-medium);
-  margin: 0 0 10px 0;
-  text-align: center;
-}
-
-#title {
-  color: var(--font-color-title);
-  font-size: var(--font-medium);
-  margin: 20px 0 0 0;
-  text-align: center;
-}
-
-/* Containers */
 .child-container {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.clearButton {
+  background-color: var(--button-del-bg);
+}
+
+.clearButton:hover {
+  background-color: var(--button-del-bg-hover);
 }
 
 .dropdown-container {
@@ -96,66 +130,33 @@ h3 {
   padding: 10px;
 }
 
-.list-container {
-  background-color: var(--container-color-bg);
-  border: 1px solid var(--container-border-bg);
-  border-radius: 8px;
-  flex: 1;
-  padding: 10px;
-}
-
-.parent-container {
-  background-color: var(--container-color-bg);
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 20px;
-}
-
-.row {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-  justify-content: space-between;
-}
-
-/* Parameters */
-#actionParameters, #triggerParameters {
-  background-color: var(--container-param-bg);
-  margin: 10px 0;
-  padding: 5px 5px;
-}
-
-/* Dropdowns */
-#actionPlatform, #triggerPlatform,
-#actionCategory, #triggerCategory,
-#actionSubcategory, #triggerSubcategory {
-  background-color: var(--container-item-bg);
-  border: 1px solid var(--container-border-bg);
-  border-radius: 6px;
-  padding: 5px;
-  width: 100%;
-}
-
-#actionPlatform:hover, #triggerPlatform:hover,
-#actionCategory:hover, #triggerCategory:hover,
-#actionSubcategory:hover, #triggerSubcategory:hover {
-  border-color: var(--font-color-title);
-}
-
 .dropdown-item {
   margin-bottom: 5px;
 }
 
-/* List Items */
-.list-container ul {
-  list-style: none;
+.hamburger-btn {
+  align-items: center;
+  background-color: var(--button-mv-bg);
+  border: none;
+  cursor: grab;
+  justify-content: center;
+  scale: 0.7;
+  width: 25px;
 }
 
-#actionList, #triggerList {
-  padding: 0;
-  margin: 0;
+.hamburger-btn:hover {
+  background-color: var(--button-mv-bg-hover);
+}
+
+h3 {
+  color: var(--font-color-title);
+  font-size: var(--font-medium);
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+input {
+  color: var(--container-color-bg);
 }
 
 .item {
@@ -175,31 +176,38 @@ h3 {
   flex-grow: 1;
 }
 
-/* Buttons */
-.addButton:hover {
-  background-color: var(--button-ok-bg-hover);
+.label {
+  margin: 5px 0 0 5px;
 }
 
-.clearButton {
-  background-color: var(--button-del-bg);
+.list-container {
+  background-color: var(--container-color-bg);
+  border: 1px solid var(--container-border-bg);
+  border-radius: 8px;
+  flex: 1;
+  padding: 10px;
 }
 
-.clearButton:hover {
-  background-color: var(--button-del-bg-hover);
+.list-container ul {
+  list-style: none;
 }
 
-#exportButton {
-  background: var(--button-save-bg);
+.obs {
+  background-color: var(--platfrom-obs-bg);
 }
 
-#exportButton:hover {
-  background: var(--button-save-bg-hover);
+.parent-container {
+  background-color: var(--container-color-bg);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
 }
 
-.hamburger-btn,
 .remove-btn {
   align-items: center;
-  background: none;
+  background: var(--button-del-bg);
   border: none;
   cursor: pointer;
   justify-content: center;
@@ -207,26 +215,23 @@ h3 {
   width: 25px;
 }
 
-.hamburger-btn {
-  background-color: var(--button-mv-bg);
-  cursor: grab;
-}
-
-.hamburger-btn:hover {
-  background-color: var(--button-mv-bg-hover);
-}
-
-.remove-btn {
-  background: var(--button-del-bg);
-}
-
 .remove-btn:hover {
   background: var(--button-del-bg-hover);
 }
 
-/* Platform Tags */
-.obs {
-  background-color: var(--platfrom-obs-bg);
+.resetButton {
+  background-color: var(--button-reset-bg);
+}
+
+.resetButton:hover {
+  background-color: var(--button-reset-bg-hover);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
 }
 
 .streamerBot {
@@ -241,14 +246,7 @@ h3 {
   background-color: var(--platfrom-yt-bg);
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
-  .row {
-    align-items: center;
-    flex-direction: column;
-    gap: 10px;
-  }
-
   .dropdown-container,
   .list-container {
     max-width: calc(100% - 40px);
@@ -268,8 +266,8 @@ h3 {
   }
 
   .item span {
-    white-space: pre-line;
     display: block;
+    white-space: pre-line;
   }
 
   .item span:nth-of-type(1) {
@@ -279,5 +277,11 @@ h3 {
   .item span:nth-of-type(2) {
     display: block;
     margin-top: 10px;
+  }
+
+  .row {
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
   }
 }

@@ -28,7 +28,6 @@
     <div class="parent-container">
         <div id="parent-container" class="child-container">
             <div class="row">
-                <!-- Dropdown para Actions -->
                 <div class="dropdown-container">
                     <h3>Actions</h3>
                     <select id="actionPlatform" class="dropdown-item">
@@ -43,7 +42,6 @@
                     </div>
                 </div>
 
-                <!-- Dropdown para Triggers -->
                 <div class="dropdown-container">
                     <h3>Triggers</h3>
                     <select id="triggerPlatform" class="dropdown-item">
@@ -62,14 +60,12 @@
 
         <div id="child-container" class="child-container">
             <div class="row">
-                <!-- Lista de Actions -->
                 <div class="list-container">
                     <h3>Action List</h3>
                     <ul id="actionList"></ul>
                     <button id="actionClearButton" class="clearButton">Clear Action List</button>
                 </div>
 
-                <!-- Lista de Triggers -->
                 <div class="list-container">
                     <h3>Trigger List</h3>
                     <ul id="triggerList"></ul>
@@ -77,9 +73,10 @@
                 </div>
             </div>
         </div>
-        <button id="exportButton" class="button">Export as PNG</button>
+        <div class="button-container">
+            <button id="exportPNGButton" class="button">Export as PNG</button>
+            <button id="exportTXTButton" class="button">Export as TXT</button>
+        </div>
     </div>
-
 </body>
-
 </html>

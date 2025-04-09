@@ -1,14 +1,12 @@
 import { populateDropdown } from './dropdownUtils.js';
 import { addParameterField } from './parameterFieldsUtil.js';
 
-// Atualiza as categorias ou ações
 export function updateCategoriesOrActions(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
         console.error("One or more elements are missing for updating categories or actions!");
         return;
     }
 
-    // Reseta categorias, subcategorias e parâmetros
     categorySelect.innerHTML = '<option value="">Select a category...</option>';
     subcategorySelect.innerHTML = '<option value="">Select a subcategory...</option>';
     parametersDiv.innerHTML = "";
@@ -19,7 +17,6 @@ export function updateCategoriesOrActions(platform, data, categorySelect, subcat
         return;
     }
 
-    // Popula as categorias dinamicamente
     populateDropdown(categorySelect, Object.keys(data[platform]).map(key => ({
         value: key,
         label: key
@@ -27,14 +24,12 @@ export function updateCategoriesOrActions(platform, data, categorySelect, subcat
     categorySelect.style.display = "inline-block";
 }
 
-// Atualiza subcategorias e parâmetros
 export function updateSubcategoriesOrParameters(platform, category, data, subcategorySelect, parametersDiv) {
     if (!subcategorySelect || !parametersDiv) {
         console.error("Subcategory or parameters container is missing! Check your DOM or the arguments passed.");
         return;
     }
 
-    // Reseta subcategorias e parâmetros
     subcategorySelect.innerHTML = '<option value="">Select a subcategory...</option>';
     parametersDiv.innerHTML = "";
 
@@ -52,7 +47,6 @@ export function updateSubcategoriesOrParameters(platform, category, data, subcat
     const subcategoryKeys = Object.keys(categoryData);
 
     if (subcategoryKeys.includes(subcategorySelect.value)) {
-        // Mostra os parâmetros da subcategoria selecionada
         const selectedSubcategory = categoryData[subcategorySelect.value];
         if (selectedSubcategory.parameters) {
             selectedSubcategory.parameters.forEach(param => addParameterField(param, parametersDiv));

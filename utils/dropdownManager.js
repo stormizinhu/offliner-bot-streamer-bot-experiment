@@ -1,7 +1,6 @@
 import { populateDropdown } from './dropdownUtils.js';
 import { addParameterField } from './parameterFieldsUtils.js';
 
-// Atualiza categorias ou ações
 export function updateCategoriesOrActions(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
         console.error("One or more elements are missing for updating categories or actions!");
@@ -25,7 +24,6 @@ export function updateCategoriesOrActions(platform, data, categorySelect, subcat
     categorySelect.style.display = "inline-block";
 }
 
-// Atualiza categorias gerais para triggers
 export function updateCategories(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
         console.error("One or more elements are missing for updating categories!");
@@ -49,7 +47,6 @@ export function updateCategories(platform, data, categorySelect, subcategorySele
     categorySelect.style.display = "inline-block";
 }
 
-// Atualiza subcategorias ou parâmetros
 export function updateSubcategoriesOrParameters(platform, category, data, subcategorySelect, parametersDiv) {
     if (!subcategorySelect || !parametersDiv) {
         console.error("Subcategory or parameters container is missing! Check your DOM or the arguments passed.");

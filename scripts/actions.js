@@ -28,7 +28,7 @@ document.getElementById("actionAddButton").addEventListener("click", () => {
 });
 
 document.getElementById("actionClearButton").addEventListener("click", () => {
-    actionList.innerHTML = ""; // Limpa os itens da lista
+    actionList.innerHTML = "";
 });
 
 window.addEventListener("beforeunload", (event) => {

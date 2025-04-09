@@ -1,5 +1,4 @@
 export function addDragAndDropEvents(item, list) {
-    // Eventos de drag-and-drop para desktop
     item.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", item.innerHTML);
         item.classList.add("dragging");
@@ -10,7 +9,7 @@ export function addDragAndDropEvents(item, list) {
     });
 
     list.addEventListener("dragover", e => {
-        e.preventDefault(); // Permite o drop
+        e.preventDefault();
         const afterElement = getDragAfterElement(list, e.clientY);
         if (afterElement == null) {
             list.appendChild(item);
@@ -19,15 +18,14 @@ export function addDragAndDropEvents(item, list) {
         }
     });
 
-    // Eventos de toque para dispositivos móveis
+    // For Mobile
     item.addEventListener("touchstart", e => {
         item.classList.add("dragging");
-        item.dataset.touchStartY = e.touches[0].clientY; // Armazena a posição inicial do toque
+        item.dataset.touchStartY = e.touches[0].clientY;
     });
 
     item.addEventListener("touchmove", e => {
-        e.preventDefault(); // Evita o comportamento padrão de rolagem
-        const touchY = e.touches[0].clientY; // Nova posição do toque
+        const touchY = e.touches[0].clientY;
         const afterElement = getDragAfterElement(list, touchY);
         if (afterElement == null) {
             list.appendChild(item);
@@ -43,7 +41,7 @@ export function addDragAndDropEvents(item, list) {
 
 export function clearList(list) {
     while (list.firstChild) {
-        list.removeChild(list.firstChild); // Remove todos os itens
+        list.removeChild(list.firstChild);
     }
 }
 
