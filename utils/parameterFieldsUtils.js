@@ -1,28 +1,32 @@
 export function addParameterField(param, containerDiv) {
-  if (!containerDiv) {
-      console.error("Container for parameters is missing!");
-      return;
-  }
+    if (!containerDiv) {
+        console.error("Container for parameters is missing!");
+        return;
+    }
 
-  const label = document.createElement("label");
-  label.textContent = `${param.name}:`;
+    const label = document.createElement("label");
+    label.textContent = `${param.name}:`;
 
-  let inputElement;
+    let inputElement;
 
-  if (param.type === "dropdown" && param.options) {
-      inputElement = document.createElement("select");
-      param.options.forEach(optionText => {
-          const option = document.createElement("option");
-          option.value = optionText.toLowerCase();
-          option.textContent = optionText;
-          inputElement.appendChild(option);
-      });
-  } else {
-      inputElement = document.createElement("input");
-      inputElement.type = param.type;
-      inputElement.placeholder = param.placeholder;
-  }
+    if (param.type === "dropdown" && param.options) {
+        inputElement = document.createElement("select");
+        inputElement.id = `selector-${param.name.toLowerCase().replace(/\s+/g, '-')}`; // Gera um ID único baseado no nome do parâmetro
 
-  containerDiv.appendChild(label);
-  containerDiv.appendChild(inputElement);
+        param.options.forEach(optionText => {
+            const option = document.createElement("option");
+            option.value = optionText.toLowerCase();
+            option.textContent = optionText;
+            option.className = "option"
+            inputElement.appendChild(option);
+        });
+    } else {
+        inputElement = document.createElement("input");
+        inputElement.type = param.type;
+        inputElement.placeholder = param.placeholder;
+        inputElement.id = `input-${param.name.toLowerCase().replace(/\s+/g, '-')}`; // Gera um ID único para campos de entrada
+    }
+
+    containerDiv.appendChild(label);
+    containerDiv.appendChild(inputElement);
 }

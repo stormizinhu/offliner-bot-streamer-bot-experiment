@@ -65,7 +65,9 @@
   margin: 10px 0;
   padding: 5px 5px;
 }
-
+#selector-state, #input-sourcename, .option{
+  color: var(--container-color-bg);
+}
 #exportPNGButton,
 #exportTXTButton {
   background: var(--button-save-bg);
