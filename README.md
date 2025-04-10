@@ -1,5 +1,6 @@
 # OffilinerBot
-![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/offlinerbot-logo.png){style="border-radius: 200px; border: 5px solid #00D4FF;"; width=200px; }
+![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/offlinerbot-logo.png){style="border-radius: 200px; border: 5px solid #00D4FF;"; width=200px}
+
 _A StreamerBot Offline Experience for heavy users_
 
 ---
