@@ -9,19 +9,24 @@
   --button-reset-bg-hover: rgb(190, 190, 82);
   --button-save-bg: rgb(40, 167, 69);
   --button-save-bg-hover: rgb(33, 136, 56);
+
   --color-white: white;
+
   --container-border-bg: #4f5b66;
   --container-color-bg: #1e1f26;
   --container-item-bg: #2b2d36;
   --container-param-bg: rgb(80, 80, 80);
-  --font-color-title: #66b3ff;
   --font-family: "DM Sans", sans-serif;
   --font-medium: 16px;
   --font-small: 12px;
+
   --platfrom-obs-bg: #3a3a3a;
   --platfrom-sb-bg: #00505c;
   --platfrom-tw-bg: #4e0c7e;
   --platfrom-yt-bg: #ca0000;
+
+  --sb-color-purple: #A259FF;
+  --sb-color-blue: #00D4FF;
 }
 
 * {
@@ -50,7 +55,7 @@
 #triggerCategory:hover,
 #triggerPlatform:hover,
 #triggerSubcategory:hover {
-  border-color: var(--font-color-title);
+  border-color: var(--sb-color-blue);
 }
 
 #actionList,
@@ -79,7 +84,7 @@
 }
 
 #title {
-  color: var(--font-color-title);
+  color: var(--sb-color-blue);
   font-size: var(--font-medium);
   margin: 20px 0 0 0;
   text-align: center;
@@ -92,6 +97,15 @@
 body {
   background-color: var(--container-color-bg);
   font-family: var(--font-family);
+}
+
+#logo {
+  display: block;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  border: 3px solid var(--sb-color-purple); /* Adiciona a borda com a cor do título */
+  border-radius: 50%; /* Torna a imagem arredondada */
+  width: 100px; /* Ajusta o tamanho da imagem */
+  margin-bottom: -15px;
 }
 
 .button-container {
@@ -151,7 +165,7 @@ button {
 }
 
 h3 {
-  color: var(--font-color-title);
+  color: var(--sb-color-blue);
   font-size: var(--font-medium);
   margin: 0 0 10px 0;
   text-align: center;
