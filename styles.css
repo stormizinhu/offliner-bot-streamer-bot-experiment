@@ -25,9 +25,19 @@
   --platfrom-tw-bg: #4e0c7e;
   --platfrom-yt-bg: #ca0000;
 
-  --sb-color-purple: #A259FF;
-  --sb-color-blue: #00D4FF;
-}
+  --sb-color-white: #ffffff;
+  --sb-color-violet: #a257ed; 
+  --sb-color-purple: #2e2441;
+  --sb-color-blue: #00dbff;
+  --sb-color-royal: #224b8f;
+  --sb-color-navy: #123a44;
+  --sb-color-gray: #2e333a;
+  --sb-color-dark-gray: #23282e;
+  --sb-color-black: #23282e;
+
+  /* TODO substituir core pelas do SB */
+  /* FIX ajustar cores normais e de hover dos botões */
+} 
 
 * {
   color: var(--color-white);
@@ -101,11 +111,10 @@ body {
 
 #logo {
   display: block;
-  margin: 0 auto; /* Centraliza horizontalmente */
-  border: 3px solid var(--sb-color-purple); /* Adiciona a borda com a cor do título */
-  border-radius: 50%; /* Torna a imagem arredondada */
-  width: 100px; /* Ajusta o tamanho da imagem */
-  margin-bottom: -15px;
+  margin: 0 auto;
+  border: 3px solid var(--sb-color-purple);
+  border-radius: 50%;
+  width: 100px; 
 }
 
 .button-container {

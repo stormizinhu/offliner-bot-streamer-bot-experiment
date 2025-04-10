@@ -1,0 +1,72 @@
+# 📖 OfflinerBot - Changelog
+---
+
+## OfflinerBot v1.1.0  
+*Released 2025-04-10*
+
+### ✨ New Features
+
+➕ New `OB` (OfflinerBot) logo and `img` folder  
+➕ `.txt` export functionality  
+➕ `getTimestamp` module  
+➕ New utility files  
+➕ New Triggers and Actions (see below)  
+➕ Improved and more structured `README.md`  
+
+### 🔄 Updates
+
+✏️ Integrated `Actions` and `Triggers` logic  
+✏️ Improved module folder structure  
+✏️ Updated texts and documentation  
+✏️ Better organization and visual polish of components  
+
+### 🛠️ Fixes
+
+🔧 Improved CSS selectors and specificity  
+🔧 Fixed `<select>` and `<option>` color issues  
+🔧 Fixed line break bug in item lists  
+🔧 Renamed folders and files for better clarity  
+🔧 Translation adjustments  
+🔧 Fixed mobile responsiveness and media queries  
+
+---
+
+## ⚡ Actions
+
+➕ Integration - `Discord Webhook`  
+
+## 🎯 Triggers
+
+➕ Integration - `StreamElements`  
+
+---
+
+## OfflinerBot v1.0.0  
+*Released 2025-04-01*
+
+### ✨ Added
+
+➕ Initial project structure  
+➕ Support for `Action` and `Trigger` lists  
+➕ `.png` export functionality  
+➕ Drag'n'drop reordering  
+➕ Responsive interface for mobile devices  
+
+### 🔄 Updates
+
+✏️ Created project documentation  
+✏️ Added file structure and base folders  
+✏️ Early logic tests and base components  
+
+### 🛠️ Fixes
+
+🔧 Improved button color palette  
+🔧 Cleaned up project folder structure  
+🔧 Tweaked CSS variables and layout  
+
+---
+
+## OfflinerBot v0  
+*Released 2025-03-27*
+
+🆕 Repository created

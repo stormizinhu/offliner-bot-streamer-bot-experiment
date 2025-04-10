@@ -1,5 +1,5 @@
 # OffilinerBot
-![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/offlinerbot-logo.png)
+![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-logo.png)
 
 _A StreamerBot Offline Experience for heavy users_
 
@@ -11,6 +11,7 @@ _A StreamerBot Offline Experience for heavy users_
 - [Features](#features)
 - [Technologies](#technologies)
 - [Versions](#versions)
+- [Changelog](#versions)
 
 ---
 ## [Introduction](#contents)
@@ -51,9 +52,9 @@ git clone git@github.com:stormizinhu/offliner-bot-streamer-bot-experiment.git
 ---
 
 #### Desktop
-![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/offlinerbot.png)
+![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-desktop.png)
 #### Mobile
-![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/offliner-mobile.jpg)
+![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offliner-mobile.jpg)
 
 ---
 
@@ -71,5 +72,9 @@ git clone git@github.com:stormizinhu/offliner-bot-streamer-bot-experiment.git
 Includes fields for variable inputs and export functionality.
 
 ----
+
+## Changelog
+Keep track of changes and updates to the OfflinerBot project.
+- ### [Full Changelog](./CHANGELOG.md)
 
 ### © Stormizinhu - 2025
