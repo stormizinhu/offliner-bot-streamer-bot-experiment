@@ -1,21 +1,15 @@
 :root {
-  --button-del-bg: rgb(220, 53, 69);
-  --button-del-bg-hover: rgb(200, 35, 51);
-  --button-mv-bg: rgb(255, 193, 7);
-  --button-mv-bg-hover: rgb(224, 168, 0);
-  --button-ok-bg: rgb(0, 123, 255);
-  --button-ok-bg-hover: rgb(0, 105, 217);
+  --button-del-bg: rgb(200, 35, 51);
+  --button-del-bg-hover: rgb(220, 53, 69);
+  --button-mv-bg: rgb(224, 168, 0);
+  --button-mv-bg-hover: rgb(255, 193, 7);
+  --button-ok-bg: rgb(0, 105, 217);
+  --button-ok-bg-hover: rgb(0, 123, 255);
   --button-reset-bg: rgb(138, 138, 56);
-  --button-reset-bg-hover: rgb(190, 190, 82);
-  --button-save-bg: rgb(40, 167, 69);
-  --button-save-bg-hover: rgb(33, 136, 56);
+  --button-reset-bg-hover: rgb(190, 190, 82); 
+  --button-save-bg: rgb(33, 136, 56);
+  --button-save-bg-hover: rgb(40, 167, 69);
 
-  --color-white: white;
-
-  --container-border-bg: #4f5b66;
-  --container-color-bg: #1e1f26;
-  --container-item-bg: #2b2d36;
-  --container-param-bg: rgb(80, 80, 80);
   --font-family: "DM Sans", sans-serif;
   --font-medium: 16px;
   --font-small: 12px;
@@ -31,16 +25,16 @@
   --sb-color-blue: #00dbff;
   --sb-color-royal: #224b8f;
   --sb-color-navy: #123a44;
+  --sb-color-light-gray: #4f5b66;
   --sb-color-gray: #2e333a;
   --sb-color-dark-gray: #23282e;
   --sb-color-black: #23282e;
-
-  /* TODO substituir core pelas do SB */
-  /* FIX ajustar cores normais e de hover dos botões */
 } 
 
+  /* FIX ajustar alinhamento botoes em item list*/
+
 * {
-  color: var(--color-white);
+  color: var(--sb-color-white);
   font-size: var(--font-small);
   margin: 0px;
   padding: 0px;
@@ -48,24 +42,38 @@
 
 #actionCategory,
 #actionPlatform,
-#actionSubcategory,
-#triggerCategory,
-#triggerPlatform,
-#triggerSubcategory {
-  background-color: var(--container-item-bg);
-  border: 1px solid var(--container-border-bg);
+#actionSubcategory {
+  background-color: var(--sb-color-gray);
+  border: 2px solid var(--sb-color-blue);
   border-radius: 6px;
   padding: 5px;
   width: 100%;
 }
+#triggerCategory,
+#triggerPlatform,
+#triggerSubcategory {
+  background-color: var(--sb-color-gray);
+  border: 2px solid var(--sb-color-violet);
+  border-radius: 6px;
+  padding: 5px;
+  width: 100%;
+}
+.actionList{
+  color: var(--sb-color-blue);
+}
 
+.triggerList {
+  color: var(--sb-color-violet);
+}
 #actionCategory:hover,
 #actionPlatform:hover,
-#actionSubcategory:hover,
+#actionSubcategory:hover {
+  border-color: var(--sb-color-blue);
+}
 #triggerCategory:hover,
 #triggerPlatform:hover,
 #triggerSubcategory:hover {
-  border-color: var(--sb-color-blue);
+  border-color: var(--sb-color-violet);
 }
 
 #actionList,
@@ -74,14 +82,18 @@
   padding: 0;
 }
 
-#actionParameters,
+#actionParameters {
+  background-color: var(--sb-color-navy);
+  margin: 10px 0;
+  padding: 5px 5px;
+}
 #triggerParameters {
-  background-color: var(--container-param-bg);
+  background-color: var(--sb-color-purple);
   margin: 10px 0;
   padding: 5px 5px;
 }
 #selector, #input, .option{
-  color: var(--container-color-bg);
+  color: var(--sb-color-black);
 }
 #exportPNGButton,
 #exportTXTButton {
@@ -105,14 +117,14 @@
 }
 
 body {
-  background-color: var(--container-color-bg);
+  background-color: var(--sb-color-gray);
   font-family: var(--font-family);
 }
 
 #logo {
   display: block;
   margin: 0 auto;
-  border: 3px solid var(--sb-color-purple);
+  border: 3px solid var(--sb-color-violet);
   border-radius: 50%;
   width: 100px; 
 }
@@ -135,8 +147,9 @@ button {
 
 .child-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   gap: 20px;
+  border: 2px solid var(--sb-color-gray);
 }
 
 .clearButton {
@@ -148,11 +161,17 @@ button {
 }
 
 .dropdown-container {
-  background-color: var(--container-color-bg);
-  border: 1px solid var(--container-border-bg);
+  background-color: var(--sb-color-dark-gray);
   border-radius: 8px;
   flex: 1;
   padding: 10px;
+}
+
+.triggerContainer {
+  border: 1px solid var(--sb-color-violet);
+}
+.actionContainer {
+  border: 1px solid var(--sb-color-blue);
 }
 
 .dropdown-item {
@@ -181,13 +200,13 @@ h3 {
 }
 
 input {
-  color: var(--container-color-bg);
+  color: var(--sb-color-dark-gray);
 }
 
 .item {
   align-items: center;
-  background-color: var(--container-item-bg);
-  border: 1px solid var(--color-white);
+  background-color: var(--sb-color-gray);
+  border: 1px solid var(--sb-color-white);
   border-radius: 6px;
   display: flex;
   height: 25px;
@@ -206,8 +225,8 @@ input {
 }
 
 .list-container {
-  background-color: var(--container-color-bg);
-  border: 1px solid var(--container-border-bg);
+  background-color: var(--sb-color-dark-gray);
+  border: 1px solid var(--sb-color-light-gray);
   border-radius: 8px;
   flex: 1;
   padding: 10px;
@@ -217,12 +236,20 @@ input {
   list-style: none;
 }
 
+.list-container.actionContainer {
+  border-color: var(--sb-color-blue);
+}
+
+.list-container.triggerContainer {
+  border-color: var(--sb-color-violet);
+} 
+
 .obs {
   background-color: var(--platfrom-obs-bg);
 }
 
 .parent-container {
-  background-color: var(--container-color-bg);
+  background-color: var(--sb-color-black);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -280,7 +307,7 @@ input {
 
   .item {
     align-items: center;
-    border: 1px solid var(--color-white);
+    border: 1px solid var(--sb-color-white);
     border-radius: 6px;
     display: flex;
     flex-wrap: wrap;
@@ -308,5 +335,13 @@ input {
     align-items: center;
     flex-direction: column;
     gap: 10px;
+  }
+  #actionParameters, #triggerParameters {
+    display: flex;
+    flex-direction: row;
+  }
+  #input {
+    min-width: 50px;
+    max-width: 50%;
   }
 }

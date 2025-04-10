@@ -24,13 +24,13 @@
 
 <body>
     <a href="https://github.com/stormizinhu/offliner-bot-streamer-bot-experiment"><img src="./img/offlinerbot-logo.png" alt="OfflinerBot Logo" id="logo"></a>
-    <h1 id="title">OfflinerBot<br> by Stormizinhu - 2025</h1>
+    <h1 id="title">OfflinerBot -by Stormizinhu - 2025</h1>
 
     <div class="parent-container">
         <div id="parent-container" class="child-container">
             <div class="row">
-                <div class="dropdown-container">
-                    <h3>Actions</h3>
+                <div class="dropdown-container actionContainer ">
+                    <h3 class="actionList ">Actions</h3>
                     <select id="actionPlatform" class="dropdown-item">
                         <option value="">Platform...</option>
                     </select>
@@ -43,8 +43,8 @@
                     </div>
                 </div>
 
-                <div class="dropdown-container">
-                    <h3>Triggers</h3>
+                <div class="dropdown-container triggerContainer">
+                    <h3 class="triggerList">Triggers</h3>
                     <select id="triggerPlatform" class="dropdown-item">
                         <option value="">Platform...</option>
                     </select>
@@ -61,14 +61,14 @@
 
         <div id="child-container" class="child-container">
             <div class="row">
-                <div class="list-container">
-                    <h3>Action List</h3>
+                <div class="list-container actionContainer ">
+                    <h3 class="actionList">Action List</h3>
                     <ul id="actionList"></ul>
                     <button id="actionClearButton" class="clearButton">Clear Action List</button>
                 </div>
 
-                <div class="list-container">
-                    <h3>Trigger List</h3>
+                <div class="list-container triggerContainer">
+                    <h3 class="triggerList">Trigger List</h3>
                     <ul id="triggerList"></ul>
                     <button id="triggerClearButton" class="clearButton">Clear Trigger List</button>
                 </div>
