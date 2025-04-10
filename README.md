@@ -1,6 +1,5 @@
 # OffilinerBot
 ![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-logo.png)
-![OfflinerBot](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-logo.png)
 
 _A StreamerBot Offline Experience for heavy users_
 
@@ -54,9 +53,8 @@ git clone git@github.com:stormizinhu/offliner-bot-streamer-bot-experiment.git
 
 #### Desktop
 ![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-desktop.png)
-![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offlinerbot-desktop.png)
+
 #### Mobile
-![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offliner-mobile.jpg)
 ![Project Image](https://raw.githubusercontent.com/stormizinhu/offliner-bot-streamer-bot-experiment/refs/heads/master/img/offliner-mobile.jpg)
 
 ---
