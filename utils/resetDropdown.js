@@ -37,5 +37,24 @@ function resetDropdowns(type) {
   });
 }
 
+  // Função para resetar tudo
+  export function resetAll() {
+    // Reseta dropdowns
+    resetDropdowns("action");
+    resetDropdowns("trigger");
+  
+    // Reseta listas
+    const actionList = document.getElementById("actionList");
+    const triggerList = document.getElementById("triggerList");
+  
+    if (actionList) actionList.innerHTML = "";
+    if (triggerList) triggerList.innerHTML = "";
+  
+    console.log("All dropdowns and items have been reset!");
+  }
+
+
+
+document.getElementById("resetAllButton").addEventListener("click", () => resetAll());
 document.getElementById("actionResetButton").addEventListener("click", () => resetDropdowns("action"));
 document.getElementById("triggerResetButton").addEventListener("click", () => resetDropdowns("trigger"));

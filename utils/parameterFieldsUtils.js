@@ -4,29 +4,28 @@ export function addParameterField(param, containerDiv) {
         return;
     }
 
+    const wrapper = document.createElement("div"); // Cria um wrapper para cada parâmetro
     const label = document.createElement("label");
     label.textContent = `${param.name}:`;
 
     let inputElement;
-
     if (param.type === "dropdown" && param.options) {
         inputElement = document.createElement("select");
-        inputElement.id = "selector"
-
+        inputElement.id = "selector";
         param.options.forEach(optionText => {
             const option = document.createElement("option");
             option.value = optionText.toLowerCase();
             option.textContent = optionText;
-            option.className = "option"
             inputElement.appendChild(option);
         });
     } else {
         inputElement = document.createElement("input");
         inputElement.type = param.type;
         inputElement.placeholder = param.placeholder;
-        inputElement.id = "input"
+        inputElement.id = "input";
     }
 
-    containerDiv.appendChild(label);
-    containerDiv.appendChild(inputElement);
+    wrapper.appendChild(label);
+    wrapper.appendChild(inputElement);
+    containerDiv.appendChild(wrapper); // Adiciona o wrapper ao contêiner principal
 }

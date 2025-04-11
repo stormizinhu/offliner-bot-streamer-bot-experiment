@@ -20,13 +20,23 @@
     <script type="module" src="./utils/screenshot.js"></script>
     <script type="module" src="./utils/generateText.js"></script>
     <script type="module" src="./utils/resetDropdown.js"></script>
+    <script type="module" src="./utils/footerYear.js"></script>
+    <script type="module" src="./utils/modeToggle.js"></script>
 </head>
 
 <body>
-    <a href="https://github.com/stormizinhu/offliner-bot-streamer-bot-experiment"><img src="./img/offlinerbot-logo.png" alt="OfflinerBot Logo" id="logo"></a>
-    <h1 id="title">OfflinerBot -by Stormizinhu - 2025</h1>
-
+    <img src="./img/offlinerbot-logo-300.png" alt="OfflinerBot Logo" id="logo">
+    
     <div class="parent-container">
+        <button id="resetAllButton" class="resetButton">Reset All</button>
+        <button id="toggleModeButton" class="toggle-mode-btn" title="Alternar modo">
+            <span id="modeIcon" class="icon-container">
+              <!-- SVG inicial aqui (pode trocar) -->
+            </span>
+          </button>
+          
+          
+          
         <div id="parent-container" class="child-container">
             <div class="row">
                 <div class="dropdown-container actionContainer ">
@@ -79,5 +89,9 @@
             <button id="exportTXTButton" class="button">Export as TXT</button>
         </div>
     </div>
+    <footer id="footer">
+        <h1 id="year"></h1>
+        <a href="https://github.com/stormizinhu/offliner-bot-streamer-bot-experiment" id="footer-link">GitHub</a>
 </body>
+
 </html>

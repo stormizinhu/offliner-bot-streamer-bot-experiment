@@ -1,8 +1,6 @@
-import { getTimestamp } from './getTimestamp.js';
-
 function saveActionListAsPNG() {
-    const timestamp = getTimestamp();
-    const fileName = `action_list_${timestamp}.png`;
+    const fileName = prompt("Digite um nome para o arquivo .png:");
+    if (!fileName) return;
 
     const actionList = document.getElementById("child-container");
 
@@ -14,15 +12,13 @@ function saveActionListAsPNG() {
     html2canvas(actionList).then((canvas) => {
         const link = document.createElement("a");
         link.href = canvas.toDataURL("image/png");
-        link.download = fileName;
+        link.download = `${fileName}.png`;
         link.click();
 
-        console.log(`File saved as: ${fileName}`);
+        console.log(`File saved as: ${fileName}.png`);
     }).catch((error) => {
         console.error("Error generating the PNG:", error);
     });
 }
 
-document.getElementById("exportPNGButton").addEventListener("click", () => {
-    saveActionListAsPNG();
-});
+document.getElementById("exportPNGButton").addEventListener("click", saveActionListAsPNG);

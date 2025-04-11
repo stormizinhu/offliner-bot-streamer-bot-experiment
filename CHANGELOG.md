@@ -1,6 +1,29 @@
 # 📖 OfflinerBot - Changelog
 ---
 
+## OfflinerBot v1.2.0  // TODO
+*Released 2025-04-10*
+
+### ✨ New Features
+
+➕ `Dark/Ligth` Mode added
+➕ LICENSE added on project root
+➕ Export functions now ask for file name instead for auto timestamp  
+➕ Added `Reset All` button
+➕ `%Var#` will be placed if empty fields is added
+
+### 🔄 Updates
+
+✏️ Color scheme based on the original (dark mode)
+✏️ line auto adjut based on the number of parameters
+
+### 🛠️ Fixes
+
+🔧 Improved CSS selectors and specificity   
+🔧 Dynamic year on the footer 
+🔧 Some border and color fixes
+
+---
 ## OfflinerBot v1.1.0  
 *Released 2025-04-10*
 

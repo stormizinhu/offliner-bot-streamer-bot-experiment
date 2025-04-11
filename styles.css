@@ -1,4 +1,20 @@
-:root {
+:root { /* Dark Mode Values */
+
+  --text-color: var(--sb-color-white);
+
+  --background-color-sub2: var(--sb-color-gray);
+  --background-color-sub3: var(--sb-color-dark-gray);
+  --background-color-main: var(--sb-color-black);
+
+  --border-color: var(--sb-color-light-gray);
+  --button-bg: var(--button-ok-bg);
+  --button-bg-hover: var(--button-ok-bg-hover);
+
+  --footer-text-color: var(--sb-color-blue);
+
+  --container-action-border: var(--sb-color-blue);
+  --container-trigger-border: var(--sb-color-violet);
+
   --button-del-bg: rgb(200, 35, 51);
   --button-del-bg-hover: rgb(220, 53, 69);
   --button-mv-bg: rgb(224, 168, 0);
@@ -11,6 +27,7 @@
   --button-save-bg-hover: rgb(40, 167, 69);
 
   --font-family: "DM Sans", sans-serif;
+  --font-large: 22px;
   --font-medium: 16px;
   --font-small: 12px;
 
@@ -29,22 +46,38 @@
   --sb-color-gray: #2e333a;
   --sb-color-dark-gray: #23282e;
   --sb-color-black: #23282e;
-} 
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /* Valores para Light Mode */
+        --text-color: var(--sb-color-black);
+        --border-color: red;
+        --background-color-main: var(--sb-color-white);
+        --background-color-sub2: rgb(161, 161, 161);
+        --background-color-sub3: rgb(211, 211, 211);
+
+        --container-action-border: var(--sb-color-navy);
+        --container-trigger-border: var(--sb-color-purple);
+
+        --footer-text-color: var(--sb-color-navy);
+    }
+}
 
   /* FIX ajustar alinhamento botoes em item list*/
 
 * {
-  color: var(--sb-color-white);
   font-size: var(--font-small);
   margin: 0px;
   padding: 0px;
+  color: var(--text-color);
 }
 
 #actionCategory,
 #actionPlatform,
 #actionSubcategory {
-  background-color: var(--sb-color-gray);
-  border: 2px solid var(--sb-color-blue);
+  background-color: var(--background-color-sub2);
+  border: 2px solid var(--container-action-border);
   border-radius: 6px;
   padding: 5px;
   width: 100%;
@@ -52,28 +85,28 @@
 #triggerCategory,
 #triggerPlatform,
 #triggerSubcategory {
-  background-color: var(--sb-color-gray);
-  border: 2px solid var(--sb-color-violet);
+  background-color: var(--background-color-sub2);
+  border: 2px solid var(--container-trigger-border);
   border-radius: 6px;
   padding: 5px;
   width: 100%;
 }
 .actionList{
-  color: var(--sb-color-blue);
+  color: var(--container-action-border);
 }
 
 .triggerList {
-  color: var(--sb-color-violet);
+  color: var(--container-trigger-border);
 }
 #actionCategory:hover,
 #actionPlatform:hover,
 #actionSubcategory:hover {
-  border-color: var(--sb-color-blue);
+  border-color: var(--container-action-border);
 }
 #triggerCategory:hover,
 #triggerPlatform:hover,
 #triggerSubcategory:hover {
-  border-color: var(--sb-color-violet);
+  border-color: var(--container-trigger-border);
 }
 
 #actionList,
@@ -103,28 +136,47 @@
 #exportPNGButton:hover,
 #exportTXTButton:hover {
   background: var(--button-save-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-#title {
-  color: var(--sb-color-blue);
+#year {
+  color: var(--footer-text-color);
   font-size: var(--font-medium);
   margin: 20px 0 0 0;
   text-align: center;
 }
 
+
 .addButton:hover {
   background-color: var(--button-ok-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+/* Estilo para organizar parâmetros */
+#actionParameters, #triggerParameters {
+  display: flex;
+  flex-wrap: wrap; /* Permite quebrar a linha para melhor organização */
+  gap: 10px; /* Espaço entre os elementos */
+}
+
+#actionParameters > div, #triggerParameters > div {
+  display: flex;
+  flex-direction: column;
 }
 
 body {
-  background-color: var(--sb-color-gray);
+  background-color: var(--background-color-main);
   font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #logo {
   display: block;
-  margin: 0 auto;
-  border: 3px solid var(--sb-color-violet);
+  margin: 10px 0 0 0;
+  border: solid 3px var(--sb-color-violet);
   border-radius: 50%;
   width: 100px; 
 }
@@ -149,7 +201,6 @@ button {
   display: flex;
   flex-direction: column; 
   gap: 20px;
-  border: 2px solid var(--sb-color-gray);
 }
 
 .clearButton {
@@ -158,20 +209,22 @@ button {
 
 .clearButton:hover {
   background-color: var(--button-del-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .dropdown-container {
-  background-color: var(--sb-color-dark-gray);
+  background-color: var(--background-color-sub3);
   border-radius: 8px;
   flex: 1;
   padding: 10px;
 }
 
 .triggerContainer {
-  border: 1px solid var(--sb-color-violet);
+  border: 2px solid var(--container-trigger-border);
 }
 .actionContainer {
-  border: 1px solid var(--sb-color-blue);
+  border: 2px solid var(--container-action-border);
 }
 
 .dropdown-item {
@@ -200,12 +253,12 @@ h3 {
 }
 
 input {
-  color: var(--sb-color-dark-gray);
+  color: var(--background-color-sub3);
 }
 
 .item {
   align-items: center;
-  background-color: var(--sb-color-gray);
+  background-color: var(--background-color-sub2);
   border: 1px solid var(--sb-color-white);
   border-radius: 6px;
   display: flex;
@@ -218,15 +271,16 @@ input {
 
 .item span {
   flex-grow: 1;
+  color: var(--sb-color-white);
 }
 
-.label {
-  margin: 5px 0 0 5px;
+label {
+  margin: 0px 0 5px 0;
+  color: var(--sb-color-white);
 }
 
 .list-container {
-  background-color: var(--sb-color-dark-gray);
-  border: 1px solid var(--sb-color-light-gray);
+  background-color: var(--background-color-sub3);
   border-radius: 8px;
   flex: 1;
   padding: 10px;
@@ -237,11 +291,11 @@ input {
 }
 
 .list-container.actionContainer {
-  border-color: var(--sb-color-blue);
+  border: solid 2px var(--container-action-border);
 }
 
 .list-container.triggerContainer {
-  border-color: var(--sb-color-violet);
+  border: solid 2px var(--container-trigger-border);
 } 
 
 .obs {
@@ -249,12 +303,14 @@ input {
 }
 
 .parent-container {
-  background-color: var(--sb-color-black);
-  border-radius: 8px;
+  background-color: var(--background-color-sub2);
+  border-radius: 16px;
+  width: 92%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   padding: 10px;
+  margin-top: 10px
 }
 
 .remove-btn {
@@ -269,6 +325,8 @@ input {
 
 .remove-btn:hover {
   background: var(--button-del-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .resetButton {
@@ -277,6 +335,8 @@ input {
 
 .resetButton:hover {
   background-color: var(--button-reset-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .row {
@@ -297,6 +357,15 @@ input {
 .youtube {
   background-color: var(--platfrom-yt-bg);
 }
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#footer-link {
+  font-size: var(--font-large);
+  color: var(--footer-text-color)
+}
 
 @media (max-width: 768px) {
   .dropdown-container,
@@ -307,7 +376,7 @@ input {
 
   .item {
     align-items: center;
-    border: 1px solid var(--sb-color-white);
+    border: 2px solid var(--sb-color-white);
     border-radius: 6px;
     display: flex;
     flex-wrap: wrap;
@@ -340,8 +409,54 @@ input {
     display: flex;
     flex-direction: row;
   }
-  #input {
-    min-width: 50px;
-    max-width: 50%;
+
+  #actionParameters > div, #triggerParameters > div {
+    flex: 1 1;
   }
+}
+
+.light-mode {
+  --text-color: var(--sb-color-black);
+  --border-color: var(--sb-color-dark-gray);
+  --background-color-main: rgb(201, 201, 201);
+  --background-color-sub2: rgb(190, 190, 190);
+  --background-color-sub3: rgb(146, 146, 146);
+
+  --container-action-border: var(--sb-color-navy);
+  --container-trigger-border: var(--sb-color-purple);
+
+  --footer-text-color: var(--sb-color-navy);
+}
+
+.toggle-mode-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: transparent;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-mode-btn:hover {
+  background-color: var(--background-color-sub2);
+  transform: scale(1.1);
+}
+
+.icon-container svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+
+.icon-container svg path {
+  fill: var(--text-color);
 }
