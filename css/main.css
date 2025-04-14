@@ -9,9 +9,9 @@
   padding: 0px;
   color: var(--text-color);
   transition: 
-    background-color 0.3s ease, 
-    color 0.3s ease, 
-    border-color 0.3s ease;
+    background-color 0.5s ease, 
+    color 0.5s ease, 
+    border-color 0.5s ease;
 }
 body {
   background-color: var(--background-color-main);
@@ -30,6 +30,13 @@ button {
   padding: 5px 5px;
   width: fit-content;
   color: var(--sb-color-black);
+  transform: scale(1);
+}
+button:hover {
+  transform: scale(1.1);
+}
+button:active {
+  transform: scale(1);
 }
 h3 {
   color: var(--sb-color-blue);
@@ -97,7 +104,6 @@ input {
 }
 #exportPNGButton:hover, #exportTXTButton:hover {
   background: var(--button-save-bg-hover);
-  transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 #footer {
@@ -131,7 +137,6 @@ input {
 }
 .addButton:hover {
   background-color: var(--button-ok-bg-hover);
-  transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .actionList{
@@ -154,7 +159,6 @@ input {
 }
 .clearButton:hover {
   background-color: var(--button-del-bg-hover);
-  transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .dropdown-container {
@@ -165,6 +169,30 @@ input {
 }
 .dropdown-item {
   margin-bottom: 5px;
+}
+.feedback-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: fit-content;
+  height: fit-content;
+  background-color: var(--button-ok-bg);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.feedback-btn:hover {
+  background-color: var(--button-ok-bg-hover);
+}
+
+.feedback-btn:focus, .feedback-btn a {
+  outline: none;
+  text-decoration: none;
 }
 .hamburger-btn {
   align-items: center;
@@ -190,6 +218,17 @@ input {
   margin-bottom: 5px;
   padding: 0 10px;
   white-space: pre-line;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.item.dragging {
+  transform: scale(1.1) translateY(-10px); /* Aumenta o item e o move para cima */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra para destacar */
+}
+.item.adding {
+  animation: scaleInAndForward 0.5s ease-out forwards;
+}
+.item.removing {
+  animation: scaleOutAndBack 0.5s ease-out forwards;
 }
 .item span {
   flex-grow: 1;
@@ -249,7 +288,6 @@ input {
 }
 .remove-btn:hover {
   background: var(--button-del-bg-hover);
-  transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .resetButton {
@@ -257,7 +295,6 @@ input {
 }
 .resetButton:hover {
   background-color: var(--button-reset-bg-hover);
-  transform: scale(1.1);
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .row {
@@ -285,8 +322,31 @@ input {
 }
 .toggle-mode-btn:hover {
   background-color: var(--background-color-sub2);
-  transform: scale(1.1);
 }
 .triggerContainer {
   border: 2px solid var(--container-trigger-border);
+}
+
+/* Animação de escala e movimento para frente no eixo Z */
+@keyframes scaleInAndForward {
+  0% {
+      opacity: 0;
+      transform: scale(0.8) translateZ(-50px); /* Começa pequeno e para trás */
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1) translateZ(0); /* Fica normal e na posição original */
+  }
+}
+
+/* Animação de escala e movimento para trás no eixo Z */
+@keyframes scaleOutAndBack {
+  0% {
+      opacity: 1;
+      transform: scale(1) translateZ(0); /* Começa no tamanho normal e na posição original */
+  }
+  100% {
+      opacity: 0;
+      transform: scale(0.8) translateZ(50px); /* Fica pequeno e vai para trás */
+  }
 }

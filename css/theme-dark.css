@@ -7,8 +7,6 @@ html[data-theme="dark"] {
   --background-color-sub3: var(--sb-color-dark-gray);
 
   --border-color: var(--sb-color-light-gray);
-  --button-bg: var(--button-ok-bg);
-  --button-bg-hover: var(--button-ok-bg-hover);
 
   --container-action-border: var(--sb-color-blue);
   --container-trigger-border: var(--sb-color-violet);

@@ -2,10 +2,13 @@ export function addDragAndDropEvents(item, list) {
     item.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", item.innerHTML);
         item.classList.add("dragging");
+        item.style.transform = "scale(1.1) translateY(-10px)"; // Aplica o efeito visual
+        item.style.transition = "transform 0.2s ease"; // Transição suave
     });
 
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
+        item.style.transform = "scale(1) translateY(0)"; // Restaura o item
     });
 
     list.addEventListener("dragover", e => {
@@ -18,9 +21,11 @@ export function addDragAndDropEvents(item, list) {
         }
     });
 
-    // For Mobile
+    // Para dispositivos móveis
     item.addEventListener("touchstart", e => {
         item.classList.add("dragging");
+        item.style.transform = "scale(1.1) translateY(-10px)"; // Aplica o efeito visual no toque
+        item.style.transition = "transform 0.2s ease"; // Transição suave
         item.dataset.touchStartY = e.touches[0].clientY;
     });
 
@@ -36,6 +41,7 @@ export function addDragAndDropEvents(item, list) {
 
     item.addEventListener("touchend", () => {
         item.classList.remove("dragging");
+        item.style.transform = "scale(1) translateY(0)"; // Restaura o item ao soltar o toque
     });
 }
 

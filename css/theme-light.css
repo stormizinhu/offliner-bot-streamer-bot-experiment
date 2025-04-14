@@ -7,8 +7,6 @@ html[data-theme="light"] {
   --background-color-sub3: rgb(146, 146, 146);
 
   --border-color: var(--sb-color-light-gray);
-  --button-bg: var(--button-ok-bg);
-  --button-bg-hover: var(--button-ok-bg-hover);
 
   --container-action-border: var(--sb-color-navy);
   --container-trigger-border: var(--sb-color-purple);

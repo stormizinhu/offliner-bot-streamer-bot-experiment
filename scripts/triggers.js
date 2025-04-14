@@ -2,6 +2,7 @@ import { triggers } from './global.js';
 import { populateDropdown } from '../utils/dropdownUtils.js';
 import { updateCategories, updateSubcategoriesOrParameters } from '../utils/dropdownManager.js';
 import { addItemToList } from '../utils/listManager.js';
+import { setupDeleteHandlers } from '../utils/deleteUtils.js';
 
 const triggerPlatformSelect = document.getElementById("triggerPlatform");
 const triggerCategorySelect = document.getElementById("triggerCategory");
@@ -23,10 +24,8 @@ triggerSubcategorySelect.addEventListener("change", () => {
     updateSubcategoriesOrParameters(triggerPlatformSelect.value, triggerCategorySelect.value, triggers, triggerSubcategorySelect, triggerParametersDiv);
 });
 
+setupDeleteHandlers();
+
 document.getElementById("triggerAddButton").addEventListener("click", () => {
     addItemToList(triggerPlatformSelect.value, triggerCategorySelect.value, triggerSubcategorySelect.value, triggers, triggerParametersDiv, triggerList);
-});
-
-document.getElementById("triggerClearButton").addEventListener("click", () => {
-    triggerList.innerHTML = "";
 });

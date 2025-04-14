@@ -6,7 +6,8 @@
 
 ### ✨ New Features
 
-➕ `Dark/Light` Mode added
+➕ Floating animations for `Add`, `Delete` and `Drag'n'Drop`
+➕ `Feedback` button for bug/suggestions
 
 ### 🔄 Updates  
 
@@ -22,6 +23,7 @@
 🔧 Rounded corners for `Parameters` and `Inputs`
 🔧 Center alignment for `Clear Buttons`
 🔧 Better alignment `Move` and `Clear Item` buttons
+🔧 Better `Button` base class
 
 ---
 ## OfflinerBot v1.2.0

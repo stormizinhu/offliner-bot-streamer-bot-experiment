@@ -2,6 +2,7 @@ import { actions } from './global.js';
 import { populateDropdown } from '../utils/dropdownUtils.js';
 import { updateCategoriesOrActions, updateSubcategoriesOrParameters } from '../utils/dropdownManager.js';
 import { addItemToList } from '../utils/listManager.js';
+import { setupDeleteHandlers } from '../utils/deleteUtils.js';
 
 const actionPlatformSelect = document.getElementById("actionPlatform");
 const actionCategorySelect = document.getElementById("actionCategory");
@@ -27,9 +28,7 @@ document.getElementById("actionAddButton").addEventListener("click", () => {
     addItemToList(actionPlatformSelect.value, actionCategorySelect.value, actionSubcategorySelect.value, actions, actionParametersDiv, actionList);
 });
 
-document.getElementById("actionClearButton").addEventListener("click", () => {
-    actionList.innerHTML = "";
-});
+setupDeleteHandlers();
 
 window.addEventListener("beforeunload", (event) => {
     const confirmationMessage = "Are you sure you want to refresh the page? Any unsaved progress will be lost.";
