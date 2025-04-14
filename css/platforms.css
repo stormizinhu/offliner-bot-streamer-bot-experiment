@@ -1,0 +1,12 @@
+.item.obs {
+  background-color: var(--platfrom-obs-bg);
+}
+.item.streamerBot {
+  background-color: var(--platfrom-sb-bg);
+}
+.item.twitch {
+  background-color: var(--platfrom-tw-bg);
+}
+.item.youtube {
+  background-color: var(--platfrom-yt-bg);
+}

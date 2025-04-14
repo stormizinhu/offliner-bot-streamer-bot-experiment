@@ -26,15 +26,14 @@ export function updateCategoriesOrActions(platform, data, categorySelect, subcat
 
 export function updateSubcategoriesOrParameters(platform, category, data, subcategorySelect, parametersDiv) {
     if (!subcategorySelect || !parametersDiv) {
-        console.error("Subcategory or parameters container is missing! Check your DOM or the arguments passed.");
+        console.error("Subcategory or parameters container is missing!");
         return;
     }
 
-    subcategorySelect.innerHTML = '<option value="">Select a subcategory...</option>';
-    parametersDiv.innerHTML = "";
+    parametersDiv.innerHTML = ""; // Limpa o conteúdo inicial
 
     if (!platform || !category) {
-        subcategorySelect.style.display = "none";
+        subcategorySelect.style.display = "none"; // Esconde o terceiro dropdown se necessário
         return;
     }
 
@@ -51,11 +50,7 @@ export function updateSubcategoriesOrParameters(platform, category, data, subcat
         if (selectedSubcategory.parameters) {
             selectedSubcategory.parameters.forEach(param => addParameterField(param, parametersDiv));
         }
-    } else if (subcategoryKeys.length && !categoryData.parameters) {
-        populateDropdown(subcategorySelect, subcategoryKeys.map(key => ({
-            value: key,
-            label: categoryData[key].name
-        })));
-        subcategorySelect.style.display = "inline-block";
+    } else {
+        subcategorySelect.style.display = "inline-block"; // Mostra o terceiro dropdown
     }
 }

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <title>OfflinerBot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+
+    <script type="module" src="./scripts/global.js"></script>
+    <script type="module" src="./scripts/actions.js"></script>
+    <script type="module" src="./scripts/triggers.js"></script>
+    <script type="module" src="./utils/screenshot.js"></script>
+    <script type="module" src="./utils/generateText.js"></script>
+    <script type="module" src="./utils/resetDropdown.js"></script>
+    <script type="module" src="./utils/footerYear.js"></script>
+    <script type="module" src="./utils/modeToggle.js"></script>
+    <script type="module" src="./utils/themeSwitcher.js"></script>
+    
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/media-mobile.css">
+    <link rel="stylesheet" href="css/theme-light.css" media="(prefers-color-scheme: light)">
+    <link rel="stylesheet" href="css/theme-dark.css" media="(prefers-color-scheme: dark)">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <img src="./img/offlinerbot-logo-300.png" alt="OfflinerBot Logo" id="logo">
+
+    <div class="parent-container">
+        <button id="resetAllButton" class="button reset-btn" data-action="reset-all">Reset All</button>
+        <button id="toggleModeButton" class="button toggle-mode-btn" title="Alternar modo">
+            <span id="modeIcon" class="icon-container">
+                <!-- SVG inicial -->
+            </span>
+        </button>
+
+        <!-- Dropdowns e parâmetros -->
+        <div class="container" data-type="action">
+            <h3 class="container-title">Actions</h3>
+            <select class="dropdown-item" data-level="platform" data-type="action">
+                <option value="">Platform...</option>
+            </select>
+            <select class="dropdown-item dropdown-hidden" data-level="category" data-type="action"></select>
+            <select class="dropdown-item dropdown-hidden" data-level="subcategory" data-type="action"></select>
+            <div id="actionParameters" class="parameters-container dropdown-hidden"></div>
+            <div class="button-container">
+                <button class="button add-btn" data-action="add-action">Add Action</button>
+                <button class="button reset-btn" data-action="reset-action">Reset Dropdown</button>
+            </div>
+        </div>
+
+        <div class="container" data-type="trigger">
+            <h3 class="container-title">Triggers</h3>
+            <select class="dropdown-item" data-level="platform" data-type="trigger">
+                <option value="">Platform...</option>
+            </select>
+            <select class="dropdown-item dropdown-hidden" data-level="category" data-type="trigger"></select>
+            <select class="dropdown-item dropdown-hidden" data-level="subcategory" data-type="trigger"></select>
+            <div id="triggerParameters" class="parameters-container dropdown-hidden"></div>
+            <div class="button-container">
+                <button class="button add-btn" data-action="add-trigger">Add Trigger</button>
+                <button class="button reset-btn" data-action="reset-trigger">Reset Dropdown</button>
+            </div>
+        </div>
+
+        <!-- Listas de ações e gatilhos -->
+        <div class="container" data-type="list">
+            <div class="list-container" data-type="action">
+                <h3 class="list-title">Action List</h3>
+                <ul class="list" id="actionList"></ul>
+                <button class="button clear-btn" data-action="clear-action-list">Clear Action List</button>
+            </div>
+            <div class="list-container" data-type="trigger">
+                <h3 class="list-title">Trigger List</h3>
+                <ul class="list" id="triggerList"></ul>
+                <button class="button clear-btn" data-action="clear-trigger-list">Clear Trigger List</button>
+            </div>
+        </div>
+
+        <!-- Botões de exportação -->
+        <div class="button-container">
+            <button class="button export-btn" data-type="png">Export as PNG</button>
+            <button class="button export-btn" data-type="txt">Export as TXT</button>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <h1 id="year"></h1>
+        <a href="https://github.com/stormizinhu/offliner-bot-streamer-bot-experiment" id="footer-link">GitHub</a>
+    </footer>
+</body>
+
+</html>

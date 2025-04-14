@@ -37,15 +37,23 @@
   --platfrom-yt-bg: #ca0000;
 
   --sb-color-white: #ffffff;
-  --sb-color-violet: #a257ed; 
-  --sb-color-purple: #2e2441;
-  --sb-color-blue: #00dbff;
-  --sb-color-royal: #224b8f;
   --sb-color-navy: #123a44;
   --sb-color-light-gray: #4f5b66;
   --sb-color-gray: #2e333a;
   --sb-color-dark-gray: #23282e;
   --sb-color-black: #23282e;
+
+  --sb-color-violet: #a257ed; 
+  --sb-color-violet2: #7b2cc4; 
+  --sb-color-violet3: #562281; 
+  --sb-color-violet4: #390c5f; 
+  --sb-color-purple: #2e2441;
+
+  --sb-color-blue: #00dbff;
+  --sb-color-blue2: #00c0e5;
+  --sb-color-blue3: #03799b;
+  --sb-color-blue4: #105069;
+  --sb-color-royal: #033449;
 }
 
 @media (prefers-color-scheme: light) {
@@ -53,9 +61,9 @@
         /* Valores para Light Mode */
         --text-color: var(--sb-color-black);
         --border-color: red;
-        --background-color-main: var(--sb-color-white);
-        --background-color-sub2: rgb(161, 161, 161);
-        --background-color-sub3: rgb(211, 211, 211);
+        --background-color-main: #f4f6f7;
+        --background-color-sub2: #e2e8eb;
+        --background-color-sub3: #c9d2d8;
 
         --container-action-border: var(--sb-color-navy);
         --container-trigger-border: var(--sb-color-purple);
@@ -63,8 +71,6 @@
         --footer-text-color: var(--sb-color-navy);
     }
 }
-
-  /* FIX ajustar alinhamento botoes em item list*/
 
 * {
   font-size: var(--font-small);
@@ -78,7 +84,7 @@
 #actionSubcategory {
   background-color: var(--background-color-sub2);
   border: 2px solid var(--container-action-border);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 5px;
   width: 100%;
 }
@@ -87,7 +93,7 @@
 #triggerSubcategory {
   background-color: var(--background-color-sub2);
   border: 2px solid var(--container-trigger-border);
-  border-radius: 6px;
+  border-radius: 8px;
   padding: 5px;
   width: 100%;
 }
@@ -113,21 +119,27 @@
 #triggerList {
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
+#actionParameters, #triggerParameters {
+  /* visibility: hidden; */
+  margin: 5px 0;
+  padding: 5px 5px;  
+}
 #actionParameters {
   background-color: var(--sb-color-navy);
-  margin: 10px 0;
-  padding: 5px 5px;
 }
 #triggerParameters {
   background-color: var(--sb-color-purple);
-  margin: 10px 0;
-  padding: 5px 5px;
 }
-#selector, #input, .option{
-  color: var(--sb-color-black);
+
+
+#selector, #input, option{
+  color: var(--text-color);
+  background-color: var(--background-color-main);  
 }
+
 #exportPNGButton,
 #exportTXTButton {
   background: var(--button-save-bg);
@@ -158,6 +170,7 @@
   display: flex;
   flex-wrap: wrap; /* Permite quebrar a linha para melhor organização */
   gap: 10px; /* Espaço entre os elementos */
+  border-radius: 8px;
 }
 
 #actionParameters > div, #triggerParameters > div {
@@ -189,12 +202,13 @@ body {
 button {
   align-items: center;
   background-color: var(--button-ok-bg);
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
   justify-content: center;
   padding: 5px 5px;
   width: fit-content;
+  color: var(--sb-color-black);
 }
 
 .child-container {
@@ -245,6 +259,10 @@ button {
   background-color: var(--button-mv-bg-hover);
 }
 
+.mini-button {
+  margin: 0 -5px 0 0;
+}
+
 h3 {
   color: var(--sb-color-blue);
   font-size: var(--font-medium);
@@ -254,15 +272,17 @@ h3 {
 
 input {
   color: var(--background-color-sub3);
+  border-radius: 4px;
 }
 
 .item {
   align-items: center;
   background-color: var(--background-color-sub2);
   border: 1px solid var(--sb-color-white);
-  border-radius: 6px;
+  border-radius: 8px;
   display: flex;
-  height: 25px;
+  height: auto;
+  min-width: 100px;
   justify-content: space-between;
   margin-bottom: 5px;
   padding: 0 10px;
@@ -272,6 +292,7 @@ input {
 .item span {
   flex-grow: 1;
   color: var(--sb-color-white);
+  margin: auto;
 }
 
 label {
@@ -292,10 +313,16 @@ label {
 
 .list-container.actionContainer {
   border: solid 2px var(--container-action-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list-container.triggerContainer {
   border: solid 2px var(--container-trigger-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 } 
 
 .obs {
@@ -377,7 +404,7 @@ label {
   .item {
     align-items: center;
     border: 2px solid var(--sb-color-white);
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -387,8 +414,10 @@ label {
   }
 
   .item span {
+    margin: 5px 0 5px 0;
     display: block;
     white-space: pre-line;
+    max-width: 75%;
   }
 
   .item span:nth-of-type(1) {
@@ -404,14 +433,6 @@ label {
     align-items: center;
     flex-direction: column;
     gap: 10px;
-  }
-  #actionParameters, #triggerParameters {
-    display: flex;
-    flex-direction: row;
-  }
-
-  #actionParameters > div, #triggerParameters > div {
-    flex: 1 1;
   }
 }
 

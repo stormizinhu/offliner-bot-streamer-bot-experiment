@@ -1,0 +1,15 @@
+html[data-theme="light"] {
+  --text-color: var(--sb-color-black);
+  --footer-text-color: var(--sb-color-navy);
+
+  --background-color-main: rgb(201, 201, 201);
+  --background-color-sub2: rgb(190, 190, 190);
+  --background-color-sub3: rgb(146, 146, 146);
+
+  --border-color: var(--sb-color-light-gray);
+  --button-bg: var(--button-ok-bg);
+  --button-bg-hover: var(--button-ok-bg-hover);
+
+  --container-action-border: var(--sb-color-navy);
+  --container-trigger-border: var(--sb-color-purple);
+}

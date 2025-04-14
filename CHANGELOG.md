@@ -1,12 +1,35 @@
 # 📖 OfflinerBot - Changelog
 ---
 
-## OfflinerBot v1.2.0  // TODO
+## OfflinerBot v1.3.0
+*Released 2025-04-14*
+
+### ✨ New Features
+
+➕ `Dark/Light` Mode added
+
+### 🔄 Updates  
+
+✏️ Better CSS folder and files structure
+✏️ Dark/Light modes via `html[data=theme]` for better modularity
+✏️ Smooth transition between Dark/Light modes
+
+
+### 🛠️ Fixes
+
+🔧 Better color scheme for light mode  
+🔧 Better color for inputs
+🔧 Rounded corners for `Parameters` and `Inputs`
+🔧 Center alignment for `Clear Buttons`
+🔧 Better alignment `Move` and `Clear Item` buttons
+
+---
+## OfflinerBot v1.2.0
 *Released 2025-04-10*
 
 ### ✨ New Features
 
-➕ `Dark/Ligth` Mode added
+➕ `Dark/Light` Mode added
 ➕ LICENSE added on project root
 ➕ Export functions now ask for file name instead for auto timestamp  
 ➕ Added `Reset All` button

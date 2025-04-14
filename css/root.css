@@ -1,0 +1,45 @@
+:root {
+  /* Font */
+  --font-family: "DM Sans", sans-serif;
+  --font-large: 22px;
+  --font-medium: 16px;
+  --font-small: 12px;
+
+  /* Buttons */
+  --button-del-bg: rgb(200, 35, 51);
+  --button-del-bg-hover: rgb(220, 53, 69);
+  --button-mv-bg: rgb(224, 168, 0);
+  --button-mv-bg-hover: rgb(255, 193, 7);
+  --button-ok-bg: rgb(0, 105, 217);
+  --button-ok-bg-hover: rgb(0, 123, 255);
+  --button-reset-bg: rgb(138, 138, 56);
+  --button-reset-bg-hover: rgb(190, 190, 82);
+  --button-save-bg: rgb(33, 136, 56);
+  --button-save-bg-hover: rgb(40, 167, 69);
+
+  /* Colors */
+  --sb-color-white: #ffffff;
+  --sb-color-navy: #123a44;
+  --sb-color-light-gray: #4f5b66;
+  --sb-color-gray: #2e333a;
+  --sb-color-dark-gray: #23282e;
+  --sb-color-black: #23282e;
+
+  --sb-color-violet: #a257ed;
+  --sb-color-violet2: #7b2cc4;
+  --sb-color-violet3: #562281;
+  --sb-color-violet4: #390c5f;
+  --sb-color-purple: #2e2441;
+
+  --sb-color-blue: #00dbff;
+  --sb-color-blue2: #00c0e5;
+  --sb-color-blue3: #03799b;
+  --sb-color-blue4: #105069;
+  --sb-color-royal: #033449;
+
+  /* Platforms */
+  --platfrom-obs-bg: #3a3a3a;
+  --platfrom-sb-bg: #00505c;
+  --platfrom-tw-bg: #4e0c7e;
+  --platfrom-yt-bg: #ca0000;
+}

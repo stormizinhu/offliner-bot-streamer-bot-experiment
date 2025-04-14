@@ -1,0 +1,292 @@
+@import "./root.css";
+@import "./platforms.css";
+@import "./theme-light.css";
+@import "./theme-dark.css";
+
+* {
+  font-size: var(--font-small);
+  margin: 0px;
+  padding: 0px;
+  color: var(--text-color);
+  transition: 
+    background-color 0.3s ease, 
+    color 0.3s ease, 
+    border-color 0.3s ease;
+}
+body {
+  background-color: var(--background-color-main);
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+button {
+  align-items: center;
+  background-color: var(--button-ok-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  justify-content: center;
+  padding: 5px 5px;
+  width: fit-content;
+  color: var(--sb-color-black);
+}
+h3 {
+  color: var(--sb-color-blue);
+  font-size: var(--font-medium);
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+label {
+  margin: 0px 0 5px 0;
+  color: var(--sb-color-white);
+}
+input {
+  color: var(--background-color-sub3);
+  border-radius: 4px;
+}
+
+#actionCategory, #actionPlatform, #actionSubcategory {
+  background-color: var(--background-color-sub2);
+  border: 2px solid var(--container-action-border);
+  border-radius: 8px;
+  padding: 5px;
+  width: 100%;
+}
+#actionCategory:hover, #actionPlatform:hover, #actionSubcategory:hover {
+  border-color: var(--container-action-border);
+}
+#triggerCategory, #triggerPlatform, #triggerSubcategory {
+  background-color: var(--background-color-sub2);
+  border: 2px solid var(--container-trigger-border);
+  border-radius: 8px;
+  padding: 5px;
+  width: 100%;
+}
+#triggerCategory:hover, #triggerPlatform:hover, #triggerSubcategory:hover {
+  border-color: var(--container-trigger-border);
+}
+#actionList, #triggerList {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+#actionParameters {
+  background-color: var(--sb-color-navy);
+}
+#triggerParameters {
+  background-color: var(--sb-color-purple);
+}
+#actionParameters, #triggerParameters {
+  /* visibility: hidden; */
+  margin: 5px 0;
+  padding: 5px 5px;  
+}
+#actionParameters, #triggerParameters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; 
+  border-radius: 8px;
+}
+#actionParameters > div, #triggerParameters > div {
+  display: flex;
+  flex-direction: column;
+}
+#exportPNGButton, #exportTXTButton {
+  background: var(--button-save-bg);
+}
+#exportPNGButton:hover, #exportTXTButton:hover {
+  background: var(--button-save-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#footer-link {
+  font-size: var(--font-large);
+  color: var(--footer-text-color)
+}
+#logo {
+  display: block;
+  margin: 10px 0 0 0;
+  border: solid 3px var(--sb-color-violet);
+  border-radius: 50%;
+  width: 100px; 
+}
+#selector, #input, option{
+  color: var(--text-color);
+  background-color: var(--background-color-main);  
+}
+#year {
+  color: var(--footer-text-color);
+  font-size: var(--font-medium);
+  margin: 20px 0 0 0;
+  text-align: center;
+}
+.actionContainer {
+  border: 2px solid var(--container-action-border);
+}
+.addButton:hover {
+  background-color: var(--button-ok-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.actionList{
+  color: var(--container-action-border);
+}
+.triggerList {
+  color: var(--container-trigger-border);
+}
+.button-container {
+  display: flex;
+  justify-content: space-around;
+}
+.child-container {
+  display: flex;
+  flex-direction: column; 
+  gap: 20px;
+}
+.clearButton {
+  background-color: var(--button-del-bg);
+}
+.clearButton:hover {
+  background-color: var(--button-del-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.dropdown-container {
+  background-color: var(--background-color-sub3);
+  border-radius: 8px;
+  flex: 1;
+  padding: 10px;
+}
+.dropdown-item {
+  margin-bottom: 5px;
+}
+.hamburger-btn {
+  align-items: center;
+  background-color: var(--button-mv-bg);
+  border: none;
+  cursor: grab;
+  justify-content: center;
+  scale: 0.7;
+  width: 25px;
+}
+.hamburger-btn:hover {
+  background-color: var(--button-mv-bg-hover);
+}
+.item {
+  align-items: center;
+  background-color: var(--background-color-sub2);
+  border: 1px solid var(--sb-color-white);
+  border-radius: 8px;
+  display: flex;
+  height: auto;
+  min-width: 100px;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 0 10px;
+  white-space: pre-line;
+}
+.item span {
+  flex-grow: 1;
+  color: var(--sb-color-white);
+  margin: auto;
+}
+.list-container {
+  background-color: var(--background-color-sub3);
+  border-radius: 8px;
+  flex: 1;
+  padding: 10px;
+}
+.list-container ul {
+  list-style: none;
+}
+.list-container.actionContainer {
+  border: solid 2px var(--container-action-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.list-container.triggerContainer {
+  border: solid 2px var(--container-trigger-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon-container svg path {
+  fill: var(--text-color);
+}
+.icon-container svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 0.3s ease;
+}
+.mini-button {
+  margin: 0 -5px 0 0;
+}
+.parent-container {
+  background-color: var(--background-color-sub2);
+  border-radius: 16px;
+  width: 92%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  margin-top: 10px
+}
+.remove-btn {
+  align-items: center;
+  background: var(--button-del-bg);
+  border: none;
+  cursor: pointer;
+  justify-content: center;
+  scale: 0.7;
+  width: 25px;
+}
+.remove-btn:hover {
+  background: var(--button-del-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.resetButton {
+  background-color: var(--button-reset-bg);
+}
+.resetButton:hover {
+  background-color: var(--button-reset-bg-hover);
+  transform: scale(1.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: space-between;
+}
+.toggle-mode-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  background-color: transparent;
+  border: 2px solid var(--text-color);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.toggle-mode-btn:hover {
+  background-color: var(--background-color-sub2);
+  transform: scale(1.1);
+}
+.triggerContainer {
+  border: 2px solid var(--container-trigger-border);
+}
