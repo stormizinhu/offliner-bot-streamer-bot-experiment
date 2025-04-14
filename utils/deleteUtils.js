@@ -22,14 +22,22 @@ export function setupDeleteHandlers() {
   });
 }
 
-// Função para remover um item com animação
-function removeItemWithAnimation(item, list) {
-  item.classList.add("removing");
+export function removeItemWithAnimation(item) {
+    // Desativa o drag imediatamente
+    item.draggable = false;
 
-  setTimeout(() => {
-      list.removeChild(item);
-  }, 500); // Espera a animação de fade e descida
+    // Marca como removido
+    item.dataset.toBeDeleted = "true";
+    item.classList.add("removing");
+
+    // Remove após a animação
+    setTimeout(() => {
+        if (item.parentElement) {
+            item.remove();
+        }
+    }, 500);
 }
+
 
 // Função para limpar a lista com animação
 function clearListWithAnimation(list) {
@@ -54,4 +62,9 @@ function addRemoveEvent(list) {
           removeItemWithAnimation(item, list);
       });
   });
+}
+// Função para remover o item da lista
+export function onDeleteCallback(item) {
+  // Apenas remove o item do DOM
+  item.remove();
 }

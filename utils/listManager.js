@@ -33,7 +33,16 @@ export function addItemToList(platform, category, subcategory, data, parametersD
     }
 
     const li = createListItem(text, platform, () => li.remove());
+
+    // Adiciona a classe "adding" para a animação de entrada
+    li.classList.add("adding");
     listContainer.appendChild(li);
+
+    // Remove a classe "adding" após a animação (tempo da transição de 0.2s)
+    setTimeout(() => {
+        li.classList.remove("adding");
+    }, 500);  // Tempo da transição em milissegundos
 
     addDragAndDropEvents(li, listContainer);
 }
+

@@ -2,13 +2,13 @@ export function addDragAndDropEvents(item, list) {
     item.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", item.innerHTML);
         item.classList.add("dragging");
+        item.style.transition = "transform 0.2s ease"; // Aplica a transição para mover
         item.style.transform = "scale(1.1) translateY(-10px)"; // Aplica o efeito visual
-        item.style.transition = "transform 0.2s ease"; // Transição suave
     });
 
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
-        item.style.transform = "scale(1) translateY(0)"; // Restaura o item
+        item.style.transform = "scale(1) translateY(0)";
     });
 
     list.addEventListener("dragover", e => {
@@ -24,8 +24,8 @@ export function addDragAndDropEvents(item, list) {
     // Para dispositivos móveis
     item.addEventListener("touchstart", e => {
         item.classList.add("dragging");
-        item.style.transform = "scale(1.1) translateY(-10px)"; // Aplica o efeito visual no toque
-        item.style.transition = "transform 0.2s ease"; // Transição suave
+        item.style.transition = "transform 0.2s ease"; 
+        item.style.transform = "scale(1.1) translateY(-10px)";
         item.dataset.touchStartY = e.touches[0].clientY;
     });
 
@@ -41,16 +41,11 @@ export function addDragAndDropEvents(item, list) {
 
     item.addEventListener("touchend", () => {
         item.classList.remove("dragging");
-        item.style.transform = "scale(1) translateY(0)"; // Restaura o item ao soltar o toque
+        item.style.transform = "scale(1) translateY(0)";
     });
 }
 
-export function clearList(list) {
-    while (list.firstChild) {
-        list.removeChild(list.firstChild);
-    }
-}
-
+// Função para determinar o próximo elemento após o qual o item será inserido
 export function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
 
@@ -64,3 +59,12 @@ export function getDragAfterElement(container, y) {
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
+
+// Função para limpar a lista
+export function clearList(list) {
+    // Remover todos os itens da lista
+    while (list.firstChild) {
+        list.firstChild.remove(); // Remove o primeiro item da lista
+    }
+}
+
