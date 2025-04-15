@@ -2,12 +2,18 @@ import { getParameterValues } from './configUtils.js';
 import { createListItem } from './listUtils.js';
 import { addDragAndDropEvents } from '../scripts/dragndrop.js';
 
-let varCounter = 1; // Contador global para gerenciar as variáveis numeradas
+let varCounter = 1;
 
 export function addItemToList(platform, category, subcategory, data, parametersDiv, listContainer) {
-    if (!platform || !category) {
-        console.error("Platform or category is missing!");
+    if (!platform || !category || !subcategory)  {
         return;
+    }
+
+    const subcategorySelect = document.getElementById("subcategorySelect");
+    if (subcategorySelect && subcategorySelect.style.display !== "none") {
+        if (subcategorySelect.value === "" || subcategorySelect.value.toLowerCase() === "select") {
+            return;
+        }
     }
 
     let text = `${platform} - ${category}`;
@@ -19,11 +25,10 @@ export function addItemToList(platform, category, subcategory, data, parametersD
         text += ` - ${subcategory}`;
     }
 
-    // Obtém os valores dos parâmetros e substitui campos vazios por %Var1%, %Var2%, etc.
     const parameters = getParameterValues(config, parametersDiv.querySelectorAll("input, select"))
         .map(value => {
             if (value.trim() === "") {
-                return `%Var${varCounter++}`; // Incrementa o contador a cada substituição
+                return `%Var${varCounter++}`;
             }
             return value;
         });
@@ -34,15 +39,12 @@ export function addItemToList(platform, category, subcategory, data, parametersD
 
     const li = createListItem(text, platform, () => li.remove());
 
-    // Adiciona a classe "adding" para a animação de entrada
     li.classList.add("adding");
     listContainer.appendChild(li);
 
-    // Remove a classe "adding" após a animação (tempo da transição de 0.2s)
     setTimeout(() => {
         li.classList.remove("adding");
-    }, 500);  // Tempo da transição em milissegundos
+    }, 500);
 
     addDragAndDropEvents(li, listContainer);
 }
-

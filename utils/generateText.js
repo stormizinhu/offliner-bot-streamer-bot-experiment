@@ -10,14 +10,13 @@ function removeMiniButtons(listElement) {
 }
 
 document.getElementById("exportTXTButton").addEventListener("click", () => {
-    const fileName = prompt("Digite um nome para o arquivo .txt:");
+    const fileName = prompt("Your file name .txt:");
     if (!fileName) return;
 
     const triggerListElement = document.getElementById("triggerList");
     const actionListElement = document.getElementById("actionList");
 
     if (!triggerListElement || !actionListElement) {
-        console.error("Missing list elements in the DOM!");
         return;
     }
 

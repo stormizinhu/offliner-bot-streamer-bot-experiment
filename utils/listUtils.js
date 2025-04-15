@@ -1,10 +1,9 @@
 // Função para criar o item na lista
 export function createListItem(text, platform, onDeleteCallback) {
     const li = document.createElement("li");
-    li.className = "item"; // Definindo a classe base do item
+    li.className = "item";
     li.draggable = true;
 
-    // Adiciona a classe com base na plataforma
     switch (platform) {
         case 'StreamerBot':
             li.classList.add('streamerBot');
@@ -32,10 +31,16 @@ export function createListItem(text, platform, onDeleteCallback) {
         <button class="remove-btn mini-button" title="Deletar">❌</button>
     `;
 
-    // Adicionando evento para remover o item ao clicar no botão de remover
     li.querySelector(".remove-btn").addEventListener("click", () => {
-        onDeleteCallback(li); // Chama a função de remoção
-    });
+        li.classList.add("removing");
 
+        li.addEventListener("animationend", () => {
+            onDeleteCallback(li);
+        });
+    });
     return li;
+}
+
+export function onDeleteCallback(item) {
+    item.remove();
 }

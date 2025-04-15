@@ -3,7 +3,6 @@ import { addParameterField } from './parameterFieldsUtil.js';
 
 export function updateCategoriesOrActions(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
-        console.error("One or more elements are missing for updating categories or actions!");
         return;
     }
 
@@ -30,10 +29,10 @@ export function updateSubcategoriesOrParameters(platform, category, data, subcat
         return;
     }
 
-    parametersDiv.innerHTML = ""; // Limpa o conteúdo inicial
+    parametersDiv.innerHTML = "";
 
     if (!platform || !category) {
-        subcategorySelect.style.display = "none"; // Esconde o terceiro dropdown se necessário
+        subcategorySelect.style.display = "none";
         return;
     }
 
@@ -51,6 +50,6 @@ export function updateSubcategoriesOrParameters(platform, category, data, subcat
             selectedSubcategory.parameters.forEach(param => addParameterField(param, parametersDiv));
         }
     } else {
-        subcategorySelect.style.display = "inline-block"; // Mostra o terceiro dropdown
+        subcategorySelect.style.display = "inline-block";
     }
 }

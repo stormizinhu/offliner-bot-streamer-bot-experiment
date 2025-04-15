@@ -32,18 +32,15 @@ function resetDropdowns(type) {
     parameters.forEach((id) => {
         const container = document.getElementById(id);
         if (container) {
-            container.innerHTML = ""; // Limpa os parâmetros
+            container.innerHTML = "";
         }
     });
 }   
 
-// Função para resetar tudo
 export function resetAll() {
-    // Reseta dropdowns
     resetDropdowns("action");
     resetDropdowns("trigger");
 
-    // Reseta listas
     const actionList = document.getElementById("actionList");
     const triggerList = document.getElementById("triggerList");
 

@@ -221,14 +221,14 @@ input {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 .item.dragging {
-  transform: scale(1.1) translateY(-10px); /* Aumenta o item e o move para cima */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Adiciona uma sombra para destacar */
+  transform: scale(1.1) translateY(-10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 .item.adding {
   animation: scaleInAndForward 0.5s ease-out forwards;
 }
 .item.removing {
-  animation: scaleOutAndBack 0.5s ease-out forwards;
+  animation: scaleOutAndBack 0.5s ease-in forwards; /* Animação de remoção */
 }
 .item span {
   flex-grow: 1;
@@ -343,10 +343,13 @@ input {
 @keyframes scaleOutAndBack {
   0% {
       opacity: 1;
-      transform: scale(1) translateZ(0); /* Começa no tamanho normal e na posição original */
+      transform: scale(1) translateZ(0); /* Estado inicial */
   }
   100% {
       opacity: 0;
-      transform: scale(0.8) translateZ(50px); /* Fica pequeno e vai para trás */
+      transform: scale(0.8) translateZ(50px); /* Estado final */
   }
 }
+
+
+

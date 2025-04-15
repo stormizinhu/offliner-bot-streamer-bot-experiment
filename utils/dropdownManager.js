@@ -3,7 +3,6 @@ import { addParameterField } from './parameterFieldsUtils.js';
 
 export function updateCategoriesOrActions(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
-        console.error("One or more elements are missing for updating categories or actions!");
         return;
     }
 
@@ -26,7 +25,6 @@ export function updateCategoriesOrActions(platform, data, categorySelect, subcat
 
 export function updateCategories(platform, data, categorySelect, subcategorySelect, parametersDiv) {
     if (!categorySelect || !subcategorySelect || !parametersDiv) {
-        console.error("One or more elements are missing for updating categories!");
         return;
     }
 
@@ -49,15 +47,15 @@ export function updateCategories(platform, data, categorySelect, subcategorySele
 
 export function updateSubcategoriesOrParameters(platform, category, data, subcategorySelect, parametersDiv) {
     if (!subcategorySelect || !parametersDiv) {
-        console.error("Subcategory or parameters container is missing! Check your DOM or the arguments passed.");
+        console.error("Subcategory or parameters container is missing!"); // Log de depuração
         return;
     }
 
-    parametersDiv.innerHTML = "";
+    parametersDiv.innerHTML = ""; // Limpa os parâmetros anteriores
 
     const categoryData = data[platform]?.[category];
     if (!categoryData) {
-        subcategorySelect.style.display = "none";
+        subcategorySelect.style.display = "none"; // Oculta o dropdown caso não haja subcategorias
         return;
     }
 
@@ -74,5 +72,11 @@ export function updateSubcategoriesOrParameters(platform, category, data, subcat
             label: categoryData[key].name
         })));
         subcategorySelect.style.display = "inline-block";
+    } else {
+        // Adiciona uma validação para garantir que "Select..." não seja aceitável
+        if (subcategorySelect.value === "" || subcategorySelect.value === "Select...") {
+            console.warn("Subcategoria inválida selecionada."); // Log para depuração
+            alert("Por favor, selecione uma subcategoria válida."); // Feedback ao usuário
+        }
     }
 }

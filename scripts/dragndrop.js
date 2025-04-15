@@ -2,8 +2,8 @@ export function addDragAndDropEvents(item, list) {
     item.addEventListener("dragstart", e => {
         e.dataTransfer.setData("text/plain", item.innerHTML);
         item.classList.add("dragging");
-        item.style.transition = "transform 0.2s ease"; // Aplica a transição para mover
-        item.style.transform = "scale(1.1) translateY(-10px)"; // Aplica o efeito visual
+        item.style.transition = "transform 0.2s ease";
+        item.style.transform = "scale(1.1) translateY(-10px)";
     });
 
     item.addEventListener("dragend", () => {
@@ -13,6 +13,9 @@ export function addDragAndDropEvents(item, list) {
 
     list.addEventListener("dragover", e => {
         e.preventDefault();
+    
+        if (!list.contains(item)) return;
+    
         const afterElement = getDragAfterElement(list, e.clientY);
         if (afterElement == null) {
             list.appendChild(item);
@@ -21,7 +24,6 @@ export function addDragAndDropEvents(item, list) {
         }
     });
 
-    // Para dispositivos móveis
     item.addEventListener("touchstart", e => {
         item.classList.add("dragging");
         item.style.transition = "transform 0.2s ease"; 
@@ -30,6 +32,8 @@ export function addDragAndDropEvents(item, list) {
     });
 
     item.addEventListener("touchmove", e => {
+        if (!list.contains(item)) return;
+    
         const touchY = e.touches[0].clientY;
         const afterElement = getDragAfterElement(list, touchY);
         if (afterElement == null) {
@@ -45,7 +49,6 @@ export function addDragAndDropEvents(item, list) {
     });
 }
 
-// Função para determinar o próximo elemento após o qual o item será inserido
 export function getDragAfterElement(container, y) {
     const draggableElements = [...container.querySelectorAll(".item:not(.dragging)")];
 
@@ -59,12 +62,3 @@ export function getDragAfterElement(container, y) {
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
-
-// Função para limpar a lista
-export function clearList(list) {
-    // Remover todos os itens da lista
-    while (list.firstChild) {
-        list.firstChild.remove(); // Remove o primeiro item da lista
-    }
-}
-

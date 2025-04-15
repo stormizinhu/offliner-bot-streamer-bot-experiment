@@ -1,10 +1,9 @@
 export function addParameterField(param, containerDiv) {
     if (!containerDiv) {
-        console.error("Container for parameters is missing!");
         return;
     }
 
-    const wrapper = document.createElement("div"); // Cria um wrapper para cada parâmetro
+    const wrapper = document.createElement("div");
     const label = document.createElement("label");
     label.textContent = `${param.name}:`;
 
@@ -27,5 +26,5 @@ export function addParameterField(param, containerDiv) {
 
     wrapper.appendChild(label);
     wrapper.appendChild(inputElement);
-    containerDiv.appendChild(wrapper); // Adiciona o wrapper ao contêiner principal
+    containerDiv.appendChild(wrapper);
 }

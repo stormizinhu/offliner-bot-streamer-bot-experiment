@@ -1,5 +1,5 @@
 function saveActionListAsPNG() {
-    const fileName = prompt("Digite um nome para o arquivo .png:");
+    const fileName = prompt("Your file name .png:");
     if (!fileName) return;
 
     const actionList = document.getElementById("child-container");
