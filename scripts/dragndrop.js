@@ -4,18 +4,17 @@ export function addDragAndDropEvents(item, list) {
         item.classList.add("dragging");
         item.style.transition = "transform 0.2s ease";
         item.style.transform = "scale(1.1) translateY(-10px)";
+        document.body.style.overflow = "hidden"; // Bloqueia o scroll do desktop
     });
-
+    
     item.addEventListener("dragend", () => {
         item.classList.remove("dragging");
         item.style.transform = "scale(1) translateY(0)";
+        document.body.style.overflow = ""; // Restaura o scroll após o arraste
     });
 
     list.addEventListener("dragover", e => {
-        e.preventDefault();
-    
-        if (!list.contains(item)) return;
-    
+        e.preventDefault(); // Isso impede o scroll da tela
         const afterElement = getDragAfterElement(list, e.clientY);
         if (afterElement == null) {
             list.appendChild(item);
@@ -25,15 +24,15 @@ export function addDragAndDropEvents(item, list) {
     });
 
     item.addEventListener("touchstart", e => {
+        e.preventDefault(); // Impede scroll durante o touchstart
         item.classList.add("dragging");
-        item.style.transition = "transform 0.2s ease"; 
+        item.style.transition = "transform 0.2s ease";
         item.style.transform = "scale(1.1) translateY(-10px)";
         item.dataset.touchStartY = e.touches[0].clientY;
     });
 
     item.addEventListener("touchmove", e => {
-        if (!list.contains(item)) return;
-    
+        e.preventDefault(); // Isso bloqueia o scroll durante o touchmove
         const touchY = e.touches[0].clientY;
         const afterElement = getDragAfterElement(list, touchY);
         if (afterElement == null) {

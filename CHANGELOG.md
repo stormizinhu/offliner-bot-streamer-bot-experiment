@@ -2,7 +2,7 @@
 ---
 
 ## OfflinerBot v1.3.0
-*Released 2025-04-14*
+*Released 2025-04-15*
 
 ### ✨ New Features
 
@@ -23,7 +23,7 @@
 🔧 Rounded corners for `Parameters` and `Inputs`
 🔧 Center alignment for `Clear Buttons`
 🔧 Better alignment `Move` and `Clear Item` buttons
-🔧 Better `Button` base class
+🔧 Better `Button` base class 
 
 ---
 ## OfflinerBot v1.2.0
